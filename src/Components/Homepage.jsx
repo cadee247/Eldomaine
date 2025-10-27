@@ -15,9 +15,7 @@ import FloatingButton from './FloatingButton';
 import { Link } from 'react-router-dom';
 import '../css/Homepage.css';
 import pic7 from '../assets/Homepage/pic7.jpg';
-// import pic7WebpSmall from '../assets/Homepage/pic7-small.webp'; // Add optimized WebP variants
-// import pic7WebpMedium from '../assets/Homepage/pic7-medium.webp';
-// import pic7WebpLarge from '../assets/Homepage/pic7-large.webp';
+import pic7Webp from '../assets/Homepage/pic7.webp'; // Assume this is a highly optimized WebP version (<150KB, same dimensions)
 
 const locales = {
   'en-US': enUS,
@@ -121,35 +119,42 @@ function Homepage({ onBook }) {
     return () => clearInterval(interval);
   }, []);
 
-  // === COUNTUP ANIMATION FOR STATS ===
+  // Preload hero image for maximum priority (above-the-fold critical resource)
   useEffect(() => {
-    const counters = document.querySelectorAll('.stat-number');
-    const options = { threshold: 0.5 };
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = pic7;
+    link.imageSrcSet = pic7Webp; // Optional: hint WebP if supported
+    document.head.appendChild(link);
+  }, []);
 
-    const animateCount = (entry) => {
-      if (!entry.isIntersecting) return;
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
-        let count = 0;
-        const increment = Math.ceil(target / 120);
-        const update = () => {
-          count += increment;
-          if (count < target) {
-            counter.textContent = count;
-            requestAnimationFrame(update);
-          } else {
-            counter.textContent = target;
-          }
-        };
-        update();
-      });
-    };
-
+  // === COUNTUP ANIMATION FOR STATS (per-counter, once per view) ===
+  useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(animateCount);
-    }, options);
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = +counter.getAttribute('data-target');
+          let count = 0;
+          const increment = Math.ceil(target / 120); // Smooth ~2s animation
+          const update = () => {
+            count += increment;
+            if (count < target) {
+              counter.textContent = count;
+              requestAnimationFrame(update);
+            } else {
+              counter.textContent = target;
+            }
+          };
+          update();
+          observer.unobserve(counter); // Animate only once
+        }
+      });
+    }, { threshold: 0.5 });
 
-    counters.forEach(counter => observer.observe(counter));
+    document.querySelectorAll('.stat-number').forEach(counter => observer.observe(counter));
+
     return () => observer.disconnect();
   }, []);
 
@@ -165,25 +170,28 @@ function Homepage({ onBook }) {
           width: '100%',
         }}
       >
-        <img
-          src={pic7}
-          // srcSet={`${pic7WebpSmall} 480w, ${pic7WebpMedium} 768w, ${pic7WebpLarge} 1200w`} // Uncomment and add imports for WebP
-          // sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
-          alt="Eldomaine High School"
-          className="hero-image"
-          loading="eager"  // Eager loading for above-the-fold image
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            filter: 'blur(10px)', // Initial blur for placeholder effect
-            transition: 'filter 0.5s ease', // Smooth reveal
-          }}
-          onLoad={(e) => e.target.style.filter = 'blur(0px)'}
-        />
+        <picture>
+          <source srcSet={pic7Webp} type="image/webp" />
+          <img
+            src={pic7}
+            alt="Eldomaine High School"
+            className="hero-image"
+            loading="eager"
+            fetchpriority="high"  // Highest fetch priority for critical above-the-fold image
+            decoding="async"      // Non-blocking decode
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              filter: 'blur(10px)', // LQIP-style placeholder (reveals sharply on load)
+              transition: 'filter 0.5s ease',
+            }}
+            onLoad={(e) => e.target.style.filter = 'blur(0px)'}
+          />
+        </picture>
         <FloatingButton onClick={onBook} />
       </main>
 
@@ -268,7 +276,7 @@ function Homepage({ onBook }) {
         <h2><FaCalendarAlt className="icon" /> School Calendar & Holidays</h2>
 
         <div className="calendar-container">
-          <Suspense fallback={<div>Loading Calendar...</div>}>  {/* Wrap in Suspense for lazy loading */}
+          <Suspense fallback={<div>Loading Calendar...</div>}>
             <LazyBigCalendar
               events={events}
               style={{
@@ -302,6 +310,7 @@ function Homepage({ onBook }) {
               <div>Youth Day – 16 Jun</div>
               <div>Women's Day – 9 Aug</div>
               <div>Heritage Day – 24 Sep</div>
+              <div>Day of Reconciliation – 16 Dec</div> {/* Added missing holiday for completeness */}
             </div>
           </motion.div>
 
