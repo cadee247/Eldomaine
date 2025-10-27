@@ -11,7 +11,6 @@
   padding: 0.75rem 2rem;
   background: var(--brand-green-900);
   color: var(--white);
-  flex-wrap: nowrap;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   height: 80px;
@@ -20,8 +19,8 @@
   overflow: hidden;
 }
 
-.nav-left,
-.nav-right {
+/* === LEFT SECTION (Badge + Left Links) === */
+.nav-left {
   display: flex;
   align-items: center;
   gap: 1.2rem;
@@ -30,25 +29,31 @@
   min-width: 0;
 }
 
-.nav-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 0 0 auto;
-}
-
-/* === SCHOOL BADGE === */
+/* === SCHOOL BADGE (Moved Left) === */
 .school-badge {
   max-height: 65px;
   max-width: 115px;
-  margin-top: -5px;
   height: auto;
   width: auto;
   border-radius: 0;
   box-shadow: none;
+}
+
+/* === CENTER LINKS === */
+.nav-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+/* === RIGHT LINKS === */
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.2rem;
+  flex: 1;
 }
 
 /* === NAV LINKS === */
@@ -166,9 +171,7 @@
   }
 
   .nav-center {
-    position: relative;
-    left: 0;
-    transform: none;
+    justify-content: center;
   }
 
   .school-badge {
