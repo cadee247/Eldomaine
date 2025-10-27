@@ -140,15 +140,17 @@ function Homepage({ onBook }) {
   return (
     <>
       {/* === HERO SECTION (IMAGE) === */}
-      <main className="homepage" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
-        <img
-          src="/src/assets/Homepage/pic7.jpg"
-          alt="Eldomaine High School"
-          className="hero-image"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
-        />
-        <FloatingButton onClick={onBook} />
-      </main>
+import pic7 from '../assets/Homepage/pic7.jpg';
+
+<main className="homepage" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+  <img
+    src={pic7}
+    alt="Eldomaine High School"
+    className="hero-image"
+    style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+  />
+  <FloatingButton onClick={onBook} />
+</main>
 <motion.div
   className="hero-content"
   initial={{ opacity: 0 }}
