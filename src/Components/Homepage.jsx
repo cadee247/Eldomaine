@@ -171,7 +171,7 @@ function Homepage({ onBook }) {
         }}
       >
         <picture>
-          <source srcSet={pic7Webp} type="image/webp" />
+          <source srcSet={pic7} type="image/webp" />
           <img
             src={pic7}
             alt="Eldomaine High School"
