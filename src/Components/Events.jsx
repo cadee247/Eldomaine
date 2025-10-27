@@ -10,6 +10,9 @@ import '../css/Events.css';
 import { motion } from 'framer-motion';
 import MatricPDF from '../assets/Events/Matric Timetable 2025 – Full NSC Exam Dates & Times (South Africa).pdf';
 import eventsImage from '../assets/Events/pic6.jpg';
+// import eventsImageWebpSmall from '../assets/Events/pic6-small.webp'; // Add optimized WebP variants
+// import eventsImageWebpMedium from '../assets/Events/pic6-medium.webp';
+// import eventsImageWebpLarge from '../assets/Events/pic6-large.webp';
 
 function Events() {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -127,8 +130,16 @@ function Events() {
       <section className="events-hero">
         <img
           src={eventsImage}
+          // srcSet={`${eventsImageWebpSmall} 480w, ${eventsImageWebpMedium} 768w, ${eventsImageWebpLarge} 1200w`} // Uncomment and add imports for WebP
+          // sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
           alt="Events Banner"
           className="events-hero-img"
+          loading="eager"  // Eager loading for above-the-fold hero image
+          style={{
+            filter: 'blur(10px)', // Initial blur for placeholder effect
+            transition: 'filter 0.5s ease', // Smooth reveal
+          }}
+          onLoad={(e) => e.target.style.filter = 'blur(0px)'}
         />
       </section>
 
