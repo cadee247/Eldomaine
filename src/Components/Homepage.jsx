@@ -125,7 +125,7 @@ function Homepage({ onBook }) {
     link.rel = 'preload';
     link.as = 'image';
     link.href = pic7;
-    link.imageSrcSet = pic7Webp; // Optional: hint WebP if supported
+    link.imageSrcSet = pic7; // Optional: hint WebP if supported
     document.head.appendChild(link);
   }, []);
 
