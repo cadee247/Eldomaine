@@ -4,6 +4,9 @@ import { FaTint, FaPencilRuler, FaBookOpen } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Confetti from 'react-confetti';
 import bannerImg from '../assets/Donations/pics.jpg'; // ✅ Import your banner image
+// import bannerImgWebpSmall from '../assets/Donations/pics-small.webp'; // Add optimized WebP variants
+// import bannerImgWebpMedium from '../assets/Donations/pics-medium.webp';
+// import bannerImgWebpLarge from '../assets/Donations/pics-large.webp';
 
 function Donation() {
   const [name, setName] = useState('');
@@ -58,7 +61,19 @@ function Donation() {
 
       {/* ✅ Hero Banner (no text, no overlay, full image) */}
       <div className="donation-hero">
-        <img src={bannerImg} alt="Donation Banner" className="donation-hero-img" />
+        <img 
+          src={bannerImg} 
+          // srcSet={`${bannerImgWebpSmall} 480w, ${bannerImgWebpMedium} 768w, ${bannerImgWebpLarge} 1200w`} // Uncomment and add imports for WebP
+          // sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
+          alt="Donation Banner" 
+          className="donation-hero-img" 
+          loading="eager"  // Eager loading for above-the-fold hero image
+          style={{
+            filter: 'blur(10px)', // Initial blur for placeholder effect
+            transition: 'filter 0.5s ease', // Smooth reveal
+          }}
+          onLoad={(e) => e.target.style.filter = 'blur(0px)'}
+        />
       </div>
 
       <motion.div
