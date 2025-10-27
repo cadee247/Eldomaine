@@ -18,7 +18,6 @@ const Gallery = () => {
 
   useEffect(() => {
     const imgs = importImages();
-    console.log("🖼️ Loaded gallery images:", imgs);
     setImages(imgs);
   }, []);
 
@@ -100,7 +99,16 @@ const Gallery = () => {
                 className="gallery-item"
                 onClick={() => openLightbox(index)}
               >
-                <img src={img} alt={`Gallery ${index + 1}`} loading="lazy" />
+                <img 
+                  src={img} 
+                  alt={`Gallery ${index + 1}`} 
+                  loading={index < 6 ? "eager" : "lazy"} 
+                  style={{
+                    filter: 'blur(10px)',
+                    transition: 'filter 0.5s ease',
+                  }}
+                  onLoad={(e) => e.target.style.filter = 'blur(0px)'}
+                />
                 <div className="overlay">
                   <FaSearchPlus className="zoom-icon" />
                 </div>
@@ -116,7 +124,16 @@ const Gallery = () => {
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <FaTimesCircle className="close-icon" onClick={closeLightbox} />
             <FaChevronLeft className="nav-arrow nav-left" onClick={goToPrev} />
-            <img src={images[selectedIndex]} alt="Full preview" className="lightbox-img" />
+            <img 
+              src={images[selectedIndex]} 
+              alt="Full preview" 
+              className="lightbox-img" 
+              style={{
+                filter: 'blur(10px)',
+                transition: 'filter 0.5s ease',
+              }}
+              onLoad={(e) => e.target.style.filter = 'blur(0px)'}
+            />
             <FaChevronRight className="nav-arrow nav-right" onClick={goToNext} />
             <p className="lightbox-caption">{getCaption(selectedIndex)}</p>
           </div>
