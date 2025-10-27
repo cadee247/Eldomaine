@@ -15,7 +15,7 @@ import FloatingButton from './FloatingButton';
 import { Link } from 'react-router-dom';
 import '../css/Homepage.css';
 import pic7 from '../assets/Homepage/pic7.jpg';
-import pic7Webp from '../assets/Homepage/pic7.webp'; // Assume this is a highly optimized WebP version (<150KB, same dimensions)
+
 
 const locales = {
   'en-US': enUS,
