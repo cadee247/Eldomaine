@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaBullseye, FaEye, FaHandsHelping, FaSchool, FaStar } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
@@ -8,9 +8,10 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../css/About.css';
 import pic5 from '../assets/About/pic5.jpg';
-// import pic5WebpSmall from '../assets/About/pic5-small.webp'; // Add optimized WebP variants
-// import pic5WebpMedium from '../assets/About/pic5-medium.webp';
-// import pic5WebpLarge from '../assets/About/pic5-large.webp';
+// import pic5Webp from '../assets/About/pic5.webp'; // Optimized WebP version
+
+// Low-res base64 placeholder (blurred gradient as LQIP)
+const placeholderBase64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfAAAAD4CAYAAAATiLQ/AAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjYuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/P9b71AAAACXBIWXMAAA9hAAAPYQGoP6dpAAAERUlEQVR4nO3bwQ2EMBAEQRttps4/BojBL9RSVQT8Rr2+2+ecdwEAKc/fHwAA3DPgABBkwAEgyIADQNDsvf/+BgDgkgIHgCADDgBBBhwAgryBA0CQAgeAIAUOAEEKHACCFDgABClwAAhS4AAQpMABIEiBA0CQAgeAIAUOAEEKHACCFDgABBlwAAhyQgeAIAUOAEEKHACCFDgABBlwAAgy4AAQ5A0cAIIUOAAEGXAACHJCB4AgBQ4AQQYcAIKc0AEgSIEDQJABB4AgJ3QACFLgABBkwAEgyAkdAIIUOAAEGXAACHJCB4AgBQ4AQQYcAIKc0AEgSIEDQJABB4AgJ3QACFLgABCkwAEgSIEDQJABB4AgJ3QACFLgABBkwAEgyAkdAIIUOAAEGXAACDLgABDkDRwAghQ4AAQZcAAIckIHgCAFDgBBChwAghQ4AAQZcAAIckIHgCAFDgBBBhwAgpzQASBIgQNAkAIHgCAFDgBBBhwAgpzQASBIgQNAkAEHgCAndAAIUuAAEGTAASDICR0AghQ4AAQZcAAIckIHgCAFDgBBBhwAgpzQASBIgQNAkAEHgCAndAAIUuAAEGTAASDICR0AghQ4AAQpcAAIUuAAEGTAASDICR0AghQ4AAQZcAAIMuAAEOQNHACCFDgABBlwAAhyQgeAIAUOAEEKHACCFDgABBlwAAhyQgeAIAUOAEEGHACCnNABIEiBA0CQAQeAICd0AAhS4AAQpMABIEiBA0CQAQeAICd0AAhS4AAQZMABIMgJHQCCFDgABBlwAAgy4AAQ5A0cAIIUOAAEKXAACFLgABBkwAEgyAkdAIIUOAAEGXAACHJCB4AgBQ4AQQocAIIUOAAEGXAACHJCB4AgBQ4AQQYcAIIMOAAEeQMHgCAFDgBBBhwAgpzQASBIgQNAkAIHgCAFDgBBBhwAgpzQASBIgQNAkAEHgCAndAAIUuAAEGTAASDICR0AghQ4AAQZcAAIckIHgCAFDgBBBhwAgpzQASBIgQNAkAEHgCAndAAIUuAAEGTAASDICR0AghQ4AAQpcAAIUuAAEGTAASDICR0AghQ4AAQZcAAIMuAAEOQNHACCFDgABBlwAAhyQgeAIAUOAEEKHACCFDgABBlwAAhyQgeAIAUOAEEGHACCnNABIEiBA0CQAgeAIAUOAEEGHACCnNABIEiBA0CQAgeAIAUOAEEGHACCnNABIEiBA0CQAgeAIAUOAEEKHACCFDgABClwAAhS4AAQpMABIMiAA0CQEzoABClwAAgy4AAQZMABIMgbOAAEKXAACDLgABBkwAEg6AMpLAcK6u9WowAAAABJRU5ErkJggg==';
 
 // Error boundary for timeline
 class TimelineErrorBoundary extends React.Component {
@@ -33,6 +34,8 @@ class TimelineErrorBoundary extends React.Component {
 }
 
 function About() {
+  const [loaded, setLoaded] = useState(false);
+
   const testimonials = [
     { quote:  "Start where you are. Use what you have. Do what you can.", author: "Arthur Ashe" },
     { quote:  "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela" },
@@ -50,6 +53,15 @@ function About() {
     autoplaySpeed: 3000,
     arrows: false,
   };
+
+  // Preload hero image
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = pic5;
+    document.head.appendChild(link);
+  }, []);
 
   // Animate stats numbers with IntersectionObserver for lazy animation
   useEffect(() => {
@@ -87,19 +99,38 @@ function About() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="about-hero">
+      <section className="about-hero" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* LQIP Placeholder Image */}
+        <img
+          src={placeholderBase64}
+          alt="Placeholder"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: 'blur(20px)', // Stronger blur for placeholder
+          }}
+        />
+        {/* Full Image */}
         <img
           src={pic5}
-          // srcSet={`${pic5WebpSmall} 480w, ${pic5WebpMedium} 768w, ${pic5WebpLarge} 1200w`} // Uncomment and add imports for WebP
-          // sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
+          // srcSet={pic5Webp ? `${pic5Webp} 1x` : undefined} // Use WebP if available
           alt="Eldomaine High School"
           className="about-hero-img"
-          loading="eager"  // Eager loading for above-the-fold hero image
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
           style={{
-            filter: 'blur(10px)', // Initial blur for placeholder effect
-            transition: 'filter 0.5s ease', // Smooth reveal
+            position: 'relative',
+            width: '100%',
+            height: 'auto',
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.5s ease',
           }}
-          onLoad={(e) => e.target.style.filter = 'blur(0px)'}
+          onLoad={() => setLoaded(true)}
         />
       </section>
 
