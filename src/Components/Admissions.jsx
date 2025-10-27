@@ -8,6 +8,9 @@ import {
   FaSchool
 } from 'react-icons/fa';
 import admissionImage from '../assets/Admission/pic3.jpg';
+// import admissionImageWebpSmall from '../assets/Admission/pic3-small.webp'; // Add optimized WebP variants
+// import admissionImageWebpMedium from '../assets/Admission/pic3-medium.webp';
+// import admissionImageWebpLarge from '../assets/Admission/pic3-large.webp';
 import '../css/Admissions.css';
 import { motion, useAnimation } from 'framer-motion';
 
@@ -47,8 +50,16 @@ function Admissions() {
       <section className="admission-hero">
         <img
           src={admissionImage}
+          // srcSet={`${admissionImageWebpSmall} 480w, ${admissionImageWebpMedium} 768w, ${admissionImageWebpLarge} 1200w`} // Uncomment and add imports for WebP
+          // sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
           alt="Admission Banner"
           className="admission-hero-img"
+          loading="eager"  // Eager loading for above-the-fold hero image
+          style={{
+            filter: 'blur(10px)', // Initial blur for placeholder effect
+            transition: 'filter 0.5s ease', // Smooth reveal
+          }}
+          onLoad={(e) => e.target.style.filter = 'blur(0px)'}
         />
       </section>
 
