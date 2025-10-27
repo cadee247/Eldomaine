@@ -8,6 +8,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../css/About.css';
 import pic5 from '../assets/About/pic5.jpg';
+// import pic5WebpSmall from '../assets/About/pic5-small.webp'; // Add optimized WebP variants
+// import pic5WebpMedium from '../assets/About/pic5-medium.webp';
+// import pic5WebpLarge from '../assets/About/pic5-large.webp';
 
 // Error boundary for timeline
 class TimelineErrorBoundary extends React.Component {
@@ -48,24 +51,37 @@ function About() {
     arrows: false,
   };
 
-  // Animate stats numbers
+  // Animate stats numbers with IntersectionObserver for lazy animation
   useEffect(() => {
     const counters = document.querySelectorAll(".stat-number");
-    const speed = 200;
-    counters.forEach(counter => {
-      const updateCount = () => {
+    const options = { threshold: 0.5 };
+
+    const animateCount = (entry) => {
+      if (!entry.isIntersecting) return;
+      counters.forEach(counter => {
         const target = +counter.getAttribute("data-target");
-        const count = +counter.innerText;
+        const speed = 200;
+        let count = +counter.innerText;
         const inc = target / speed;
-        if (count < target) {
-          counter.innerText = Math.ceil(count + inc);
-          setTimeout(updateCount, 20);
-        } else {
-          counter.innerText = target;
-        }
-      };
-      updateCount();
-    });
+        const update = () => {
+          count = Math.ceil(count + inc);
+          if (count < target) {
+            counter.innerText = count;
+            requestAnimationFrame(update);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        update();
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(animateCount);
+    }, options);
+
+    counters.forEach(counter => observer.observe(counter));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -74,8 +90,16 @@ function About() {
       <section className="about-hero">
         <img
           src={pic5}
+          // srcSet={`${pic5WebpSmall} 480w, ${pic5WebpMedium} 768w, ${pic5WebpLarge} 1200w`} // Uncomment and add imports for WebP
+          // sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
           alt="Eldomaine High School"
           className="about-hero-img"
+          loading="eager"  // Eager loading for above-the-fold hero image
+          style={{
+            filter: 'blur(10px)', // Initial blur for placeholder effect
+            transition: 'filter 0.5s ease', // Smooth reveal
+          }}
+          onLoad={(e) => e.target.style.filter = 'blur(0px)'}
         />
       </section>
 
@@ -144,22 +168,20 @@ function About() {
         </p>
 
         <div className="stats-grid">
-        <div className="stats-grid">
-  <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
-    <span className="stat-number" data-target="20000">20000</span>
-    <p>Alumni Empowered Worldwide</p>
-  </motion.div>
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <span className="stat-number" data-target="20000">0</span>
+            <p>Alumni Empowered Worldwide</p>
+          </motion.div>
 
-  <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
-    <span className="stat-number" data-target="40">40</span>
-    <p>Years of Excellence</p>
-  </motion.div>
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <span className="stat-number" data-target="40">0</span>
+            <p>Years of Excellence</p>
+          </motion.div>
 
-  <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
-    <span className="stat-number" data-target="15">15</span>
-    <p>Extracurricular Programs</p>
-  </motion.div>
-</div>
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <span className="stat-number" data-target="15">0</span>
+            <p>Extracurricular Programs</p>
+          </motion.div>
         </div>
 
         <Slider {...sliderSettings}>
@@ -208,17 +230,17 @@ function About() {
             <p>Our vision is to have an educational institution that is built on discipline, educational excellence and character building. As such we aim to give our best and be in service of the school.</p>
           </motion.div>
 
-        <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
-  <FaHandsHelping className="about-icon" />
-  <h3>Core Values</h3>
-<ul className="values-list">
-  <li><span className="icon"><FaStar /></span><span>Respect</span></li>
-  <li><span className="icon"><FaStar /></span><span>Integrity</span></li>
-  <li><span className="icon"><FaStar /></span><span>Excellence</span></li>
-  <li><span className="icon"><FaStar /></span><span>Inclusivity</span></li>
-  <li><span className="icon"><FaStar /></span><span>Community Service</span></li>
-</ul>
-</motion.div>
+          <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
+            <FaHandsHelping className="about-icon" />
+            <h3>Core Values</h3>
+            <ul className="values-list">
+              <li><span className="icon"><FaStar /></span><span>Respect</span></li>
+              <li><span className="icon"><FaStar /></span><span>Integrity</span></li>
+              <li><span className="icon"><FaStar /></span><span>Excellence</span></li>
+              <li><span className="icon"><FaStar /></span><span>Inclusivity</span></li>
+              <li><span className="icon"><FaStar /></span><span>Community Service</span></li>
+            </ul>
+          </motion.div>
 
         </div>
       </section>
