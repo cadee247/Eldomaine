@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, useState, lazy, Suspense, useMemo } from 'react';
 import { 
   FaCalendarAlt, 
   FaSchool, 
@@ -15,6 +15,9 @@ import FloatingButton from './FloatingButton';
 import { Link } from 'react-router-dom';
 import '../css/Homepage.css';
 import pic7 from '../assets/Homepage/pic7.jpg';
+// import pic7WebpSmall from '../assets/Homepage/pic7-small.webp'; // Add optimized WebP variants
+// import pic7WebpMedium from '../assets/Homepage/pic7-medium.webp';
+// import pic7WebpLarge from '../assets/Homepage/pic7-large.webp';
 
 const locales = {
   'en-US': enUS,
@@ -64,7 +67,7 @@ function Homepage({ onBook }) {
     ],
   };
 
-  const events = [
+  const events = useMemo(() => [
     {
       title: 'Term Start',
       start: schoolCalendar.termStart,
@@ -83,7 +86,7 @@ function Homepage({ onBook }) {
       end: h.date,
       allDay: true,
     })),
-  ];
+  ], []);
 
   // === COUNTDOWN UPDATES ===
   const updateCountdowns = () => {
@@ -164,9 +167,11 @@ function Homepage({ onBook }) {
       >
         <img
           src={pic7}
+          // srcSet={`${pic7WebpSmall} 480w, ${pic7WebpMedium} 768w, ${pic7WebpLarge} 1200w`} // Uncomment and add imports for WebP
+          // sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, 1200px"
           alt="Eldomaine High School"
           className="hero-image"
-          loading="lazy"  // Added lazy loading for the large hero image to defer offscreen loading
+          loading="eager"  // Eager loading for above-the-fold image
           style={{
             width: '100%',
             height: '100%',
@@ -174,7 +179,10 @@ function Homepage({ onBook }) {
             position: 'absolute',
             top: 0,
             left: 0,
+            filter: 'blur(10px)', // Initial blur for placeholder effect
+            transition: 'filter 0.5s ease', // Smooth reveal
           }}
+          onLoad={(e) => e.target.style.filter = 'blur(0px)'}
         />
         <FloatingButton onClick={onBook} />
       </main>
