@@ -1,0 +1,331 @@
+:root {
+  --valley-green: #1c3d2a;
+  --light-green: #e8f3ed;
+  --font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --radius: 14px;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --white: #ffffff;
+}
+
+/* === HERO SECTION === */
+.curriculum-hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px); /* full viewport minus navbar */
+  min-height: 300px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: #000;
+}
+
+.curriculum-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  z-index: 1;
+}
+
+.curriculum-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  padding: 2rem;
+}
+
+/* === TEXT SECTION BELOW IMAGE === */
+.curriculum-intro {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+}
+
+.curriculum-intro h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--valley-green);
+  margin-bottom: 0.6rem;
+  letter-spacing: 1px;
+  word-break: break-word;
+}
+
+.curriculum-intro p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* === MAIN SECTION === */
+.curriculum-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem;
+  font-family: var(--font-family);
+  text-align: center;
+}
+
+.curriculum-section h2 {
+  font-size: 2rem;
+  color: var(--valley-green);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* === GRADE SELECTOR === */
+.grade-selector {
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #bbb;
+  background: #fff;
+  color: var(--valley-green);
+  transition: var(--transition);
+  margin: 1.5rem 0 2.5rem;
+  cursor: pointer;
+}
+
+.grade-selector:hover,
+.grade-selector:focus {
+  border-color: var(--valley-green);
+  box-shadow: 0 0 6px rgba(28, 61, 42, 0.4);
+  outline: none;
+}
+/* === TAP HINT TEXT === */
+.tap-hint {
+  font-size: 0.8rem;
+  color: rgba(28, 61, 42, 0.5); /* subtle valley-green tone */
+  margin-top: 0.4rem;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  transition: opacity 0.3s ease;
+}
+
+.curriculum-card-flip:hover .tap-hint {
+  opacity: 0.7;
+}
+
+/* === CARD GRID === */
+.curriculum-list-container,
+.stream-cards,
+.extracurriculars-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  justify-items: center;
+}
+
+/* === FLIP CARD STYLES === */
+.curriculum-card-flip {
+  perspective: 1000px;
+  width: 230px;
+  height: 180px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.curriculum-card-flip:hover {
+  transform: translateY(-5px);
+}
+
+.curriculum-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+}
+
+.curriculum-card-flip.flipped .curriculum-card-inner {
+  transform: rotateY(180deg);
+}
+
+.curriculum-card-front,
+.curriculum-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.curriculum-card-front {
+  background: #ffffff;
+  color: var(--valley-green);
+}
+
+.curriculum-card-front svg {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--valley-green);
+  transition: color 0.3s ease;
+}
+
+.curriculum-card-flip:hover .curriculum-card-front svg {
+  color: #295f40;
+}
+
+.curriculum-card-back {
+  background: var(--light-green);
+  transform: rotateY(180deg);
+  color: var(--valley-green);
+}
+
+.curriculum-card-back h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.curriculum-card-back p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-align: center;
+  color: #333;
+}
+
+/* === STREAM SECTIONS === */
+.stream-section {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.stream-section h3 {
+  color: var(--valley-green);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: left;
+  border-left: 5px solid var(--valley-green);
+  padding-left: 0.8rem;
+}
+
+/* === EXTRACURRICULARS === */
+.extracurriculars-section {
+  margin-top: 3rem;
+}
+
+.extracurriculars-section h2 {
+  color: var(--valley-green);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+/* === FADE IN ANIMATION === */
+.curriculum-list-container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === RESPONSIVE STYLES === */
+@media (max-width: 1024px) {
+  .curriculum-list-container,
+  .stream-cards,
+  .extracurriculars-cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .curriculum-card-flip {
+    width: 100%;
+    max-width: 250px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Hero */
+  .curriculum-hero {
+    height: 50vh; /* fixed height so image shows */
+  }
+  .curriculum-hero-img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .curriculum-overlay h1 {
+    font-size: 1.8rem;
+  }
+  .curriculum-overlay p {
+    font-size: 1rem;
+  }
+
+  .curriculum-section {
+    padding: 1rem;
+  }
+
+  .curriculum-list-container,
+  .stream-cards,
+  .extracurriculars-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .curriculum-card-flip {
+    width: 100%;
+    height: 200px;
+  }
+
+  .curriculum-card-front,
+  .curriculum-card-back {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .curriculum-card-front svg {
+    font-size: 2rem;
+  }
+
+  .stream-section h3 {
+    font-size: 1.2rem;
+    padding-left: 0.6rem;
+    border-left: 4px solid var(--valley-green);
+  }
+
+  .extracurriculars-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .grade-selector {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .curriculum-hero {
+    height: 40vh;
+  }
+
+  .curriculum-overlay h1 {
+    font-size: 1.5rem;
+  }
+
+  .curriculum-overlay p {
+    font-size: 0.9rem;
+  }
+
+  .curriculum-card-flip {
+    height: 220px;
+  }
+}

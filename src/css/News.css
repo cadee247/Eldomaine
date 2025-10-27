@@ -1,0 +1,378 @@
+:root {
+  --valley-green: #728370;
+  --mid-valley-green: #90b493;
+  --light-valley-green: #b2d4b6;
+  --dark-gray: #3a3f39;
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --radius: 14px;
+  --transition: all 0.3s ease;
+  --font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* === HERO IMAGE === */
+.news-hero {
+  width: 100vw;
+  height: 70vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.news-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* === INTRO TEXT BELOW IMAGE === */
+.news-intro {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+}
+
+.news-intro h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--valley-green);
+  margin-bottom: 0.6rem;
+  letter-spacing: 1px;
+}
+
+.news-intro p {
+  font-size: 1.1rem;
+  color: #333;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* === SEARCH BAR === */
+.news-search {
+  position: relative; /* For absolute icon positioning */
+  max-width: 600px;
+  margin: 2rem auto; /* Centers it */
+}
+
+.news-search input {
+  width: 100%; /* Full width within container */
+  padding: 0.75rem 3.2rem 0.75rem 1.2rem; /* Extra right padding for icon */
+  font-size: 1rem;
+  border: 1px solid var(--mid-valley-green);
+  border-radius: var(--radius);
+  font-family: var(--font-family);
+  transition: var(--transition);
+  background: #fff;
+  color: var(--dark-gray);
+  box-sizing: border-box; /* Prevents overflow from padding/border */
+}
+
+.news-search input:focus {
+  outline: none;
+  border-color: var(--valley-green);
+  box-shadow: 0 0 8px rgba(114, 131, 112, 0.3);
+}
+
+.search-icon {
+  position: absolute;
+  right: 1.2rem; /* Positioned from right of container, inside input */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem; /* Larger for tap target */
+  color: var(--valley-green);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.search-icon:hover {
+  color: var(--dark-valley-green); /* Optional hover */
+}
+
+/* === RESPONSIVE === */
+/* Adjustments for larger screens */
+@media (min-width: 769px) {
+  .news-search {
+    max-width: 600px; /* Keep centered */
+  }
+}
+
+@media (max-width: 768px) {
+  .news-search input {
+    padding: 0.75rem 3.5rem 0.75rem 1.5rem; /* Slightly more padding for mobile */
+    font-size: 1.05rem;
+  }
+
+  .search-icon {
+    right: 1.5rem; /* Adjust to fit */
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-search {
+    margin: 1.5rem 0.5rem; /* Add side margins instead of padding to avoid offset */
+  }
+
+  .news-search input {
+    padding: 0.7rem 3rem 0.7rem 1.2rem;
+    font-size: 1rem;
+  }
+
+  .search-icon {
+    right: 1.2rem;
+    font-size: 1.4rem;
+  }
+}
+
+/* === NEWS GRID === */
+.news-articles-section {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.news-articles-section h2 {
+  color: var(--valley-green);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.news-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  text-align: left;
+  border-top: 4px solid var(--mid-valley-green);
+  transition: var(--transition);
+}
+
+.news-card:hover {
+  box-shadow: 0 6px 25px rgba(114, 131, 112, 0.25);
+  transform: translateY(-5px);
+}
+
+.news-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.news-date {
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 0.8rem;
+}
+
+/* === REACTIONS === */
+.news-reactions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.news-reactions button {
+  background: var(--light-valley-green);
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  color: var(--dark-gray);
+}
+
+.news-reactions button:hover {
+  background: var(--mid-valley-green);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.news-reactions button:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+}
+
+/* === CALENDAR SECTION === */
+.school-calendar-section {
+  padding: 3rem 1rem;
+  background: #f7fbf7;
+  text-align: center;
+}
+
+.school-calendar-section h2 {
+  color: var(--valley-green);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.calendar-card {
+  background: var(--white);
+  padding: 1.2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: var(--transition);
+  text-align: left;
+}
+
+.calendar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 25px rgba(144, 180, 147, 0.25);
+}
+
+.calendar-icon {
+  font-size: 1.8rem;
+  color: var(--mid-valley-green);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .news-hero {
+    height: 50vh;
+  }
+
+  .news-intro h1 {
+    font-size: 2.2rem;
+  }
+
+  .news-intro p {
+    font-size: 1rem;
+  }
+
+  .news-grid {
+    gap: 1.2rem;
+  }
+
+  .news-card {
+    padding: 1.2rem;
+  }
+
+  .calendar-card {
+    padding: 1rem;
+  }
+
+  .calendar-icon {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .news-hero {
+    height: 40vh;
+  }
+
+  .news-intro h1 {
+    font-size: 1.8rem;
+  }
+
+  .news-intro p {
+    font-size: 0.95rem;
+  }
+
+  .news-search {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .news-search input {
+    width: 100%;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-card {
+    padding: 1rem;
+  }
+
+  .news-reactions {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .news-reactions button {
+    font-size: 0.9rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  .school-calendar-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .calendar-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .calendar-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-hero {
+    height: 35vh;
+  }
+
+  .news-intro h1 {
+    font-size: 1.6rem;
+  }
+
+  .news-intro p {
+    font-size: 0.9rem;
+  }
+
+  .news-card {
+    padding: 0.8rem;
+  }
+
+  .news-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .news-date {
+    font-size: 0.8rem;
+  }
+
+  .news-reactions button {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .calendar-card {
+    padding: 0.8rem;
+  }
+
+  .calendar-icon {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,229 @@
+:root {
+  --valley-green: #1c3d2a;
+  --white: #ffffff;
+  --font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+/* === HERO SECTION (FINAL FIX) === */
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* full viewport height */
+  overflow: hidden;
+  background-color: #000; /* fallback background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spacer to prevent navbar overlap */
+.about-hero::before {
+  content: "";
+  display: block;
+  height: 80px; /* same height as navbar */
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 2;
+}
+
+/* Hero background image */
+.about-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* cover without stretching */
+  object-position: center top; /* keeps faces visible */
+  display: block;
+  z-index: 1;
+}
+
+/* Hero text (if you have any) */
+.about-hero-text {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: var(--white);
+  padding: 2rem;
+  font-family: var(--font-family);
+}
+
+.about-hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.about-hero-text p {
+  font-size: 1.2rem;
+  color: #f1f1f1;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 1rem auto 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .about-hero {
+    height: 85vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    height: auto;
+  }
+  .about-hero-img {
+    height: auto;
+    object-fit: contain;
+  }
+  .about-hero-text h1 {
+    font-size: 2rem;
+  }
+  .about-hero-text p {
+    font-size: 1rem;
+  }
+}
+
+
+/* === GENERAL SECTION STYLE === */
+.about-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  color: var(--valley-green);
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  color: var(--valley-green);
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--valley-green);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+/* === TESTIMONIALS === */
+.testimonial-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem; /* 👈 Add this line */
+}
+
+.testimonial-slide {
+  background: var(--white);
+  border: 2px solid var(--valley-green);
+  border-radius: var(--radius);
+  color: var(--valley-green);
+  padding: 1.5rem;
+  text-align: center;
+  width: 260px; /* fixed width like stats */
+  min-height: 160px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  transition: var(--transition);
+}
+
+.testimonial-slide:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.1);
+}
+
+.testimonial-slide p {
+  font-style: italic;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.testimonial-slide h4 {
+  font-weight: 700;
+  color: var(--valley-green);
+  font-size: 1rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .about-hero {
+    height: 60vh;
+  }
+
+  .about-hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .about-section {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .testimonial-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* vertical spacing for stacked cards */
+  }
+
+  .testimonial-slide {
+    width: 90%; /* full width on mobile */
+    max-width: 300px;
+  }
+}
+/* === HERO SECTION === */
+.about-hero {
+  position: relative;   /* important for absolute img */
+  width: 100%;
+  height: 100vh;        /* full viewport height */
+  overflow: hidden;
+}
+
+.about-hero-img {
+  position: absolute;   /* fill the hero container */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* cover without stretching */
+  display: block;
+  z-index: 0;           /* behind text if any */
+}
+
+/* Optional: hero text overlay if needed */
+.about-hero-text {
+  position: relative;   /* so it appears above the image */
+  z-index: 1;
+  text-align: center;
+  color: var(--valley-green);
+  padding: 2rem;
+.values-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.values-list li {
+  display: inline-flex; /* ensures icon + text stay on one line */
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap; /* prevents wrapping */
+  font-size: 1rem;
+  color: #1c3d2a;
+  font-weight: 500;
+}
+}
