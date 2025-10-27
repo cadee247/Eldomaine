@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   FaUserGraduate,
   FaClipboardList,
@@ -8,13 +8,16 @@ import {
   FaSchool
 } from 'react-icons/fa';
 import admissionImage from '../assets/Admission/pic3.jpg';
-// import admissionImageWebpSmall from '../assets/Admission/pic3-small.webp'; // Add optimized WebP variants
-// import admissionImageWebpMedium from '../assets/Admission/pic3-medium.webp';
-// import admissionImageWebpLarge from '../assets/Admission/pic3-large.webp';
+// import admissionImageWebp from '../assets/Admission/pic3.webp'; // Optimized WebP version
 import '../css/Admissions.css';
 import { motion, useAnimation } from 'framer-motion';
 
+// Low-res base64 placeholder (blurred gradient as LQIP - replace with actual image's blurred base64 if possible)
+const placeholderBase64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfAAAAD4CAYAAAATiLQ/AAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjYuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/P9b71AAAACXBIWXMAAA9hAAAPYQGoP6dpAAAERUlEQVR4nO3bwQ2EMBAEQRttps4/BojBL9RSVQT8Rr2+2+ecdwEAKc/fHwAA3DPgABBkwAEgyIADQNDsvf/+BgDgkgIHgCADDgBBBhwAgryBA0CQAgeAIAUOAEEKHACCFDgABClwAAhS4AAQpMABIEiBA0CQAgeAIAUOAEEKHACCFDgABBlwAAhyQgeAIAUOAEEKHACCFDgABBlwAAgy4AAQ5A0cAIIUOAAEGXAACHJCB4AgBQ4AQQYcAIKc0AEgSIEDQJABB4AgJ3QACFLgABBkwAEgyAkdAIIUOAAEGXAACHJCB4AgBQ4AQQYcAIKc0AEgSIEDQJABB4AgJ3QACFLgABCkwAEgSIEDQJABB4AgJ3QACFLgABBkwAEgyAkdAIIUOAAEGXAACDLgABDkDRwAghQ4AAQZcAAIckIHgCAFDgBBChwAghQ4AAQZcAAIckIHgCAFDgBBBhwAgpzQASBIgQNAkAIHgCAFDgBBBhwAgpzQASBIgQNAkAEHgCAndAAIUuAAEGTAASDICR0AghQ4AAQZcAAIckIHgCAFDgBBBhwAgpzQASBIgQNAkAEHgCAndAAIUuAAEGTAASDICR0AghQ4AAQpcAAIUuAAEGTAASDICR0AghQ4AAQZcAAIMuAAEOQNHACCFDgABBlwAAhyQgeAIAUOAEEKHACCFDgABBlwAAhyQgeAIAUOAEEGHACCnNABIEiBA0CQAQeAIAUOAEEGHACCnNABIEiBA0CQAgeAIAUOAEEGHACCnNABIEiBA0CQAgeAIAUOAEEKHACCFDgABClwAAhS4AAQpMABIMiAA0CQEzoABClwAAgy4AAQZMABIMgbOAAEKXAACDLgABBkwAEg6AMpLAcK6u9WowAAAABJRU5ErkJggg==';
+
 function Admissions() {
+  const [loaded, setLoaded] = useState(false);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,10 +47,34 @@ function Admissions() {
     })
   };
 
+  // Preload hero image
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = admissionImage;
+    document.head.appendChild(link);
+  }, []);
+
   return (
     <>
       {/* HERO IMAGE — FULL SCREEN, NO TEXT OVERLAY */}
-      <section className="admission-hero">
+      <section className="admission-hero" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* LQIP Placeholder Image */}
+        <img
+          src={placeholderBase64}
+          alt="Placeholder"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            filter: 'blur(20px)', // Stronger blur for placeholder
+          }}
+        />
+        {/* Full Image */}
         <img
           src={admissionImage}
           // srcSet={`${admissionImageWebpSmall} 480w, ${admissionImageWebpMedium} 768w, ${admissionImageWebpLarge} 1200w`} // Uncomment and add imports for WebP
@@ -55,11 +82,16 @@ function Admissions() {
           alt="Admission Banner"
           className="admission-hero-img"
           loading="eager"  // Eager loading for above-the-fold hero image
+          fetchpriority="high"  // Highest fetch priority
+          decoding="async"  // Non-blocking decode
           style={{
-            filter: 'blur(10px)', // Initial blur for placeholder effect
-            transition: 'filter 0.5s ease', // Smooth reveal
+            position: 'relative',
+            width: '100%',
+            height: 'auto',
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.5s ease', // Fade in on load
           }}
-          onLoad={(e) => e.target.style.filter = 'blur(0px)'}
+          onLoad={() => setLoaded(true)}
         />
       </section>
 
