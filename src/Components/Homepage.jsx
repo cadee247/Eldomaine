@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useMemo, Suspense, lazy } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { 
   FaCalendarAlt, 
   FaSchool, 
@@ -8,28 +7,50 @@ import {
   FaTrophy 
 } from 'react-icons/fa';
 import { MdHolidayVillage } from 'react-icons/md';
-import '../css/Homepage.css';
+import { motion } from 'framer-motion';
+import { format, parse, startOfWeek, getDay } from 'date-fns';
+import enUS from 'date-fns/locale/en-US';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import FloatingButton from './FloatingButton';
+import { Link } from 'react-router-dom';
+import '../css/Homepage.css';
 import pic7 from '../assets/Homepage/pic7.jpg';
 
-// === Lazy Load Heavy Dependencies ===
-const Motion = lazy(() => import('framer-motion').then(mod => ({ default: mod.motion })));
-const BigCalendar = lazy(() =>
-  import('react-big-calendar').then(mod => ({ default: mod.Calendar }))
-);
-const { dateFnsLocalizer } = require('react-big-calendar');
-const { format, parse, startOfWeek, getDay } = require('date-fns');
-const enUS = require('date-fns/locale/en-US');
+const locales = {
+  'en-US': enUS,
+};
 
-const locales = { 'en-US': enUS };
-const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
+// Lazy-load the BigCalendar component to reduce initial bundle size
+const LazyBigCalendar = lazy(() => import('react-big-calendar').then(module => ({
+  default: ({ events, style }) => {
+    const localizer = module.dateFnsLocalizer({
+      format,
+      parse,
+      startOfWeek,
+      getDay,
+      locales,
+    });
+    return (
+      <module.Calendar
+        localizer={localizer}
+        events={events}
+        startAccessor="start"
+        endAccessor="end"
+        toolbar={false}
+        popup={false}
+        views={['month']}
+        style={style}
+      />
+    );
+  }
+})));
 
 function Homepage({ onBook }) {
   const [nextHolidayCountdown, setNextHolidayCountdown] = useState('');
   const [schoolCloseCountdown, setSchoolCloseCountdown] = useState('');
 
-  // === Static Calendar Data Memoized ===
-  const schoolCalendar = useMemo(() => ({
+  // === SCHOOL CALENDAR DATA ===
+  const schoolCalendar = {
     termStart: new Date('2025-01-15'),
     termEnd: new Date('2025-12-05'),
     holidays: [
@@ -41,184 +62,285 @@ function Homepage({ onBook }) {
       { name: 'Heritage Day', date: new Date('2025-09-24') },
       { name: 'Day of Reconciliation', date: new Date('2025-12-16') },
     ],
-  }), []);
+  };
 
-  const events = useMemo(() => [
-    { title: 'Term Start', start: schoolCalendar.termStart, end: schoolCalendar.termStart, allDay: true },
-    { title: 'Term End', start: schoolCalendar.termEnd, end: schoolCalendar.termEnd, allDay: true },
-    ...schoolCalendar.holidays.map(h => ({ title: h.name, start: h.date, end: h.date, allDay: true })),
-  ], [schoolCalendar]);
+  const events = [
+    {
+      title: 'Term Start',
+      start: schoolCalendar.termStart,
+      end: schoolCalendar.termStart,
+      allDay: true,
+    },
+    {
+      title: 'Term End',
+      start: schoolCalendar.termEnd,
+      end: schoolCalendar.termEnd,
+      allDay: true,
+    },
+    ...schoolCalendar.holidays.map(h => ({
+      title: h.name,
+      start: h.date,
+      end: h.date,
+      allDay: true,
+    })),
+  ];
 
-  // === Countdown Updater ===
+  // === COUNTDOWN UPDATES ===
+  const updateCountdowns = () => {
+    const now = new Date();
+
+    const upcomingHolidays = schoolCalendar.holidays.filter(h => h.date > now);
+    const upcomingHoliday = upcomingHolidays.sort((a, b) => a.date - b.date)[0];
+    if (upcomingHoliday) {
+      const diff = upcomingHoliday.date - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      setNextHolidayCountdown(`${upcomingHoliday.name} in ${days}d ${hours}h ${minutes}m`);
+    } else {
+      setNextHolidayCountdown('No upcoming holidays');
+    }
+
+    const diffClose = schoolCalendar.termEnd - now;
+    if (diffClose > 0) {
+      const days = Math.floor(diffClose / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diffClose / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diffClose / (1000 * 60)) % 60);
+      setSchoolCloseCountdown(`${days}d ${hours}h ${minutes}m until school closes`);
+    } else {
+      setSchoolCloseCountdown('School term has ended');
+    }
+  };
+
   useEffect(() => {
-    const updateCountdowns = () => {
-      const now = new Date();
-      const upcomingHoliday = schoolCalendar.holidays.filter(h => h.date > now).sort((a, b) => a.date - b.date)[0];
-      if (upcomingHoliday) {
-        const diff = upcomingHoliday.date - now;
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diff / (1000 * 60)) % 60);
-        setNextHolidayCountdown(`${upcomingHoliday.name} in ${days}d ${hours}h ${minutes}m`);
-      } else setNextHolidayCountdown('No upcoming holidays');
-
-      const diffClose = schoolCalendar.termEnd - now;
-      if (diffClose > 0) {
-        const days = Math.floor(diffClose / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diffClose / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((diffClose / (1000 * 60)) % 60);
-        setSchoolCloseCountdown(`${days}d ${hours}h ${minutes}m until school closes`);
-      } else setSchoolCloseCountdown('School term has ended');
-    };
-
     updateCountdowns();
-    const interval = setInterval(updateCountdowns, 60000);
+    const interval = setInterval(updateCountdowns, 60 * 1000);
     return () => clearInterval(interval);
-  }, [schoolCalendar]);
+  }, []);
 
-  // === Stat Count Animation (Efficient) ===
+  // === COUNTUP ANIMATION FOR STATS ===
   useEffect(() => {
     const counters = document.querySelectorAll('.stat-number');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const target = +entry.target.dataset.target;
-          let count = 0;
-          const step = Math.ceil(target / 120);
-          const update = () => {
-            count += step;
-            entry.target.textContent = count < target ? count : target;
-            if (count < target) requestAnimationFrame(update);
-          };
-          update();
-          observer.unobserve(entry.target);
-        }
+    const options = { threshold: 0.5 };
+
+    const animateCount = (entry) => {
+      if (!entry.isIntersecting) return;
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const increment = Math.ceil(target / 120);
+        const update = () => {
+          count += increment;
+          if (count < target) {
+            counter.textContent = count;
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = target;
+          }
+        };
+        update();
       });
-    }, { threshold: 0.5 });
-    counters.forEach(c => observer.observe(c));
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(animateCount);
+    }, options);
+
+    counters.forEach(counter => observer.observe(counter));
     return () => observer.disconnect();
   }, []);
 
   return (
     <>
       {/* === HERO SECTION === */}
-      <main className="homepage">
-        <img src={pic7} loading="lazy" alt="Eldomaine High School" className="hero-image" />
+      <main
+        className="homepage"
+        style={{
+          position: 'relative',
+          height: '100vh',
+          overflow: 'hidden',
+          width: '100%',
+        }}
+      >
+        <img
+          src={pic7}
+          alt="Eldomaine High School"
+          className="hero-image"
+          loading="lazy"  // Added lazy loading for the large hero image to defer offscreen loading
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+        />
         <FloatingButton onClick={onBook} />
       </main>
 
-      <Suspense fallback={<div className="loading">Loading...</div>}>
-        <Motion.div
-          className="hero-content"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          <h1>Ignite Your Future at Eldomaine Secondary High School</h1>
-          <p>Where Ambition Meets Community in Eldorado Park, Johannesburg</p>
-          <div>
-            <Link to="/contact"><button>Contact Us</button></Link>
-            <Link to="/admissions" style={{ marginLeft: '10px' }}><button>Admissions</button></Link>
-          </div>
-        </Motion.div>
-
-        {/* === WELCOME SECTION === */}
-        <Motion.section
-          className="welcome-text"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
+      {/* === HERO TEXT SECTION === */}
+      <motion.div
+        className="hero-content"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        style={{
+          textAlign: 'center',
+          padding: '2rem 1rem',
+          backgroundColor: '#f9f9f9',
+        }}
+      >
+        <motion.h1
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          viewport={{ once: true }}
         >
-          <h1><FaSchool className="icon" /> Our Story Unfolds</h1>
-          <p><strong>Your Journey to Excellence Starts Here.</strong></p>
-          <p>Located in Eldorado Park, Johannesburg, our school is more than a place of learning — it’s a vibrant community where ambition meets opportunity.</p>
-
-          <div className="story-panels">
-            {['Our Roots', 'Vibrant Community', 'Your Future'].map((title, i) => (
-              <Motion.div key={i} className="panel" whileHover={{ scale: 1.05 }}>
-                <h3>{title}</h3>
-                <p>{
-                  i === 0 ? 'Founded in the spirit of unity, Eldomaine has grown alongside Johannesburg’s dynamic history.' :
-                  i === 1 ? 'Diverse students and dedicated educators create a nurturing space for growth.' :
-                  'Join us to unlock your potential and achieve academic excellence.'
-                }</p>
-              </Motion.div>
-            ))}
-          </div>
-        </Motion.section>
-
-        {/* === CALENDAR SECTION === */}
-        <Motion.section
-          className="school-calendar"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          Ignite Your Future at Eldomaine Secondary High School
+        </motion.h1>
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
         >
-          <h2><FaCalendarAlt className="icon" /> School Calendar & Holidays</h2>
+          Where Ambition Meets Community in Eldorado Park, Johannesburg
+        </motion.p>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
+        >
+          <Link to="/contact">
+            <button>Contact Us</button>
+          </Link>
+          <Link to="/admissions" style={{ marginLeft: '10px' }}>
+            <button>Admissions</button>
+          </Link>
+        </motion.div>
+      </motion.div>
 
-          <div className="calendar-container">
-            <BigCalendar
-              localizer={localizer}
+      {/* === WELCOME SECTION === */}
+      <motion.section
+        className="welcome-text"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <h1><FaSchool className="icon" /> Our Story Unfolds</h1>
+        <p><strong>Your Journey to Excellence Starts Here.</strong></p>
+        <p>
+          Located in Eldorado Park, Johannesburg, our school is more than a place of learning — it’s a vibrant community where ambition meets opportunity.
+        </p>
+
+        <div className="story-panels">
+          <motion.div className="panel" whileHover={{ scale: 1.05 }}>
+            <h3>Our Roots</h3>
+            <p>Founded in the spirit of unity, Eldomaine has grown alongside Johannesburg’s dynamic history.</p>
+          </motion.div>
+          <motion.div className="panel" whileHover={{ scale: 1.05 }}>
+            <h3>Vibrant Community</h3>
+            <p>Diverse students and dedicated educators create a nurturing space for growth.</p>
+          </motion.div>
+          <motion.div className="panel" whileHover={{ scale: 1.05 }}>
+            <h3>Your Future</h3>
+            <p>Join us to unlock your potential and achieve academic excellence.</p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* === CALENDAR SECTION === */}
+      <motion.section
+        className="school-calendar"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <h2><FaCalendarAlt className="icon" /> School Calendar & Holidays</h2>
+
+        <div className="calendar-container">
+          <Suspense fallback={<div>Loading Calendar...</div>}>  {/* Wrap in Suspense for lazy loading */}
+            <LazyBigCalendar
               events={events}
-              startAccessor="start"
-              endAccessor="end"
-              toolbar={false}
-              popup={false}
-              views={['month']}
-              style={{ height: 600, width: '100%', backgroundColor: '#fff', borderRadius: '10px', padding: '10px' }}
+              style={{
+                height: 600,
+                width: '100%',
+                backgroundColor: '#fff',
+                borderRadius: '10px',
+                padding: '10px',
+              }}
             />
-          </div>
+          </Suspense>
+        </div>
 
-          <div className="calendar-grid">
-            <div className="calendar-card"><h3><FaSchool className="icon" /> School Terms</h3>
-              <div className="term-grid">
-                <div><strong>Term 1:</strong> 15 Jan – 28 Mar</div>
-                <div><strong>Term 2:</strong> 8 Apr – 27 Jun</div>
-                <div><strong>Term 3:</strong> 22 Jul – 3 Oct</div>
-                <div><strong>Term 4:</strong> 13 Oct – 12 Dec</div>
-              </div>
+        <div className="calendar-grid">
+          <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
+            <h3><FaSchool className="icon" /> School Terms</h3>
+            <div className="term-grid">
+              <div><strong>Term 1:</strong> 15 Jan – 28 Mar</div>
+              <div><strong>Term 2:</strong> 8 Apr – 27 Jun</div>
+              <div><strong>Term 3:</strong> 22 Jul – 3 Oct</div>
+              <div><strong>Term 4:</strong> 13 Oct – 12 Dec</div>
             </div>
+          </motion.div>
 
-            <div className="calendar-card"><h3><MdHolidayVillage className="icon" /> Public Holidays</h3>
-              <div className="holiday-grid">
-                <div>Human Rights Day – 21 Mar</div>
-                <div>Freedom Day – 27 Apr</div>
-                <div>Workers Day – 1 May</div>
-                <div>Youth Day – 16 Jun</div>
-                <div>Women's Day – 9 Aug</div>
-                <div>Heritage Day – 24 Sep</div>
-              </div>
+          <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
+            <h3><MdHolidayVillage className="icon" /> Public Holidays</h3>
+            <div className="holiday-grid">
+              <div>Human Rights Day – 21 Mar</div>
+              <div>Freedom Day – 27 Apr</div>
+              <div>Workers Day – 1 May</div>
+              <div>Youth Day – 16 Jun</div>
+              <div>Women's Day – 9 Aug</div>
+              <div>Heritage Day – 24 Sep</div>
             </div>
+          </motion.div>
 
-            <div className="calendar-card"><h3><MdHolidayVillage className="icon" /> Next Holiday</h3>
-              <p className="pulse">{nextHolidayCountdown}</p>
-            </div>
+          <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
+            <h3><MdHolidayVillage className="icon" /> Next Holiday</h3>
+            <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+              {nextHolidayCountdown}
+            </motion.p>
+          </motion.div>
 
-            <div className="calendar-card"><h3>School Closing</h3>
-              <p className="pulse">{schoolCloseCountdown}</p>
-            </div>
-          </div>
-        </Motion.section>
+          <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
+            <h3>School Closing</h3>
+            <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+              {schoolCloseCountdown}
+            </motion.p>
+          </motion.div>
+        </div>
+      </motion.section>
 
-        {/* === STATS SECTION === */}
-        <Motion.section
-          className="stats-section"
-          id="stats"
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
-          <h2><FaTrophy className="icon" /> School Highlights</h2>
-          <div className="stats-grid">
-            <div className="stat-box"><FaUsers className="stat-icon" /><span className="stat-number" data-target="1308">0</span><p>Learners Enrolled</p></div>
-            <div className="stat-box"><FaChalkboardTeacher className="stat-icon" /><span className="stat-number" data-target="60">0</span><p>Dedicated Educators</p></div>
-            <div className="stat-box"><FaTrophy className="stat-icon" /><span className="stat-number" data-target="86">0</span><p>Matric Pass Rate (%)</p></div>
-          </div>
-        </Motion.section>
-      </Suspense>
+      {/* === STATS SECTION === */}
+      <motion.section
+        className="stats-section"
+        id="stats"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <h2><FaTrophy className="icon" /> School Highlights</h2>
+        <div className="stats-grid">
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <FaUsers className="stat-icon" />
+            <span className="stat-number" data-target="1308">0</span>
+            <p>Learners Enrolled</p>
+          </motion.div>
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <FaChalkboardTeacher className="stat-icon" />
+            <span className="stat-number" data-target="60">0</span>
+            <p>Dedicated Educators</p>
+          </motion.div>
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <FaTrophy className="stat-icon" />
+            <span className="stat-number" data-target="86">0</span>
+            <p>Matric Pass Rate (%)</p>
+          </motion.div>
+        </div>
+      </motion.section>
     </>
   );
 }
