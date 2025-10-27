@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import pic7 from '../assets/Homepage/pic7.jpg';
 import { 
   FaCalendarAlt, 
   FaSchool, 
@@ -14,8 +13,10 @@ import { format, parse, startOfWeek, getDay } from 'date-fns';
 import enUS from 'date-fns/locale/en-US';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import FloatingButton from './FloatingButton';
-import '../css/Homepage.css';
 import { Link } from 'react-router-dom';
+import '../css/Homepage.css';
+import pic7 from '../assets/Homepage/pic7.jpg';
+
 const locales = {
   'en-US': enUS,
 };
@@ -47,7 +48,6 @@ function Homepage({ onBook }) {
     ],
   };
 
-  // === EVENTS FOR BIG CALENDAR ===
   const events = [
     {
       title: 'Term Start',
@@ -134,18 +134,17 @@ function Homepage({ onBook }) {
     return () => observer.disconnect();
   }, []);
 
-  const openVirtualTour = () => {
-    window.open('https://example.com/virtual-tour', '_blank');
-  };
-
   return (
     <>
-      {/* === HERO SECTION (IMAGE) === */}
-import pic7 from '../assets/Homepage/pic7.jpg';
-
- <main
+      {/* === HERO SECTION === */}
+      <main
         className="homepage"
-        style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
+        style={{
+          position: 'relative',
+          height: '100vh',
+          overflow: 'hidden',
+          width: '100%',
+        }}
       >
         <img
           src={pic7}
@@ -162,33 +161,60 @@ import pic7 from '../assets/Homepage/pic7.jpg';
         />
         <FloatingButton onClick={onBook} />
       </main>
-<motion.div
-  className="hero-content"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 1.5 }}
-  style={{ textAlign: 'center', padding: '2rem 1rem', backgroundColor: '#f9f9f9' }}
->
-  <motion.h1 initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>
-    Ignite Your Future at Eldomaine Secondary High School
-  </motion.h1>
-  <motion.p initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}>
-    Where Ambition Meets Community in Eldorado Park, Johannesburg
-  </motion.p>
-  <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, delay: 1 }}>
-    <Link to="/contact">
-      <button>Contact Us</button>
-    </Link>
-    <Link to="/admissions" style={{ marginLeft: '10px' }}>
-      <button>Admissions</button>
-    </Link>
-  </motion.div>
-</motion.div>
+
+      {/* === HERO TEXT SECTION === */}
+      <motion.div
+        className="hero-content"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        style={{
+          textAlign: 'center',
+          padding: '2rem 1rem',
+          backgroundColor: '#f9f9f9',
+        }}
+      >
+        <motion.h1
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          Ignite Your Future at Eldomaine Secondary High School
+        </motion.h1>
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          Where Ambition Meets Community in Eldorado Park, Johannesburg
+        </motion.p>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5, delay: 1 }}
+        >
+          <Link to="/contact">
+            <button>Contact Us</button>
+          </Link>
+          <Link to="/admissions" style={{ marginLeft: '10px' }}>
+            <button>Admissions</button>
+          </Link>
+        </motion.div>
+      </motion.div>
+
       {/* === WELCOME SECTION === */}
-      <motion.section className="welcome-text" initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} viewport={{ once: true }}>
+      <motion.section
+        className="welcome-text"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
         <h1><FaSchool className="icon" /> Our Story Unfolds</h1>
         <p><strong>Your Journey to Excellence Starts Here.</strong></p>
-        <p>Located in Eldorado Park, Johannesburg, our school is more than a place of learning — it’s a vibrant community where ambition meets opportunity.</p>
+        <p>
+          Located in Eldorado Park, Johannesburg, our school is more than a place of learning — it’s a vibrant community where ambition meets opportunity.
+        </p>
 
         <div className="story-panels">
           <motion.div className="panel" whileHover={{ scale: 1.05 }}>
@@ -206,75 +232,83 @@ import pic7 from '../assets/Homepage/pic7.jpg';
         </div>
       </motion.section>
 
-{/* === CALENDAR SECTION === */}
-<motion.section
-  className="school-calendar"
-  initial={{ opacity: 0, y: 100 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
-  viewport={{ once: true }}
->
-  <h2><FaCalendarAlt className="icon" /> School Calendar & Holidays</h2>
+      {/* === CALENDAR SECTION === */}
+      <motion.section
+        className="school-calendar"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <h2><FaCalendarAlt className="icon" /> School Calendar & Holidays</h2>
 
-  <div className="calendar-container">
-    <BigCalendar
-      localizer={localizer}
-      events={events}
-      startAccessor="start"
-      endAccessor="end"
-      toolbar={false}
-      popup={false}
-      views={['month']}
-      style={{
-        height: 600,
-        width: '100%',
-        backgroundColor: '#fff',
-        borderRadius: '10px',
-        padding: '10px',
-      }}
-    />
-  </div>
+        <div className="calendar-container">
+          <BigCalendar
+            localizer={localizer}
+            events={events}
+            startAccessor="start"
+            endAccessor="end"
+            toolbar={false}
+            popup={false}
+            views={['month']}
+            style={{
+              height: 600,
+              width: '100%',
+              backgroundColor: '#fff',
+              borderRadius: '10px',
+              padding: '10px',
+            }}
+          />
+        </div>
 
-  <div className="calendar-grid">
-    <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
-      <h3><FaSchool className="icon" /> School Terms</h3>
-      <div className="term-grid">
-        <div><strong>Term 1:</strong> 15 Jan – 28 Mar</div>
-        <div><strong>Term 2:</strong> 8 Apr – 27 Jun</div>
-        <div><strong>Term 3:</strong> 22 Jul – 3 Oct</div>
-        <div><strong>Term 4:</strong> 13 Oct – 12 Dec</div>
-      </div>
-    </motion.div>
+        <div className="calendar-grid">
+          <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
+            <h3><FaSchool className="icon" /> School Terms</h3>
+            <div className="term-grid">
+              <div><strong>Term 1:</strong> 15 Jan – 28 Mar</div>
+              <div><strong>Term 2:</strong> 8 Apr – 27 Jun</div>
+              <div><strong>Term 3:</strong> 22 Jul – 3 Oct</div>
+              <div><strong>Term 4:</strong> 13 Oct – 12 Dec</div>
+            </div>
+          </motion.div>
 
-    <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
-      <h3><MdHolidayVillage className="icon" /> Public Holidays</h3>
-      <div className="holiday-grid">
-        <div>Human Rights Day – 21 Mar</div>
-        <div>Freedom Day – 27 Apr</div>
-        <div>Workers Day – 1 May</div>
-        <div>Youth Day – 16 Jun</div>
-        <div>Women's Day – 9 Aug</div>
-        <div>Heritage Day – 24 Sep</div>
-      </div>
-    </motion.div>
+          <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
+            <h3><MdHolidayVillage className="icon" /> Public Holidays</h3>
+            <div className="holiday-grid">
+              <div>Human Rights Day – 21 Mar</div>
+              <div>Freedom Day – 27 Apr</div>
+              <div>Workers Day – 1 May</div>
+              <div>Youth Day – 16 Jun</div>
+              <div>Women's Day – 9 Aug</div>
+              <div>Heritage Day – 24 Sep</div>
+            </div>
+          </motion.div>
 
-    <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
-      <h3><MdHolidayVillage className="icon" /> Next Holiday</h3>
-      <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-        {nextHolidayCountdown}
-      </motion.p>
-    </motion.div>
+          <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
+            <h3><MdHolidayVillage className="icon" /> Next Holiday</h3>
+            <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+              {nextHolidayCountdown}
+            </motion.p>
+          </motion.div>
 
-    <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
-      <h3>School Closing</h3>
-      <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
-        {schoolCloseCountdown}
-      </motion.p>
-    </motion.div>
-  </div>
-</motion.section>
+          <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
+            <h3>School Closing</h3>
+            <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
+              {schoolCloseCountdown}
+            </motion.p>
+          </motion.div>
+        </div>
+      </motion.section>
+
       {/* === STATS SECTION === */}
-      <motion.section className="stats-section" id="stats" initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} viewport={{ once: true }}>
+      <motion.section
+        className="stats-section"
+        id="stats"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
         <h2><FaTrophy className="icon" /> School Highlights</h2>
         <div className="stats-grid">
           <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
