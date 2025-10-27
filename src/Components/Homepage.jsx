@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import pic7 from '../assets/Homepage/pic7.jpg';
 import { 
   FaCalendarAlt, 
   FaSchool, 
@@ -142,15 +143,25 @@ function Homepage({ onBook }) {
       {/* === HERO SECTION (IMAGE) === */}
 import pic7 from '../assets/Homepage/pic7.jpg';
 
-<main className="homepage" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
-  <img
-    src={pic7}
-    alt="Eldomaine High School"
-    className="hero-image"
-    style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
-  />
-  <FloatingButton onClick={onBook} />
-</main>
+ <main
+        className="homepage"
+        style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
+      >
+        <img
+          src={pic7}
+          alt="Eldomaine High School"
+          className="hero-image"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+        />
+        <FloatingButton onClick={onBook} />
+      </main>
 <motion.div
   className="hero-content"
   initial={{ opacity: 0 }}
