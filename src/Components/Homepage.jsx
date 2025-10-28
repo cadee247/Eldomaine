@@ -141,7 +141,7 @@ function Homepage({ onBook }) {
             onLoad={() => setImgLoaded(true)}
           />
         </picture>
-        <FloatingButton onClick={onBook} />
+        {/* <FloatingButton onClick={onBook} /> */}
       </main>
 
       {/* HERO TEXT */}
