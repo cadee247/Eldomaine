@@ -50,13 +50,11 @@ function About() {
     arrows: false,
   };
 
-  // Preload hero image
+  // ✅ Preload hero image before component renders
   useEffect(() => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'image';
-    link.href = pic5;
-    document.head.appendChild(link);
+    const img = new Image();
+    img.src = pic5;
+    img.onload = () => setLoaded(true);
   }, []);
 
   // Animate stats numbers with IntersectionObserver
@@ -95,22 +93,29 @@ function About() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="about-hero" style={{ position: 'relative', overflow: 'hidden', height: '80vh' }}>
-        <img
-          src={pic5}
-          alt="Eldomaine High School"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            transition: 'opacity 0.5s ease',
-            opacity: loaded ? 1 : 0,
-          }}
-          onLoad={() => setLoaded(true)}
-        />
+      <section
+        className="about-hero"
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          height: '80vh',
+          backgroundColor: '#f4f4f4', // fallback while loading
+        }}
+      >
+        {loaded && (
+          <img
+            src={pic5}
+            alt="Eldomaine High School"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        )}
       </section>
 
       {/* TIMELINE SECTION */}
@@ -128,7 +133,9 @@ function About() {
           <VerticalTimeline>
             <VerticalTimelineElement date="1985-1999" iconStyle={{ background: '#1c3d2a', color: '#fff' }} icon={<FaSchool />}>
               <h3>Founded in Eldorado Park</h3>
-              <p>Eldomaine High School emerged in Eldorado Park as a beacon of hope for a community long underserved by the education system. In its early years, the school focused on creating access to quality learning for all, especially during a time of social transition in South Africa.</p>
+              <p>
+                Eldomaine High School emerged in Eldorado Park as a beacon of hope for a community long underserved by the education system. In its early years, the school focused on creating access to quality learning for all, especially during a time of social transition in South Africa.
+              </p>
               <ul>
                 <li>Academic Commitment: Teachers and learners worked together to build a culture of discipline and achievement.</li>
                 <li>Community Engagement: The school became a hub for local families, promoting unity and empowerment.</li>
@@ -138,7 +145,9 @@ function About() {
 
             <VerticalTimelineElement date="2000–2020" iconStyle={{ background: '#1c3d2a', color: '#fff' }} icon={<FaStar />}>
               <h3>Growth and Development</h3>
-              <p>From the early 2000s through 2020, Eldomaine High School solidified its reputation as a center of academic excellence and community leadership in Eldorado Park.</p>
+              <p>
+                From the early 2000s through 2020, Eldomaine High School solidified its reputation as a center of academic excellence and community leadership in Eldorado Park.
+              </p>
               <ul>
                 <li>Curriculum Expansion: STEM, Arts, and Life Orientation were added.</li>
                 <li>Staff Growth: By 2020, over 60 educators supported 1,200+ learners.</li>
@@ -219,7 +228,9 @@ function About() {
           <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
             <FaBullseye className="about-icon" />
             <h3>Our Mission</h3>
-            <p>Our mission is to be an outstanding and peaceful institution, providing learning for life and addressing changes in the educational system effectively. In attempting to realize the above, we pledge to:</p>
+            <p>
+              Our mission is to be an outstanding and peaceful institution, providing learning for life and addressing changes in the educational system effectively. In attempting to realize the above, we pledge to:
+            </p>
             <ul>
               <li>Equip ourselves as teachers with the skills required to meet curriculum demands.</li>
               <li>Create an environment for positive learning and maintain educational excellence.</li>
