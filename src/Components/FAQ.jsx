@@ -25,7 +25,7 @@ function FAQ() {
      {
       question: "Where can  i buy uniform?",
       answer:
-        "We offer education from Grade 8 to Grade 12, preparing learners for the National Senior Certificate (NSC).",
+        "Seedats schoolwear 22 union road shop no.8, Kliptown 1812 visit their page for more information:https://www.instagram.com/seedatsschoolwear/?hl=en .",
     },
      {
       question: "Is there a feeding scheme?",
