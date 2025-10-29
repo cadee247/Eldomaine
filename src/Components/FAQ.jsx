@@ -22,12 +22,18 @@ function FAQ() {
       answer:
         "Eldomaine Secondary is non-fee paying school .",
     },
-   {
+{
   question: "Where can I buy uniform?",
   answer: (
-    <>You can buy uniforms at Seedats Schoolwear, 22 Union Road, Shop No. 8, Kliptown 1812. Visit their page for more information: <a href="https://www.instagram.com/seedatsschoolwear/?hl=en" target="_blank" rel="noopener noreferrer">Seedats Schoolwear Instagram</a></>
+    <>
+      Seedats Schoolwear, 22 Union Road, Shop No. 8, Kliptown 1812. Visit their page for more information:{" "}
+      <a href="https://www.instagram.com/seedatsschoolwear/?hl=en" target="_blank" rel="noopener noreferrer">
+        https://www.instagram.com/seedatsschoolwear/?hl=en
+      </a>
+    </>
   )
 }
+
 
      {
       question: "Is there a feeding scheme?",
