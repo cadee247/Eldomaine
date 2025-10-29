@@ -108,3 +108,34 @@ body {
 .read-the-docs:hover {
   color: var(--brand-green);
 }
+.read-the-docs:hover {
+  color: var(--brand-green-700);
+}
+
+/* === FIX FOR BLACK AREA ON SCROLL + VALLEY GREEN THEME === */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--brand-green-900); /* deep valley green base */
+  overflow-x: hidden; /* prevent horizontal scroll */
+  font-family: var(--font-family);
+}
+
+#root {
+  min-height: 100vh;
+  background-color: var(--brand-green-500); /* light green surface */
+  display: flex;
+  flex-direction: column;
+  color: var(--brand-green-900);
+  transition: background 0.4s ease, color 0.3s ease;
+}
+
+main {
+  flex: 1; /* keeps footer anchored at bottom */
+}
+
+/* Fix Safari's black overscroll bounce */
+html {
+  background-color: var(--brand-green-900);
+}
