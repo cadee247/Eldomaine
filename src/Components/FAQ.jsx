@@ -25,20 +25,31 @@ function FAQ() {
 {
   question: "Where can I buy uniform?",
   answer: (
-    <div style={{ wordWrap: "break-word", lineHeight: "1.6", fontSize: "1rem" }}>
-      Seedats Schoolwear, 22 Union Road, Shop No. 8, Kliptown 1812. <br />
+    <div style={{
+      wordWrap: "break-word",   // allow long URLs to wrap
+      wordBreak: "break-all",   // ensures URL won't overflow
+      overflowWrap: "anywhere", // for maximum mobile support
+      lineHeight: 1.6,
+      fontSize: "1rem"
+    }}>
+      Seedats Schoolwear, 22 Union Road, Shop No. 8, Kliptown 1812.<br />
       Visit their page for more information:{" "}
       <a
         href="https://www.instagram.com/seedatsschoolwear/?hl=en"
         target="_blank"
         rel="noopener noreferrer"
-        style={{ color: "#1c3d2a", textDecoration: "underline", wordBreak: "break-all" }}
+        style={{
+          color: "#728370",          // matches your valley green
+          textDecoration: "underline",
+          wordBreak: "break-all"
+        }}
       >
         https://www.instagram.com/seedatsschoolwear/?hl=en
       </a>
     </div>
   )
 }
+
 
 
 
