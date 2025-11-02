@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaInfoCircle, FaUserGraduate, FaBook, FaEnvelope, FaFilePdf } from 'react-icons/fa';
 import '../css/Footer.css';
-import MatricPDF from '../assets/Events/Matric Timetable 2025 – Full NSC Exam Dates & Times (South Africa).pdf';
-
 
 function Footer() {
   return (
@@ -40,18 +38,18 @@ function Footer() {
           </div>
         </div>
 
-      {/* Matric Timetable */}
-<div className="footer-timetable">
-  <h4>Matric Timetable</h4>
-  <a 
-    href={MatricPDF}  // use the imported PDF
-    target="_blank" 
-    rel="noopener noreferrer"
-  >
-    <FaFilePdf style={{ marginRight: '0.5rem' }} />
-    Download PDF
-  </a>
-</div>
+        {/* Matric Timetable */}
+        <div className="footer-timetable">
+          <h4>Matric Timetable</h4>
+          <a 
+            href="https://www.education.gov.za/Portals/0/Documents/Publications/2025/2025%20OCT%20NOV%20TIME%20TABLE.pdf"
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <FaFilePdf style={{ marginRight: '0.5rem' }} />
+            Download PDF
+          </a>
+        </div>
 
       </div>
 
