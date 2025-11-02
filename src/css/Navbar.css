@@ -30,11 +30,9 @@
   min-width: 0;
 }
 
-.nav-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 0 0 auto;
+.navbar {
+  justify-content: flex-start; /* Align everything to the left */
+  padding-left: 3rem; /* Adjust this value to shift left/right */
 }
 
 /* === SCHOOL BADGE === */
