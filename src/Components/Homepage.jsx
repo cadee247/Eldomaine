@@ -14,7 +14,8 @@ import enUS from 'date-fns/locale/en-US';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../css/Homepage.css';
 import { Link } from 'react-router-dom';
-import coverImg from '../assets/cover.png';
+import coverImg from '../assets/cover.png'; // ✅ use the import
+
 const locales = { 'en-US': enUS };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
 
@@ -110,7 +111,7 @@ function Homepage() {
       {/* === HERO SECTION (LAZY LOADED IMAGE) === */}
       <main className="homepage" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
         <img
-          src="/src/assets/cover.png"
+          src={coverImg} // ✅ use imported image here
           alt="Eldomaine High School"
           className="hero-image"
           loading="lazy"
