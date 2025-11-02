@@ -8,6 +8,32 @@
   --transition: all 0.3s ease;
 }
 
+/* === GLOBAL RESET === */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: var(--white);
+}
+
+/* === HERO SECTION — REMOVE WHITE BORDER AT TOP === */
+.appointment-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* full viewport */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.appointment-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 /* === Appointment Request Section === */
 .appointment-request {
   padding: 3rem 2rem;
@@ -126,7 +152,7 @@ textarea {
   z-index: 1000;
 }
 
-/* Responsive Design */
+/* === RESPONSIVE DESIGN === */
 @media (max-width: 1024px) {
   .appointment-request {
     max-width: 700px;
