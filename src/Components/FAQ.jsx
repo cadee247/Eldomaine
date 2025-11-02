@@ -1,71 +1,25 @@
 import React, { useState } from 'react';
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineSearch } from 'react-icons/ai';
 import '../css/FAQ.css';
-import faqImage from '../assets/FAQ\'s/pic10.jpg';
+import coverImg from '../assets/cover.png'; // ✅ import the hero image
+
 function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
   const faqs = [
-    {
-      question: "When do admissions open?",
-      answer:
-        "Admissions for the new academic year open every September. Application forms are available at the school’s main office and online on our Admissions page.",
-    },
-     {
-      question: "What time does the school dismiss?",
-      answer:
-        "Mon-thurs(14:45pm) fridays(12:45pm).",
-    },
-     {
-      question: "How much is school fees?",
-      answer:
-        "Eldomaine Secondary is non-fee paying school .",
-    },
-     {
-      question: "Where can  i buy uniform?",
-      answer:
-        "We offer education from Grade 8 to Grade 12, preparing learners for the National Senior Certificate (NSC).",
-    },
-     {
-      question: "Is there a feeding scheme?",
-      answer:
-        "Yes we have a feeding scheme available.",
-    }, {
-      question: "What is the EMIS number?",
-      answer:
-        "EMIS:700120030.",
-    },
-     {
-      question: "Who is the current principal?",
-      answer:
-        "Ashley Pienaar.",
-    },
-    {
-      question: "Is Eldomaine Secondary School a public school?",
-      answer:
-        "Yes, Eldomaine Secondary School is a public no-fee school located in Eldorado Park, Johannesburg. We proudly serve our local community.",
-    },
-    {
-      question: "What grades does the school cater for?",
-      answer:
-        "We offer education from Grade 8 to Grade 12, preparing learners for the National Senior Certificate (NSC).",
-    },
-    {
-      question: "What subjects are available?",
-      answer:
-        "Our curriculum offers academic and technical streams, including Mathematics, Physical Science, Business Studies, Tourism, and more. Visit the Curriculum page for full details.",
-    },
-    {
-      question: "Does the school offer extracurricular activities?",
-      answer:
-        "Yes! Learners can join various sports, cultural, and academic clubs to develop their talents and leadership skills.",
-    },
-    {
-      question: "How can I contact the school?",
-      answer:
-        "You can reach us via the Contact page or visit the school’s administrative office during working hours for in-person assistance.",
-    },
+    { question: "When do admissions open?", answer: "Admissions for the new academic year open every September. Application forms are available at the school’s main office and online on our Admissions page." },
+    { question: "What time does the school dismiss?", answer: "Mon-thurs(14:45pm) fridays(12:45pm)." },
+    { question: "How much is school fees?", answer: "Eldomaine Secondary is non-fee paying school." },
+    { question: "Where can i buy uniform?", answer: "We offer education from Grade 8 to Grade 12, preparing learners for the National Senior Certificate (NSC)." },
+    { question: "Is there a feeding scheme?", answer: "Yes we have a feeding scheme available." },
+    { question: "What is the EMIS number?", answer: "EMIS:700120030." },
+    { question: "Who is the current principal?", answer: "Ashley Pienaar." },
+    { question: "Is Eldomaine Secondary School a public school?", answer: "Yes, Eldomaine Secondary School is a public no-fee school located in Eldorado Park, Johannesburg. We proudly serve our local community." },
+    { question: "What grades does the school cater for?", answer: "We offer education from Grade 8 to Grade 12, preparing learners for the National Senior Certificate (NSC)." },
+    { question: "What subjects are available?", answer: "Our curriculum offers academic and technical streams, including Mathematics, Physical Science, Business Studies, Tourism, and more. Visit the Curriculum page for full details." },
+    { question: "Does the school offer extracurricular activities?", answer: "Yes! Learners can join various sports, cultural, and academic clubs to develop their talents and leadership skills." },
+    { question: "How can I contact the school?", answer: "You can reach us via the Contact page or visit the school’s administrative office during working hours for in-person assistance." },
   ];
 
   const filteredFaqs = faqs.filter(faq =>
@@ -78,36 +32,38 @@ function FAQ() {
 
   return (
     <div className="faq-page">
-<section
-  className="faq-hero"
-  style={{
-    position: 'relative',
-    width: '100%',
-    height: '100vh',
-    overflow: 'hidden',
-  }}
->
-  <img
-    src="/src/assets/cover.png"
-    alt="FAQ Banner"
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      objectPosition: 'center',
-    }}
-  />
-</section>
+      {/* HERO IMAGE */}
+      <section
+        className="faq-hero"
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100vh',
+          overflow: 'hidden',
+        }}
+      >
+        <img
+          src={coverImg} // ✅ use imported image
+          alt="FAQ Banner"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
+      </section>
 
+      {/* Intro Text */}
+      <section className="faq-intro">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to the most common questions about Eldomaine Secondary School</p>
+      </section>
 
-<section className="faq-intro">
-  <h1>Frequently Asked Questions</h1>
-  <p>Find answers to the most common questions about Eldomaine Secondary School</p>
-</section>
-
+      {/* FAQ Section */}
       <section className="faq-section">
         <div className="faq-search">
           <AiOutlineSearch className="search-icon" />
