@@ -9,14 +9,12 @@ import {
 } from 'react-icons/fa';
 import '../css/Admissions.css';
 import { motion, useAnimation } from 'framer-motion';
+import coverImg from '../assets/cover.png'; // ✅ import image
 
 function Admissions() {
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.5, staggerChildren: 0.2 }
-    }
+    visible: { opacity: 1, transition: { duration: 0.5, staggerChildren: 0.2 } }
   };
 
   const itemVariants = {
@@ -45,9 +43,10 @@ function Admissions() {
       {/* HERO IMAGE — FULL SCREEN, ABSOLUTE, NO TEXT */}
       <section className="admission-hero" style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
         <img
-          src="/src/assets/cover.png" // ✅ your desired image
+          src={coverImg} // ✅ use imported image
           alt="Eldomaine High School"
           className="about-hero-img"
+          loading="lazy"
           style={{
             position: 'absolute',
             top: 0,
@@ -67,12 +66,7 @@ function Admissions() {
       </section>
 
       {/* MAIN CONTENT */}
-      <motion.section
-        className="admission-form-section"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.section className="admission-form-section" variants={containerVariants} initial="hidden" animate="visible">
         {/* Eligibility */}
         <motion.div className="admission-card" variants={itemVariants} whileHover="hover">
           <FaUserGraduate className="admission-icon" />
@@ -90,14 +84,7 @@ function Admissions() {
           <h2>Application Process</h2>
 
           {[0, 1, 2, 3].map((i) => (
-            <motion.div
-              key={i}
-              className="admission-step"
-              custom={i}
-              initial="hidden"
-              animate={stepControls}
-              variants={stepVariants}
-            >
+            <motion.div key={i} className="admission-step" custom={i} initial="hidden" animate={stepControls} variants={stepVariants}>
               {i === 0 && (
                 <>
                   <h3><FaFileAlt /> 1. Collect Application Forms</h3>
