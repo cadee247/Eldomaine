@@ -85,29 +85,15 @@ Reason: ${formData.reason}`;
       transition={{ duration: 0.6 }}
     >
       {/* HERO IMAGE */}
-      <section
-        className="appointment-hero"
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '100vh', // full viewport height
-          overflow: 'hidden',
-        }}
-      >
-        <img
-          src={coverImage}
-          alt="Appointment Banner"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-      </section>
+    {/* HERO IMAGE */}
+<section className="appointment-hero">
+  <img
+    src={coverImage}
+    alt="Appointment Banner"
+    loading="lazy"
+  />
+</section>
+
 
       {/* PAGE TITLE */}
       <motion.h2
