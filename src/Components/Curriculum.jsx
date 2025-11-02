@@ -9,6 +9,7 @@ import {
   FaRobot
 } from 'react-icons/fa';
 import curriculumImage from '../assets/Curriculum/pic2.jpg';
+import coverImg from '../assets/cover.png'; // ✅ import hero image
 import '../css/Curriculum.css';
 
 const FlipCard = ({ icon, name, description }) => {
@@ -23,7 +24,7 @@ const FlipCard = ({ icon, name, description }) => {
         <div className="curriculum-card-front">
           {icon}
           <span>{name}</span>
-          <p className="tap-hint">Tap for more info</p> {/* 👈 added this */}
+          <p className="tap-hint">Tap for more info</p>
         </div>
         <div className="curriculum-card-back">
           <h3>{name}</h3>
@@ -33,7 +34,6 @@ const FlipCard = ({ icon, name, description }) => {
     </div>
   );
 };
-
 
 function Curriculum() {
   const [selectedGrade, setSelectedGrade] = useState('8-9');
@@ -87,13 +87,12 @@ function Curriculum() {
     { icon: <FaBookOpen />, name: 'Academic Tutoring (Maths & Science)', description: 'Peer-led sessions for academic support.' },
   ];
 
- 
   return (
     <>
       {/* HERO IMAGE — FULL SCREEN, ABSOLUTE */}
       <section className="curriculum-hero" style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
         <img
-          src="/src/assets/cover.png" // ✅ your hero image
+          src={coverImg} // ✅ use imported image
           alt="Eldomaine High School"
           className="curriculum-hero-img"
           style={{
@@ -117,11 +116,7 @@ function Curriculum() {
       {/* Main Section */}
       <section className="curriculum-section">
         <h2>Choose Grade</h2>
-        <select
-          value={selectedGrade}
-          onChange={(e) => setSelectedGrade(e.target.value)}
-          className="grade-selector"
-        >
+        <select value={selectedGrade} onChange={(e) => setSelectedGrade(e.target.value)} className="grade-selector">
           <option value="8-9">Grades 8–9</option>
           <option value="10-12">Grades 10–12</option>
         </select>
