@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/Gallery.css";
 import { FaTimesCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import coverImg from '../assets/cover.png'; // ✅ import hero image
 
 // Automatically import all .png, .jpg, and .jpeg images
 const importImages = () => {
@@ -9,8 +10,6 @@ const importImages = () => {
     import: "default",
   });
   const imgsArray = Object.values(images);
-
-  // Remove first image if unwanted
   return imgsArray.slice(1);
 };
 
@@ -25,7 +24,7 @@ const Gallery = () => {
 
   const openLightbox = (index) => {
     setSelectedIndex(index);
-    document.body.style.overflow = "hidden"; // Prevent scrolling
+    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
@@ -46,31 +45,29 @@ const Gallery = () => {
   return (
     <div className="gallery-page">
       {/* Hero Image */}
-   {/* Hero Image */}
-<section
-  className="gallery-hero"
-  style={{
-    position: "relative",
-    width: "100%",
-    height: "100vh", // full viewport height like About hero
-    overflow: "hidden",
-  }}
->
-  <img
-    src="/src/assets/cover.png"
-    alt="Gallery Banner"
-    style={{
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",       // covers container fully
-      objectPosition: "center", // centers image
-    }}
-  />
-</section>
-
+      <section
+        className="gallery-hero"
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      >
+        <img
+          src={coverImg} // ✅ use imported image
+          alt="Gallery Banner"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+        />
+      </section>
 
       {/* Gallery Grid */}
       <section className="gallery-grid-section">
@@ -92,7 +89,7 @@ const Gallery = () => {
                   alt={`Gallery ${index + 1}`}
                   style={{
                     width: "100%",
-                    height: "250px", // consistent height
+                    height: "250px",
                     objectFit: "cover",
                     borderRadius: "12px",
                     cursor: "pointer",
@@ -108,19 +105,9 @@ const Gallery = () => {
       {/* Lightbox */}
       {selectedIndex !== null && (
         <div className="lightbox" onClick={closeLightbox}>
-          <div
-            className="lightbox-content"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <FaTimesCircle
-              className="close-icon"
-              onClick={closeLightbox}
-              style={{ color: "#ff5555" }}
-            />
-            <FaChevronLeft
-              className="nav-arrow nav-left"
-              onClick={goToPrev}
-            />
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <FaTimesCircle className="close-icon" onClick={closeLightbox} style={{ color: "#ff5555" }} />
+            <FaChevronLeft className="nav-arrow nav-left" onClick={goToPrev} />
             <img
               src={images[selectedIndex]}
               alt="Full preview"
@@ -131,10 +118,7 @@ const Gallery = () => {
                 objectFit: "contain",
               }}
             />
-            <FaChevronRight
-              className="nav-arrow nav-right"
-              onClick={goToNext}
-            />
+            <FaChevronRight className="nav-arrow nav-right" onClick={goToNext} />
           </div>
         </div>
       )}
