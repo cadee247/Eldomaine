@@ -9,6 +9,7 @@ import {
 import '../css/Events.css';
 import { motion } from 'framer-motion';
 import MatricPDF from '../assets/Events/Matric Timetable 2025 – Full NSC Exam Dates & Times (South Africa).pdf';
+import coverImg from '../assets/cover.png'; // ✅ import hero image
 
 function Events() {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -123,7 +124,7 @@ function Events() {
 
   return (
     <div className="events-page">
-      {/* Hero Image Section (same as Curriculum) */}
+      {/* Hero Image Section */}
       <section
         className="events-hero"
         style={{
@@ -134,7 +135,7 @@ function Events() {
         }}
       >
         <img
-          src="/src/assets/cover.png"
+          src={coverImg} // ✅ use imported image
           alt="Events Banner"
           style={{
             position: 'absolute',
