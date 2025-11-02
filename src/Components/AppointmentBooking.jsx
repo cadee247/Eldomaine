@@ -9,7 +9,7 @@ import {
   FaCheckCircle,
 } from 'react-icons/fa';
 import '../css/AppointmentBooking.css';
-import coverImage from '../assets/cover.png'; // ✅ Hero image
+import coverImage from '../assets/cover.png'; // Hero image
 
 function AppointmentRequest() {
   const [formData, setFormData] = useState({
@@ -79,12 +79,26 @@ Reason: ${formData.reason}`;
 
   return (
     <>
-      {/* HERO IMAGE — full width like Home/About */}
-      <section className="appointment-hero">
-        <img src={coverImage} alt="Appointment Banner" loading="lazy" />
+      {/* HERO IMAGE — full viewport height like About */}
+      <section className="appointment-hero" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+        <img
+          src={coverImage}
+          alt="Appointment Banner"
+          className="appointment-hero-img"
+          loading="lazy"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
       </section>
 
-      {/* Appointment Form Container */}
+      {/* FORM SECTION */}
       <motion.section
         className="appointment-request"
         initial={{ opacity: 0, y: 40 }}
