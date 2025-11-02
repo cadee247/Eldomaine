@@ -17,22 +17,22 @@ html, body {
 }
 
 /* === HERO SECTION — REMOVE WHITE BORDER AT TOP === */
+/* === HERO IMAGE — consistent with other pages === */
 .appointment-hero {
-  position: relative;
   width: 100%;
-  min-height: 100vh; /* full viewport */
-  margin: 0;
-  padding: 0;
+  height: 400px; /* same fixed height as About/Contact pages */
   overflow: hidden;
+  position: relative;
 }
 
 .appointment-hero img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* ensures image fills container without distortion */
   object-position: center;
   display: block;
 }
+
 
 /* === Appointment Request Section === */
 .appointment-request {
