@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../css/About.css';
-import pic5 from '../assets/About/pic5.jpg';
+import coverImg from '../assets/cover.png'; // ✅ imported hero image
 
 // Error boundary for timeline
 class TimelineErrorBoundary extends React.Component {
@@ -33,7 +33,7 @@ function About() {
   const testimonials = [
     { quote:  "Start where you are. Use what you have. Do what you can.", author: "Arthur Ashe" },
     { quote:  "Education is the most powerful weapon which you can use to change the world.", author: "Nelson Mandela" },
-    { quote:  "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: " Winston Churchill"},
+    { quote:  "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill"},
     { quote:  "Don’t let what you cannot do interfere with what you can do.", author: "John Wooden"},
   ];
 
@@ -71,26 +71,26 @@ function About() {
   return (
     <>
       {/* HERO SECTION */}
-  <section
-  className="about-hero"
-  style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
->
-  <img
-    src="/src/assets/cover.png"
-    alt="Eldomaine High School"
-    className="about-hero-img"
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      objectPosition: 'center',
-    }}
-  />
-</section>
-
+      <section
+        className="about-hero"
+        style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
+      >
+        <img
+          src={coverImg}             // ✅ use imported image
+          alt="Eldomaine High School"
+          className="about-hero-img"
+          loading="lazy"             // ✅ lazy loading
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
+      </section>
 
       {/* TIMELINE SECTION */}
       <section className="about-section history-section">
@@ -107,7 +107,7 @@ function About() {
           <VerticalTimeline>
             <VerticalTimelineElement date="1985-1999" iconStyle={{ background: '#1c3d2a', color: '#fff' }} icon={<FaSchool />}>
               <h3>Founded in Eldorado Park</h3>
-              <p> Eldomaine High School emerged in Eldorado Park as a beacon of hope for a community long underserved by the education system. In its early years, the school focused on creating access to quality learning for all, especially during a time of social transition in South Africa.</p>
+              <p>Eldomaine High School emerged in Eldorado Park as a beacon of hope for a community long underserved by the education system. In its early years, the school focused on creating access to quality learning for all, especially during a time of social transition in South Africa.</p>
               <ul>
                 <li>Academic Commitment: Teachers and learners worked together to build a culture of discipline and achievement, laying the foundation for future excellence.</li>
                 <li>Community Engagement: The school became a hub for local families, promoting unity and empowerment through education.</li>
@@ -157,22 +157,20 @@ function About() {
         </p>
 
         <div className="stats-grid">
-        <div className="stats-grid">
-  <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
-    <span className="stat-number" data-target="20000">20000</span>
-    <p>Alumni Empowered Worldwide</p>
-  </motion.div>
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <span className="stat-number" data-target="20000">20000</span>
+            <p>Alumni Empowered Worldwide</p>
+          </motion.div>
 
-  <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
-    <span className="stat-number" data-target="40">40</span>
-    <p>Years of Excellence</p>
-  </motion.div>
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <span className="stat-number" data-target="40">40</span>
+            <p>Years of Excellence</p>
+          </motion.div>
 
-  <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
-    <span className="stat-number" data-target="15">15</span>
-    <p>Extracurricular Programs</p>
-  </motion.div>
-</div>
+          <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
+            <span className="stat-number" data-target="15">15</span>
+            <p>Extracurricular Programs</p>
+          </motion.div>
         </div>
 
         <Slider {...sliderSettings}>
@@ -197,13 +195,10 @@ function About() {
         </motion.h2>
 
         <div className="about-highlights">
-
           <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
             <FaBullseye className="about-icon" />
             <h3>Our Mission</h3>
-            <p>
-              Our mission is to be an outstanding and peaceful institution, which provides learning for life and addresses the changes in the educational system effectively. In attempting to realize the above, we pledge to:
-            </p>
+            <p>Our mission is to be an outstanding and peaceful institution, which provides learning for life and addresses the changes in the educational system effectively. In attempting to realize the above, we pledge to:</p>
             <ul>
               <li>Equip ourselves as teachers with the skills required to meet the demands of the new and changing curriculum.</li>
               <li>Create an environment for positive learning. Keep abreast of new developments in the curriculum in order to transfer relevant content to our pupils and to maintain educational excellence.</li>
@@ -221,18 +216,17 @@ function About() {
             <p>Our vision is to have an educational institution that is built on discipline, educational excellence and character building. As such we aim to give our best and be in service of the school.</p>
           </motion.div>
 
-        <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
-  <FaHandsHelping className="about-icon" />
-  <h3>Core Values</h3>
-<ul className="values-list">
-  <li><span className="icon"><FaStar /></span><span>Respect</span></li>
-  <li><span className="icon"><FaStar /></span><span>Integrity</span></li>
-  <li><span className="icon"><FaStar /></span><span>Excellence</span></li>
-  <li><span className="icon"><FaStar /></span><span>Inclusivity</span></li>
-  <li><span className="icon"><FaStar /></span><span>Community Service</span></li>
-</ul>
-</motion.div>
-
+          <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
+            <FaHandsHelping className="about-icon" />
+            <h3>Core Values</h3>
+            <ul className="values-list">
+              <li><span className="icon"><FaStar /></span><span>Respect</span></li>
+              <li><span className="icon"><FaStar /></span><span>Integrity</span></li>
+              <li><span className="icon"><FaStar /></span><span>Excellence</span></li>
+              <li><span className="icon"><FaStar /></span><span>Inclusivity</span></li>
+              <li><span className="icon"><FaStar /></span><span>Community Service</span></li>
+            </ul>
+          </motion.div>
         </div>
       </section>
     </>
