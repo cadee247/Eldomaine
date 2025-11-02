@@ -204,7 +204,7 @@
 
 .rbc-calendar {
   background: var(--white);
-  color: var(--valley-green);
+  color: var(transparent);
 }
 
 .rbc-toolbar {

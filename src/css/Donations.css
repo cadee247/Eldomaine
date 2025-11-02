@@ -239,20 +239,27 @@
     font-size: 1.5rem;
   }
 }
-/* HERO IMAGE - SAME SIZE AS ABOUT PAGE */
 .donation-hero {
   position: relative;
   width: 100%;
-  height: 80vh; /* same as About hero */
+  height: 100vh;
   overflow: hidden;
 }
 
+
+
+
 .donation-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* crops image nicely to fit hero */
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
+
 
 /* HERO TEXT (if you add later) */
 .donation-hero-overlay {
@@ -266,4 +273,19 @@
   padding: 1rem 2rem;
   background: rgba(0,0,0,0.35); /* optional overlay */
   border-radius: 12px;
+}
+/* === FIX unwanted top padding or margin === */
+.donation-hero {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+main, section {
+  margin: 0;
+  padding: 0;
 }

@@ -7,7 +7,6 @@ import {
   FaCheckCircle,
   FaSchool
 } from 'react-icons/fa';
-import admissionImage from '../assets/Admission/pic3.jpg';
 import '../css/Admissions.css';
 import { motion, useAnimation } from 'framer-motion';
 
@@ -43,12 +42,21 @@ function Admissions() {
 
   return (
     <>
-      {/* HERO IMAGE — FULL SCREEN, NO TEXT OVERLAY */}
-      <section className="admission-hero">
+      {/* HERO IMAGE — FULL SCREEN, ABSOLUTE, NO TEXT */}
+      <section className="admission-hero" style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
         <img
-          src={admissionImage}
-          alt="Admission Banner"
-          className="admission-hero-img"
+          src="/src/assets/cover.png" // ✅ your desired image
+          alt="Eldomaine High School"
+          className="about-hero-img"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
       </section>
 

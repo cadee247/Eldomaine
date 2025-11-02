@@ -71,13 +71,26 @@ function About() {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="about-hero">
-        <img
-          src={pic5}
-          alt="Eldomaine High School"
-          className="about-hero-img"
-        />
-      </section>
+  <section
+  className="about-hero"
+  style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
+>
+  <img
+    src="/src/assets/cover.png"
+    alt="Eldomaine High School"
+    className="about-hero-img"
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center',
+    }}
+  />
+</section>
+
 
       {/* TIMELINE SECTION */}
       <section className="about-section history-section">

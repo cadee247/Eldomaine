@@ -9,7 +9,6 @@ import {
 import '../css/Events.css';
 import { motion } from 'framer-motion';
 import MatricPDF from '../assets/Events/Matric Timetable 2025 – Full NSC Exam Dates & Times (South Africa).pdf';
-import eventsImage from '../assets/Events/pic6.jpg';
 
 function Events() {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -80,6 +79,7 @@ function Events() {
       moreInfo: "Celebrate the end with a school assembly. Results expected in January 2026.",
     },
   ];
+
   const [timers, setTimers] = useState(eventsData.map(() => 'Loading...'));
 
   useEffect(() => {
@@ -123,12 +123,28 @@ function Events() {
 
   return (
     <div className="events-page">
-      {/* Hero Image Section */}
-      <section className="events-hero">
+      {/* Hero Image Section (same as Curriculum) */}
+      <section
+        className="events-hero"
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100vh',
+          overflow: 'hidden',
+        }}
+      >
         <img
-          src={eventsImage}
+          src="/src/assets/cover.png"
           alt="Events Banner"
-          className="events-hero-img"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
       </section>
 
@@ -168,8 +184,14 @@ function Events() {
               onClick={() => setSelectedEvent(event)}
             >
               <div className="event-info">
-                <h3><FaGraduationCap style={{ marginRight: '0.5rem', color: '#9e7bdc' }} />{event.title}</h3>
-                <p className="event-date"><FaRegCalendarAlt style={{ marginRight: '0.5rem', color: '#2980b9' }} />{new Date(event.date).toDateString()}</p>
+                <h3>
+                  <FaGraduationCap style={{ marginRight: '0.5rem', color: '#9e7bdc' }} />
+                  {event.title}
+                </h3>
+                <p className="event-date">
+                  <FaRegCalendarAlt style={{ marginRight: '0.5rem', color: '#2980b9' }} />
+                  {new Date(event.date).toDateString()}
+                </p>
                 <p>{event.description}</p>
                 <p className={`event-timer ${timers[index] !== "Event Started!" ? 'countdown-pulse' : ''}`}>
                   <FaHourglassHalf style={{ marginRight: '0.5rem', color: '#27ae60' }} />

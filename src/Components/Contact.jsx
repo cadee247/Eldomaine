@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/Contact.css';
-import contactImage from '../assets/Contact/pic9.jpg';
+import coverImage from '../assets/cover.png'; // ✅ Use the same hero image
 import {
   FaUser,
   FaEnvelope,
@@ -15,12 +15,28 @@ import {
 function Contact() {
   return (
     <>
-      {/* Hero Image */}
-      <section className="contact-hero">
+      {/* HERO IMAGE */}
+      <section
+        className="contact-hero"
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100vh', // match About/Gallery height
+          overflow: 'hidden',
+        }}
+      >
         <img
-          src={contactImage}
+          src={coverImage}
           alt="Contact Banner"
-          className="contact-hero-img"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
       </section>
 

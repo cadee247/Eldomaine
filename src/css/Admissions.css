@@ -21,15 +21,14 @@
 
 /* === HERO SECTION (FIXED) === */
 .admission-hero {
-  position: relative;
-  width: 100%;
-  height: calc(100vh - 80px); /* full viewport minus navbar */
+  height: calc(100vh - 80px); /* assumes navbar is fixed */
   overflow: hidden;
   display: flex;
-  align-items: flex-end; /* optional: keep text at bottom */
+  align-items: flex-end;
   justify-content: center;
-  background-color: #000; /* fallback */
+  background-color: #000;
 }
+
 
 /* Spacer to prevent navbar overlap */
 .admission-hero::before {

@@ -3,7 +3,7 @@ import '../css/Donations.css';
 import { FaTint, FaPencilRuler, FaBookOpen } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Confetti from 'react-confetti';
-import bannerImg from '../assets/Donations/pics.jpg'; // ✅ Import your banner image
+import bannerImg from '../assets/cover.png'; 
 
 function Donation() {
   const [name, setName] = useState('');
@@ -53,90 +53,93 @@ function Donation() {
   };
 
   return (
-    <section className="donation-page">
-      {showConfetti && <Confetti />}
-
-      {/* ✅ Hero Banner (no text, no overlay, full image) */}
+    <>
+      {/* Hero banner outside the page wrapper */}
       <div className="donation-hero">
         <img src={bannerImg} alt="Donation Banner" className="donation-hero-img" />
       </div>
 
-      <motion.div
-        className="donation-blocks"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {donationItems.map((item, index) => (
-          <motion.div
-            key={index}
-            className="donation-block"
-            variants={itemVariants}
-            whileHover="hover"
-          >
-            {item.icon}
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-          </motion.div>
-        ))}
-      </motion.div>
+      {/* Main donation content */}
+      <section className="donation-page">
+        {showConfetti && <Confetti />}
 
-      <motion.div
-        className="donation-form-block"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <h2>Make a Donation</h2>
-        <form className="donation-form" onSubmit={handleSubmit}>
-          <label>
-            Your Name
-            <input
-              type="text"
-              placeholder="Full Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </label>
+        <motion.div
+          className="donation-blocks"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {donationItems.map((item, index) => (
+            <motion.div
+              key={index}
+              className="donation-block"
+              variants={itemVariants}
+              whileHover="hover"
+            >
+              {item.icon}
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          <label>
-            Donation Amount (ZAR)
-            <input
-              type="number"
-              placeholder="e.g., 500"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              required
-              min="1"
-            />
-          </label>
+        <motion.div
+          className="donation-form-block"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <h2>Make a Donation</h2>
+          <form className="donation-form" onSubmit={handleSubmit}>
+            <label>
+              Your Name
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </label>
 
-          <motion.button
-            type="submit"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-          >
-            Donate Now
-          </motion.button>
-        </form>
-      </motion.div>
+            <label>
+              Donation Amount (ZAR)
+              <input
+                type="number"
+                placeholder="e.g., 500"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                required
+                min="1"
+              />
+            </label>
 
-      <motion.div
-        className="donation-contact"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-      >
-        <h2>Contact & Queries</h2>
-        <p>
-          📧 Email: info@eldomaine.school.za<br />
-          ☎️ Phone: +27 11 568 2280<br />
-          📍 Address: 86 Mirage Road, Eldorado Park, Johannesburg
-        </p>
-      </motion.div>
-    </section>
+            <motion.button
+              type="submit"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
+              Donate Now
+            </motion.button>
+          </form>
+        </motion.div>
+
+        <motion.div
+          className="donation-contact"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <h2>Contact & Queries</h2>
+          <p>
+            📧 Email: info@eldomaine.school.za<br />
+            ☎️ Phone: +27 11 568 2280<br />
+            📍 Address: 86 Mirage Road, Eldorado Park, Johannesburg
+          </p>
+        </motion.div>
+      </section>
+    </>
   );
 }
 

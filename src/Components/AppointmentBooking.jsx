@@ -9,6 +9,7 @@ import {
   FaCheckCircle,
 } from 'react-icons/fa';
 import '../css/AppointmentBooking.css';
+import coverImage from '../assets/cover.png'; // ✅ Import hero image
 
 function AppointmentRequest() {
   const [formData, setFormData] = useState({
@@ -83,19 +84,48 @@ Reason: ${formData.reason}`;
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
+      {/* HERO IMAGE */}
+      <section
+        className="appointment-hero"
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100vh', // full viewport height
+          overflow: 'hidden',
+        }}
+      >
+        <img
+          src={coverImage}
+          alt="Appointment Banner"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
+      </section>
+
+      {/* PAGE TITLE */}
       <motion.h2
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.2 }}
+        style={{ marginTop: '2rem', textAlign: 'center' }}
       >
         Request a Meeting with a Teacher
       </motion.h2>
 
+      {/* NOTE */}
       <div className="appointment-note">
         <strong>NB:</strong> Meetings are available Monday to Thursday.
         Weekends and public holidays are unavailable. Each meeting lasts one hour and must be booked in advance.
       </div>
 
+      {/* FORM */}
       <motion.form
         onSubmit={handleSubmit}
         className="appointment-form"
@@ -174,12 +204,9 @@ Reason: ${formData.reason}`;
 
           <div className="form-group">
             <label><FaChalkboardTeacher /> Teacher</label>
-            <select name="teacher" value={formData.teacher} onChange={handleChange}>
+            <select name="teacher" value={formData.teacher} onChange={handleChange} required>
               {Object.keys(teacherNumbers).map((teacher) => (
-                <option key={teacher} value={teacher}>
-                  {teacher}
-                  <div style={{ height: '100px' }}></div>
-                </option>
+                <option key={teacher} value={teacher}>{teacher}</option>
               ))}
             </select>
           </div>
@@ -218,6 +245,7 @@ Reason: ${formData.reason}`;
         </motion.button>
       </motion.form>
 
+      {/* SUCCESS POPUP */}
       {showSuccess && (
         <motion.div
           className="success-popup"

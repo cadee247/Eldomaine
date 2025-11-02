@@ -78,13 +78,30 @@ function FAQ() {
 
   return (
     <div className="faq-page">
-<section className="faq-hero">
+<section
+  className="faq-hero"
+  style={{
+    position: 'relative',
+    width: '100%',
+    height: '100vh',
+    overflow: 'hidden',
+  }}
+>
   <img
-    src={faqImage}
+    src="/src/assets/cover.png"
     alt="FAQ Banner"
-    className="faq-hero-img"
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center',
+    }}
   />
 </section>
+
 
 <section className="faq-intro">
   <h1>Frequently Asked Questions</h1>

@@ -87,14 +87,24 @@ function Curriculum() {
     { icon: <FaBookOpen />, name: 'Academic Tutoring (Maths & Science)', description: 'Peer-led sessions for academic support.' },
   ];
 
+ 
   return (
     <>
-      {/* Hero Image Section */}
-      <section className="curriculum-hero">
+      {/* HERO IMAGE — FULL SCREEN, ABSOLUTE */}
+      <section className="curriculum-hero" style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
         <img
-          src={curriculumImage}
-          alt="Curriculum Banner"
+          src="/src/assets/cover.png" // ✅ your hero image
+          alt="Eldomaine High School"
           className="curriculum-hero-img"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
         />
       </section>
 

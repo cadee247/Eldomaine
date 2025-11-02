@@ -68,13 +68,30 @@ const handleReaction = (index, type) => {
   return (
     <div className="news-page">
       {/* Hero Image Section */}
-      <section className="news-hero">
-        <img
-          src={newsImage}
-          alt="News Banner"
-          className="news-hero-img"
-        />
-      </section>
+  <section
+  className="news-hero"
+  style={{
+    position: 'relative',
+    width: '100%',
+    height: '100vh',
+    overflow: 'hidden',
+  }}
+>
+  <img
+    src="/src/assets/cover.png"
+    alt="News Banner"
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center',
+    }}
+  />
+</section>
+
 
       {/* Text Section Below Image */}
       <section className="news-intro">

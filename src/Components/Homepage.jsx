@@ -142,7 +142,7 @@ function Homepage({ onBook }) {
       {/* === HERO SECTION (IMAGE) === */}
       <main className="homepage" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
         <img
-          src="/src/assets/Homepage/pic7.jpg"
+          src="/src/assets/cover.png"
           alt="Eldomaine High School"
           className="hero-image"
           style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
