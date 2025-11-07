@@ -10,13 +10,83 @@ import '../css/Events.css';
 import { motion } from 'framer-motion';
 import MatricPDF from '../assets/Events/Matric Timetable 2025 – Full NSC Exam Dates & Times (South Africa).pdf';
 import coverImg from '../assets/cover.png'; // ✅ import hero image
+<<<<<<< HEAD
 import Hero from '../components/Hero'; // Reusable hero component
+=======
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
 function Events() {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const eventsData = [
+<<<<<<< HEAD
     // ... same events data as your original file
+=======
+    {
+      title: "Entrepreneur's Day",
+      date: new Date("2025-10-24T08:00:00"),
+      description: (
+        <p>
+          <strong>Grade 9 EMS learners</strong> and <strong>Grade 10–11 Business Studies learners</strong> will showcase and sell products and services they’ve developed as part of their curriculum.
+        </p>
+      ),
+      moreInfo: (
+        <>
+          <p><strong>This event is compulsory for all Grade 9 learners</strong> as it forms a vital part of the EMS curriculum focused on entrepreneurial development.</p>
+          <p>On the day, learners will:</p>
+          <ul>
+            <li>Plan and manage their own mini-businesses</li>
+            <li>Learn budgeting, profit & loss</li>
+            <li>Practice customer service and teamwork</li>
+            <li>Explore marketing and sales strategies</li>
+            <li>Develop leadership and decision-making skills</li>
+          </ul>
+          <p>IMPORTANT:</p>
+          <ul>
+            <li>Stalls will cost R250 (shared among team members)</li>
+            <li>Each learner must contribute to the business venture</li>
+            <li>This is a team effort and ALL educators will be involved</li>
+          </ul>
+        </>
+      ),
+    },
+    {
+      title: "Civies Day (FOR THE WHOLE SCHOOL)",
+      date: new Date("2025-10-24T08:00:00"),
+      description: "Theme for dress-up: Spring.",
+      moreInfo: "All funds raised on the day will be used for school maintenance and repairs.",
+    },
+    {
+      title: "Matric Dance",
+      date: new Date("2025-09-20T18:00:00"),
+      description: "An elegant evening celebrating the journey and achievements of our Grade 12 learners before they graduate.",
+      moreInfo: "Theme: 'Enchanted Evening'. Dress code: Formal. Includes dinner, dancing, and photo booths. Tickets available from the school office.",
+    },
+    {
+      title: "Matric Final Exams Start - Computer Applications Tech P1",
+      date: new Date("2025-10-21T09:00:00"),
+      description: "The official start of the Grade 12 final exams with Computer Applications Tech P1 Practical.",
+      moreInfo: "First exam of the NSC timetable. Ensure all devices are prepared. Revision sessions available prior.",
+    },
+    {
+      title: "English HL P1 Exam",
+      date: new Date("2025-10-29T09:00:00"),
+      description: "Key language exam for Matric students.",
+      moreInfo: "Focus on comprehension and language skills. Duration: 2hrs. Study tips: Practice past papers and vocabulary.",
+    },
+    {
+      title: "Mathematics P1 Exam",
+      date: new Date("2025-10-31T09:00:00"),
+      description: "Core Mathematics exam for Grade 12.",
+      moreInfo: "Covers algebra, geometry, etc. Duration: 3hrs. Extra tutoring sessions scheduled.",
+    },
+    {
+      title: "End of Matric Exams",
+      date: new Date("2025-11-27T09:00:00"),
+      description: "Final day of NSC examinations with CAT/IT rewrites.",
+      moreInfo: "Celebrate the end with a school assembly. Results expected in January 2026.",
+    },
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
   ];
 
   const [timers, setTimers] = useState(eventsData.map(() => 'Loading...'));
@@ -62,16 +132,48 @@ function Events() {
 
   return (
     <div className="events-page">
+<<<<<<< HEAD
       {/* HERO SECTION */}
       <Hero image={coverImg} title="School Events" type="events" />
 
       {/* Text Section */}
+=======
+      {/* Hero Image Section */}
+      <section
+        className="events-hero"
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100vh',
+          overflow: 'hidden',
+        }}
+      >
+        <img
+          src={coverImg} // ✅ use imported image
+          alt="Events Banner"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
+      </section>
+
+      {/* Text Section Below Image */}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <section className="events-intro">
         <h1>School Events</h1>
         <p>Celebrating milestones and building memories together</p>
       </section>
 
+<<<<<<< HEAD
       {/* Events List Section */}
+=======
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <section className="events-list-section">
         <h2>Upcoming & Recent Events</h2>
 

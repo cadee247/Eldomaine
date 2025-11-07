@@ -12,7 +12,14 @@
   height: 100vh;
   width: 100%;
   overflow: hidden;
+<<<<<<< HEAD
   background-color: #000; /* fallback if image fails */
+=======
+}
+
+.about-hero::before {
+  display: none; /* remove that 80px block at the top */
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 }
 
 .about-hero-img {
@@ -23,10 +30,17 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+<<<<<<< HEAD
   z-index: 1;
 }
 
 /* Text overlay */
+=======
+}
+
+
+/* Hero text overlay */
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 .about-hero-text {
   position: relative;
   z-index: 3;
@@ -34,6 +48,7 @@
   color: var(--white);
   padding: 2rem;
   font-family: var(--font-family);
+<<<<<<< HEAD
   top: 50%;
   transform: translateY(-50%);
 }
@@ -62,6 +77,22 @@
   0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
   40% { transform: translateX(-50%) translateY(-15px); }
   60% { transform: translateX(-50%) translateY(-8px); }
+=======
+}
+
+.about-hero-text h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.about-hero-text p {
+  font-size: 1.2rem;
+  color: #f1f1f1;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 1rem auto 0;
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 }
 
 /* === GENERAL SECTION STYLE === */
@@ -148,7 +179,11 @@
   font-size: 1rem;
 }
 
+<<<<<<< HEAD
 /* === RESPONSIVE === */
+=======
+/* === RESPONSIVE STYLES === */
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 @media (max-width: 1024px) {
   .about-hero {
     height: 85vh;
@@ -156,12 +191,34 @@
 }
 
 @media (max-width: 768px) {
+<<<<<<< HEAD
   .about-hero-text h1 {
     font-size: 2.2rem;
+=======
+  .about-hero {
+    height: auto;
+  }
+
+  .about-hero-img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .about-hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .about-hero-text p {
+    font-size: 1rem;
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
   }
 
   .about-section {
     padding: 1rem;
+<<<<<<< HEAD
+=======
+    font-size: 1rem;
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
   }
 
   .testimonial-container {

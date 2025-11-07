@@ -8,9 +8,15 @@ import {
   FaMusic,
   FaRobot
 } from 'react-icons/fa';
+<<<<<<< HEAD
 import '../css/Curriculum.css';
 import coverImg from '../assets/cover.png'; // ✅ Hero image
 import Hero from '../components/Hero'; // Reusable Hero
+=======
+import curriculumImage from '../assets/Curriculum/pic2.jpg';
+import coverImg from '../assets/cover.png'; // ✅ import hero image
+import '../css/Curriculum.css';
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
 const FlipCard = ({ icon, name, description }) => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -89,16 +95,42 @@ function Curriculum() {
 
   return (
     <>
+<<<<<<< HEAD
       {/* HERO SECTION */}
       <Hero image={coverImg} title="Curriculum & Activities" type="curriculum" />
 
       {/* Text Section */}
+=======
+      {/* HERO IMAGE — FULL SCREEN, ABSOLUTE */}
+      <section className="curriculum-hero" style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
+        <img
+          src={coverImg} // ✅ use imported image
+          alt="Eldomaine High School"
+          className="curriculum-hero-img"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
+      </section>
+
+      {/* Text Section Below Image */}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <section className="curriculum-intro">
         <h1>Eldomaine Secondary School</h1>
         <p>Explore our academic curriculum and extracurricular programs</p>
       </section>
 
+<<<<<<< HEAD
       {/* Curriculum Main Section */}
+=======
+      {/* Main Section */}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <section className="curriculum-section">
         <h2>Choose Grade</h2>
         <select value={selectedGrade} onChange={(e) => setSelectedGrade(e.target.value)} className="grade-selector">
@@ -108,24 +140,46 @@ function Curriculum() {
 
         <div className="curriculum-list-container">
           {selectedGrade === '8-9' &&
+<<<<<<< HEAD
             curriculumData['8-9'].map((subject, index) => <FlipCard key={index} {...subject} />)}
+=======
+            curriculumData['8-9'].map((subject, index) => (
+              <FlipCard key={index} {...subject} />
+            ))}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
           {selectedGrade === '10-12' &&
             Object.entries(curriculumData['10-12']).map(([stream, subjects]) => (
               <div key={stream} className="stream-section">
                 <h3>{stream}</h3>
                 <div className="stream-cards">
+<<<<<<< HEAD
                   {subjects.map((subject, index) => <FlipCard key={index} {...subject} />)}
+=======
+                  {subjects.map((subject, index) => (
+                    <FlipCard key={index} {...subject} />
+                  ))}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
                 </div>
               </div>
             ))}
         </div>
 
+<<<<<<< HEAD
         {/* Extracurriculars */}
         <div className="extracurriculars-section">
           <h2>Extracurricular Activities</h2>
           <div className="extracurriculars-cards">
             {extracurriculars.map((activity, index) => <FlipCard key={index} {...activity} />)}
+=======
+        {/* Extracurricular Activities */}
+        <div className="extracurriculars-section">
+          <h2>Extracurricular Activities</h2>
+          <div className="extracurriculars-cards">
+            {extracurriculars.map((activity, index) => (
+              <FlipCard key={index} {...activity} />
+            ))}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
           </div>
         </div>
       </section>

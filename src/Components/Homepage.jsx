@@ -14,7 +14,11 @@ import enUS from 'date-fns/locale/en-US';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../css/Homepage.css';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import coverImg from '../assets/cover.png';
+=======
+import coverImg from '../assets/cover.png'; // ✅ use the import
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
 const locales = { 'en-US': enUS };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
@@ -25,7 +29,11 @@ function Homepage() {
 
   const schoolCalendar = {
     termStart: new Date('2025-01-15'),
+<<<<<<< HEAD
     termEnd: new Date('2025-12-12'),
+=======
+    termEnd: new Date('2025-12-05'),
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
     holidays: [
       { name: 'Human Rights Day', date: new Date('2025-03-21') },
       { name: 'Freedom Day', date: new Date('2025-04-27') },
@@ -108,15 +116,23 @@ function Homepage() {
 
   return (
     <>
+<<<<<<< HEAD
       {/* HERO SECTION */}
       <main className="homepage" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
         <img
           src={coverImg}
+=======
+      {/* === HERO SECTION (LAZY LOADED IMAGE) === */}
+      <main className="homepage" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+        <img
+          src={coverImg} // ✅ use imported image here
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
           alt="Eldomaine High School"
           className="hero-image"
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
         />
+<<<<<<< HEAD
 
         <motion.div
           className="hero-content"
@@ -169,6 +185,34 @@ function Homepage() {
       </main>
 
       {/* WELCOME SECTION */}
+=======
+      </main>
+
+      <motion.div
+        className="hero-content"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        style={{ textAlign: 'center', padding: '2rem 1rem', backgroundColor: '#f9f9f9' }}
+      >
+        <motion.h1 initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>
+          Ignite Your Future at Eldomaine Secondary High School
+        </motion.h1>
+        <motion.p initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}>
+          Where Ambition Meets Community in Eldorado Park, Johannesburg
+        </motion.p>
+        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, delay: 1 }}>
+          <Link to="/contact">
+            <button>Contact Us</button>
+          </Link>
+          <Link to="/admissions" style={{ marginLeft: '10px' }}>
+            <button>Admissions</button>
+          </Link>
+        </motion.div>
+      </motion.div>
+
+      {/* === WELCOME SECTION === */}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <motion.section className="welcome-text" initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} viewport={{ once: true }}>
         <h1><FaSchool className="icon" /> Our Story Unfolds</h1>
         <p><strong>Your Journey to Excellence Starts Here.</strong></p>
@@ -190,7 +234,11 @@ function Homepage() {
         </div>
       </motion.section>
 
+<<<<<<< HEAD
       {/* CALENDAR SECTION */}
+=======
+      {/* === CALENDAR SECTION === */}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <motion.section className="school-calendar" initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} viewport={{ once: true }}>
         <h2><FaCalendarAlt className="icon" /> School Calendar & Holidays</h2>
 
@@ -246,7 +294,11 @@ function Homepage() {
         </div>
       </motion.section>
 
+<<<<<<< HEAD
       {/* STATS SECTION */}
+=======
+      {/* === STATS SECTION === */}
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <motion.section className="stats-section" id="stats" initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} viewport={{ once: true }}>
         <h2><FaTrophy className="icon" /> School Highlights</h2>
         <div className="stats-grid">

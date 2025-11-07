@@ -19,10 +19,16 @@ function Footer() {
           <h4>Quick Links</h4>
           <ul>
             <li><FaInfoCircle className="footer-icon" /><Link to="/about">About Us</Link></li>
+<<<<<<< HEAD
      
             <li><FaBook className="footer-icon" /><Link to="/subjects">Subjects</Link></li>
             <li><FaEnvelope className="footer-icon" /><Link to="/contact">Contact</Link></li>
              <li><FaUserGraduate className="footer-icon" /><Link to="/admissions">Admissions</Link></li>
+=======
+            <li><FaUserGraduate className="footer-icon" /><Link to="/admissions">Admissions</Link></li>
+            <li><FaBook className="footer-icon" /><Link to="/subjects">Subjects</Link></li>
+            <li><FaEnvelope className="footer-icon" /><Link to="/contact">Contact</Link></li>
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
           </ul>
         </div>
 
