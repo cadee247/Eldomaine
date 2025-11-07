@@ -16,13 +16,31 @@ function Contact() {
   return (
     <>
       {/* HERO IMAGE */}
-      <section className="contact-hero">
-        <img
-          src={coverImage}
-          alt="Contact Banner"
-          className="contact-hero-img"
-        />
-      </section>
+      {/* HERO IMAGE */}
+<section
+  className="contact-hero"
+  style={{
+    position: 'relative',
+    width: '100%',
+    height: '100vh', // ✅ same as FAQ
+    overflow: 'hidden',
+  }}
+>
+  <img
+    src={coverImage}
+    alt="Contact Banner"
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center',
+    }}
+  />
+</section>
+
 
       {/* Text Below Image */}
       <section className="contact-intro">
