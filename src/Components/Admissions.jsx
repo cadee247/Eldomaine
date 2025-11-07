@@ -10,10 +10,7 @@ import {
 import '../css/Admissions.css';
 import { motion, useAnimation } from 'framer-motion';
 import coverImg from '../assets/cover.png'; // ✅ import image
-<<<<<<< HEAD
 import Hero from '../components/Hero'; // Reusable Hero component
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
 function Admissions() {
   const containerVariants = {
@@ -44,44 +41,22 @@ function Admissions() {
 
   return (
     <>
-<<<<<<< HEAD
       {/* === HERO SECTION (REUSABLE) === */}
       <Hero image={coverImg} title="Admissions Page" type="admissions" />
 
       {/* === TEXT SECTION BELOW IMAGE === */}
-=======
-      {/* HERO IMAGE — FULL SCREEN, ABSOLUTE, NO TEXT */}
-      <section className="admission-hero" style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
-        <img
-          src={coverImg} // ✅ use imported image
-          alt="Eldomaine High School"
-          className="about-hero-img"
-          loading="lazy"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-      </section>
-
-      {/* TEXT SECTION BELOW IMAGE */}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <section className="admission-intro">
         <h1><FaSchool className="icon" /> Admission Enquiry</h1>
         <p>Start your journey with Eldomaine Secondary School</p>
       </section>
 
-<<<<<<< HEAD
       {/* === MAIN CONTENT === */}
-=======
-      {/* MAIN CONTENT */}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
-      <motion.section className="admission-form-section" variants={containerVariants} initial="hidden" animate="visible">
+      <motion.section
+        className="admission-form-section"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {/* Eligibility */}
         <motion.div className="admission-card" variants={itemVariants} whileHover="hover">
           <FaUserGraduate className="admission-icon" />
@@ -99,7 +74,6 @@ function Admissions() {
           <h2>Application Process</h2>
 
           {[0, 1, 2, 3].map((i) => (
-<<<<<<< HEAD
             <motion.div
               key={i}
               className="admission-step"
@@ -108,9 +82,6 @@ function Admissions() {
               animate={stepControls}
               variants={stepVariants}
             >
-=======
-            <motion.div key={i} className="admission-step" custom={i} initial="hidden" animate={stepControls} variants={stepVariants}>
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
               {i === 0 && (
                 <>
                   <h3><FaFileAlt /> 1. Collect Application Forms</h3>
