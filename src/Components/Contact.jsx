@@ -11,45 +11,13 @@ import {
   FaPhoneAlt,
   FaSchool,
 } from 'react-icons/fa';
-<<<<<<< HEAD
-import Hero from '../components/Hero';
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
+import Hero from '../components/Hero'; // Reusable Hero component
 
 function Contact() {
   return (
     <>
-<<<<<<< HEAD
       {/* HERO SECTION */}
       <Hero image={coverImage} title="Get In Touch" type="contact" />
-=======
-      {/* HERO IMAGE */}
-      {/* HERO IMAGE */}
-<section
-  className="contact-hero"
-  style={{
-    position: 'relative',
-    width: '100%',
-    height: '100vh', // ✅ same as FAQ
-    overflow: 'hidden',
-  }}
->
-  <img
-    src={coverImage}
-    alt="Contact Banner"
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      objectPosition: 'center',
-    }}
-  />
-</section>
-
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
       {/* Text Below Image */}
       <section className="contact-intro">
@@ -119,11 +87,7 @@ function Contact() {
           </label>
 
           <button type="submit" className="submit-btn">
-<<<<<<< HEAD
             <FaPaperPlane className="icon" /> Send Message
-=======
-            <FaPaperPlane className="icon" /> Send Message 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
           </button>
         </form>
       </section>
