@@ -110,7 +110,7 @@ function Contact() {
           </label>
 
           <button type="submit" className="submit-btn">
-            <FaPaperPlane className="icon" /> Send Message
+            <FaPaperPlane className="icon" /> Send Message 
           </button>
         </form>
       </section>
