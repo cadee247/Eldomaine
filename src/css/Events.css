@@ -14,33 +14,35 @@
   50% { transform: scale(1.05); }
 }
 
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.9; }
+}
+
 /* === HERO SECTION === */
 .events-hero {
   position: relative;
   width: 100%;
-  min-height: 80vh; /* visible portion */
-  padding-top: 80px; /* space for navbar */
+  min-height: 80vh;
+  padding-top: 80px;
   overflow: hidden;
   display: flex;
-  align-items: center; /* center content vertically */
+  align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-/* Hero image */
 .events-hero-img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;      /* fills container, may crop */
+  object-fit: cover;
   object-position: center top;
-  display: block;
-  z-index: 0;             /* behind any overlay text */
+  z-index: 0;
 }
 
-/* Optional overlay text */
 .events-hero-overlay {
   position: relative;
   z-index: 2;
@@ -117,6 +119,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  align-items: stretch; /* ✅ Ensures equal card height */
 }
 
 /* === Event Card === */
@@ -128,13 +131,25 @@
   transition: var(--transition);
   cursor: pointer;
   border: 2px solid var(--valley-green);
-  overflow: hidden; /* ✅ Prevent pulse from overflowing */
-  position: relative; /* Helps keep internal scaling stable */
+  overflow: hidden;
+  position: relative;
+
+  /* 🔹 Flex layout for even content + aligned button */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .event-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.event-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .event-info h3 {
@@ -145,7 +160,8 @@
   font-size: 1.25rem;
 }
 
-.event-date, .event-timer {
+.event-date,
+.event-timer {
   display: flex;
   align-items: center;
   margin: 0.5rem 0;
@@ -158,8 +174,10 @@
   transform-origin: center;
 }
 
+/* === More Info Button === */
 .more-info-btn {
-  margin-top: 1rem;
+  margin-top: auto; /* pushes it to the bottom */
+  align-self: center;
   padding: 0.5rem 1rem;
   background: var(--valley-green);
   color: var(--white);
@@ -169,8 +187,6 @@
   transition: var(--transition);
   width: 100%;
   max-width: 150px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .more-info-btn:hover {
@@ -179,7 +195,6 @@
 }
 
 /* === Modal Styles === */
-/* === Modal Styles (Updated for Mobile) === */
 .event-modal-overlay {
   position: fixed;
   top: 0;
@@ -192,7 +207,7 @@
   justify-content: center;
   z-index: 1000;
   padding: 1rem;
-  overflow-y: auto; /* Enable scroll if content overflows */
+  overflow-y: auto;
 }
 
 .event-modal {
@@ -202,8 +217,8 @@
   box-shadow: var(--shadow);
   max-width: 500px;
   width: 100%;
-  max-height: 90vh;  /* Limit height on mobile */
-  overflow-y: auto;  /* Scroll inside modal if needed */
+  max-height: 90vh;
+  overflow-y: auto;
   text-align: center;
   animation: fadeIn 0.3s ease forwards;
 }
@@ -219,7 +234,7 @@
   line-height: 1.5;
   color: var(--dark-text);
   margin-bottom: 1rem;
-  text-align: left; /* Optional for readability */
+  text-align: left;
 }
 
 .event-modal button {
@@ -232,7 +247,7 @@
   cursor: pointer;
 }
 
-/* Scrollbar styling (optional, nice for webkit) */
+/* Scrollbar styling */
 .event-modal::-webkit-scrollbar {
   width: 6px;
 }
@@ -255,39 +270,6 @@
   .event-modal p {
     font-size: 0.9rem;
   }
-}
-
-@media (max-width: 480px) {
-  .event-modal {
-    max-width: 95%;
-    padding: 1rem;
-  }
-
-  .event-modal h3 {
-    font-size: 1.1rem;
-  }
-
-  .event-modal p {
-    font-size: 0.85rem;
-  }
-}
-
-/* === Responsive === */
-@media (max-width: 1024px) {
-  .events-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .events-list-section {
-    padding: 1.5rem;
-  }
-
-  .events-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
 
   .event-card {
     padding: 1rem;
@@ -297,16 +279,13 @@
     font-size: 1.1rem;
   }
 
-  .event-date, .event-timer {
+  .event-date,
+  .event-timer {
     font-size: 0.9rem;
   }
 
   .more-info-btn {
     max-width: 100%;
-  }
-
-  .event-modal {
-    padding: 1.5rem;
   }
 }
 
@@ -319,11 +298,21 @@
     font-size: 1rem;
   }
 
-  .event-date, .event-timer {
+  .event-date,
+  .event-timer {
     font-size: 0.85rem;
   }
-  @keyframes softPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.02); opacity: 0.9; }
-}
+
+  .event-modal {
+    max-width: 95%;
+    padding: 1rem;
+  }
+
+  .event-modal h3 {
+    font-size: 1.1rem;
+  }
+
+  .event-modal p {
+    font-size: 0.85rem;
+  }
 }
