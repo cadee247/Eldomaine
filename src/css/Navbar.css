@@ -11,29 +11,24 @@
   padding: 0.75rem 2rem;
   background: var(--brand-green-900);
   color: var(--white);
-  flex-wrap: nowrap;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   height: 80px;
   position: relative;
   z-index: 1000;
-  overflow: hidden;
 }
 
-/* === NAV SECTIONS === */
+/* Force equal width for left and right */
 .nav-left,
 .nav-right {
+  flex: 1 1 0;
   display: flex;
-  align-items: center;
   gap: 1.2rem;
-  white-space: nowrap;
-  flex-basis: 0;
-  flex-grow: 1;
+  align-items: center;
+  justify-content: flex-start;
 }
 
+/* Prevent badge from stretching or shrinking */
 .nav-center {
-  flex-shrink: 0;
-  flex-grow: 0;
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
