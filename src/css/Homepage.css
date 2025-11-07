@@ -231,10 +231,27 @@
   background: rgba(255,255,255,0.2);
 }
 
+/* === Today's Date Indicator (Bigger Star) === */
 .rbc-today {
-  background-color: var(--valley-green) !important;
-  color: var(--white) !important;
+  background-color: transparent !important;
+  position: relative;
+  color: inherit !important;
 }
+
+.rbc-today::after {
+  content: "★";
+  position: absolute;
+  bottom: 2px; /* adjusted for larger star */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.6rem; /* 🔹 bigger star size */
+  color: var(--valley-green);
+  opacity: 0.95;
+}
+
+
+
+
 
 .rbc-event {
   background-color: var(--valley-green) !important;
