@@ -5,8 +5,8 @@
 
 /* === NAVBAR STRUCTURE === */
 .navbar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0.75rem 2rem;
   background: var(--brand-green-900);
@@ -16,22 +16,27 @@
   z-index: 1000;
 }
 
-/* Force equal width for left and right */
-.nav-left,
-.nav-right {
-  flex: 1 1 0;
+.nav-left {
+  grid-column: 1;
   display: flex;
   gap: 1.2rem;
   align-items: center;
   justify-content: flex-start;
 }
 
-/* Prevent badge from stretching or shrinking */
 .nav-center {
-  flex: 0 0 auto;
+  grid-column: 2;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.nav-right {
+  grid-column: 3;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 /* === SCHOOL BADGE === */
