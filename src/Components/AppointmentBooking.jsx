@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fa';
 import '../css/AppointmentBooking.css';
 import coverImage from '../assets/cover.png'; // Hero image
-import Hero from '../components/Hero'; // Reusable Hero component
+import Hero from '../Components/Hero'; // Reusable Hero component
 
 function AppointmentRequest() {
   const [formData, setFormData] = useState({
