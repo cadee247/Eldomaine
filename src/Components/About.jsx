@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../css/About.css';
 import coverImg from '../assets/cover.png'; // Hero image
-import Hero from '../components/Hero'; // Reusable Hero component
+import Hero from '../Components/Hero'; // Reusable Hero component
 
 // Error boundary for timeline
 class TimelineErrorBoundary extends React.Component {
