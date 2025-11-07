@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/Contact.css';
 import coverImage from '../assets/cover.png';
-import Hero from '../components/Hero';
+import Hero from '../Components/Hero';
 import {
   FaUser,
   FaEnvelope,
