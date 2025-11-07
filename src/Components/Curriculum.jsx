@@ -10,7 +10,7 @@ import {
 } from 'react-icons/fa';
 import '../css/Curriculum.css';
 import coverImg from '../assets/cover.png'; // ✅ Hero image
-import Hero from '../components/Hero'; // Reusable Hero component
+import Hero from '../Components/Hero'; // Reusable Hero component
 
 const FlipCard = ({ icon, name, description }) => {
   const [isFlipped, setIsFlipped] = useState(false);
