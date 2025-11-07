@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../css/Gallery.css";
 import { FaTimesCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import coverImg from '../assets/cover.png'; // ✅ import hero image
-<<<<<<< HEAD
-import Hero from '../components/Hero'; // reusable Hero component
-
-=======
+import coverImg from "../assets/cover.png"; // ✅ hero image
+import Hero from "../components/Hero"; // reusable Hero component
 
 // Automatically import all .png, .jpg, and .jpeg images
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 const importImages = () => {
   const images = import.meta.glob("../assets/Gallery/*.{png,jpg,jpeg}", {
     eager: true,
     import: "default",
   });
   const imgsArray = Object.values(images);
-  return imgsArray.slice(1);
+  return imgsArray.slice(1); // skip first if needed
 };
 
 const Gallery = () => {
@@ -49,43 +45,12 @@ const Gallery = () => {
 
   return (
     <div className="gallery-page">
-<<<<<<< HEAD
       {/* Hero Section */}
       <Hero image={coverImg} title="📸 Gallery Highlights" type="gallery" />
 
       {/* Gallery Grid */}
       <section className="gallery-grid-section">
         <h2>Explore Our Highlights</h2>
-=======
-      {/* Hero Image */}
-      <section
-        className="gallery-hero"
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100vh",
-          overflow: "hidden",
-        }}
-      >
-        <img
-          src={coverImg} // ✅ use imported image
-          alt="Gallery Banner"
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center",
-          }}
-        />
-      </section>
-
-      {/* Gallery Grid */}
-      <section className="gallery-grid-section">
-        <h2>📸 Explore Our Highlights</h2>
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
         {images.length === 0 ? (
           <div className="gallery-loading">
             <h3>No images found in <code>src/assets/Gallery/</code></h3>
@@ -93,15 +58,11 @@ const Gallery = () => {
         ) : (
           <div className="gallery-grid">
             {images.map((img, index) => (
-<<<<<<< HEAD
-              <div key={index} className="gallery-item" onClick={() => openLightbox(index)}>
-=======
               <div
                 key={index}
                 className="gallery-item"
                 onClick={() => openLightbox(index)}
               >
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
                 <img
                   src={img}
                   alt={`Gallery ${index + 1}`}
@@ -124,21 +85,21 @@ const Gallery = () => {
       {selectedIndex !== null && (
         <div className="lightbox" onClick={closeLightbox}>
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <FaTimesCircle className="close-icon" onClick={closeLightbox} style={{ color: "#ff5555" }} />
+            <FaTimesCircle
+              className="close-icon"
+              onClick={closeLightbox}
+              style={{ color: "#ff5555" }}
+            />
             <FaChevronLeft className="nav-arrow nav-left" onClick={goToPrev} />
             <img
               src={images[selectedIndex]}
               alt="Full preview"
               className="lightbox-img"
-<<<<<<< HEAD
-              style={{ maxHeight: "80vh", maxWidth: "90vw", objectFit: "contain" }}
-=======
               style={{
                 maxHeight: "80vh",
                 maxWidth: "90vw",
                 objectFit: "contain",
               }}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             />
             <FaChevronRight className="nav-arrow nav-right" onClick={goToNext} />
           </div>
