@@ -10,7 +10,7 @@ import '../css/Events.css';
 import { motion } from 'framer-motion';
 import MatricPDF from '../assets/Events/Matric Timetable 2025 – Full NSC Exam Dates & Times (South Africa).pdf';
 import coverImg from '../assets/cover.png';
-import Hero from '../components/Hero'; // Reusable hero component
+import Hero from '../Components/Hero'; // Reusable hero component
 
 function Events() {
   const [selectedEvent, setSelectedEvent] = useState(null);
