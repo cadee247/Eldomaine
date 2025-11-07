@@ -51,14 +51,6 @@
 }
 
 /* ===== QUICK LINKS ===== */
-.footer-links h4,
-.footer-social h4,
-.footer-timetable h4 {
-  margin-bottom: 0.8rem;
-  color: var(--brand-green-500);
-  font-size: 1.1rem;
-}
-
 .footer-links ul {
   list-style: none;
   padding: 0;
@@ -69,8 +61,16 @@
   margin: 0.5rem 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* left-align the content */
   gap: 0.5rem;
+}
+
+.footer-links .footer-icon {
+  width: 20px;        /* fixed width for icons */
+  min-width: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-links a {
@@ -83,6 +83,7 @@
 .footer-links a:hover {
   color: var(--white);
 }
+
 
 /* ===== SOCIAL ICONS ===== */
 .footer-social .social-icons {
