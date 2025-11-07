@@ -7,13 +7,11 @@ import {
   FaClipboardList,
   FaEnvelope,
   FaCheckCircle,
+  FaSchool
 } from 'react-icons/fa';
 import '../css/AppointmentBooking.css';
 import coverImage from '../assets/cover.png'; // Hero image
-<<<<<<< HEAD
-import Hero from '../components/Hero';
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
+import Hero from '../components/Hero'; // Reusable Hero component
 
 function AppointmentRequest() {
   const [formData, setFormData] = useState({
@@ -42,17 +40,11 @@ function AppointmentRequest() {
     'Ms Sitole': '27823456789',
   };
 
-<<<<<<< HEAD
-  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const handleSubmit = (e) => {
-=======
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
   function handleSubmit(e) {
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
     e.preventDefault();
     const message = `Appointment Request:
 Parent: ${formData.parentName} ${formData.parentSurname}
@@ -85,71 +77,31 @@ Reason: ${formData.reason}`;
       date: '',
       teacher: 'Select Teacher',
     });
-<<<<<<< HEAD
-  };
+  }
 
   return (
     <>
       {/* HERO IMAGE — full viewport height */}
       <Hero image={coverImage} title="Book a Teacher Appointment" type="appointments" />
 
-=======
-  }
-
-  return (
-    <>
-      {/* HERO IMAGE — full viewport height like About */}
-      <section className="appointment-hero" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
-        <img
-          src={coverImage}
-          alt="Appointment Banner"
-          className="appointment-hero-img"
-          loading="lazy"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-      </section>
-
       {/* FORM SECTION */}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <motion.section
         className="appointment-request"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-<<<<<<< HEAD
+        {/* PAGE TITLE */}
         <motion.h2 initial={{ scale: 0.9 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}>
           Request a Meeting with a Teacher
         </motion.h2>
 
-=======
-        {/* PAGE TITLE */}
-        <motion.h2
-          initial={{ scale: 0.9 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          Request a Meeting with a Teacher
-        </motion.h2>
-
         {/* NOTE */}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
         <div className="appointment-note">
           <strong>NB:</strong> Meetings are available Monday to Thursday.
           Weekends and public holidays are unavailable. Each meeting lasts one hour and must be booked in advance.
         </div>
 
-<<<<<<< HEAD
-        <motion.form onSubmit={handleSubmit} className="appointment-form">
-=======
         {/* FORM */}
         <motion.form
           onSubmit={handleSubmit}
@@ -158,7 +110,6 @@ Reason: ${formData.reason}`;
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
           <div className="form-grid">
             <div className="form-group">
               <label><FaUser /> Parent Name</label>
@@ -170,10 +121,7 @@ Reason: ${formData.reason}`;
                 required
               />
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             <div className="form-group">
               <label><FaUser /> Parent Surname</label>
               <input
@@ -184,10 +132,7 @@ Reason: ${formData.reason}`;
                 required
               />
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             <div className="form-group">
               <label><FaEnvelope /> Parent Email</label>
               <input
@@ -199,10 +144,7 @@ Reason: ${formData.reason}`;
                 required
               />
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             <div className="form-group">
               <label><FaUser /> Student Name</label>
               <input
@@ -213,10 +155,7 @@ Reason: ${formData.reason}`;
                 required
               />
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             <div className="form-group">
               <label><FaUser /> Student Surname</label>
               <input
@@ -227,10 +166,7 @@ Reason: ${formData.reason}`;
                 required
               />
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             <div className="form-group">
               <label><FaClipboardList /> Student Grade</label>
               <select name="grade" value={formData.grade} onChange={handleChange} required>
@@ -240,10 +176,7 @@ Reason: ${formData.reason}`;
                 ))}
               </select>
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             <div className="form-group">
               <label><FaChalkboardTeacher /> Teacher</label>
               <select name="teacher" value={formData.teacher} onChange={handleChange} required>
@@ -252,10 +185,7 @@ Reason: ${formData.reason}`;
                 ))}
               </select>
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             <div className="form-group">
               <label><FaCalendarAlt /> Preferred Date</label>
               <input
@@ -267,10 +197,7 @@ Reason: ${formData.reason}`;
                 min={new Date().toISOString().split('T')[0]}
               />
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             <div className="form-group form-textarea">
               <label><FaEnvelope /> Reason for Appointment</label>
               <textarea
@@ -293,10 +220,7 @@ Reason: ${formData.reason}`;
           </motion.button>
         </motion.form>
 
-<<<<<<< HEAD
-=======
         {/* SUCCESS POPUP */}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
         {showSuccess && (
           <motion.div
             className="success-popup"
