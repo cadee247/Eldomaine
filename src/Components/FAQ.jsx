@@ -11,7 +11,7 @@ function FAQ() {
     { question: "When do admissions open?", answer: "Admissions for the new academic year open every September. Application forms are available at the school’s main office and online on our Admissions page." },
     { question: "What time does the school dismiss?", answer: "Mon-thurs(14:45pm) fridays(12:45pm)." },
     { question: "How much is school fees?", answer: "Eldomaine Secondary is non-fee paying school." },
-    { question: "Where can i buy uniform?", answer: "We offer education from Grade 8 to Grade 12, preparing learners for the National Senior Certificate (NSC)." },
+    { question: "Where can i buy uniform?", answer: "Seedats Schoolwear Kliptown.22 union road shop no.8, Kliptown 1812" },
     { question: "Is there a feeding scheme?", answer: "Yes we have a feeding scheme available." },
     { question: "What is the EMIS number?", answer: "EMIS:700120030." },
     { question: "Who is the current principal?", answer: "Ashley Pienaar." },
