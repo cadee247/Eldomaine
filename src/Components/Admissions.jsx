@@ -10,7 +10,7 @@ import {
 import '../css/Admissions.css';
 import { motion, useAnimation } from 'framer-motion';
 import coverImg from '../assets/cover.png'; // ✅ import image
-import Hero from '../components/Hero'; // Reusable Hero component
+import Hero from '../Components/Hero'; // Reusable Hero component
 
 function Admissions() {
   const containerVariants = {
