@@ -1,0 +1,177 @@
+:root {
+  --valley-green: #1c3d2a;
+  --white: #ffffff;
+  --font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+/* === HERO SECTION === */
+.about-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: #000; /* fallback if image fails */
+}
+
+.about-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+/* Text overlay */
+.about-hero-text {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: var(--white);
+  padding: 2rem;
+  font-family: var(--font-family);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.about-hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* === ARROW ANIMATION === */
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: var(--valley-green);
+  animation: bounce 2s infinite;
+  z-index: 4;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-15px); }
+  60% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* === GENERAL SECTION STYLE === */
+.about-section {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  color: var(--valley-green);
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  color: var(--valley-green);
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--valley-green);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+/* === VALUES LIST === */
+.values-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.values-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  font-size: 1rem;
+  color: var(--valley-green);
+  font-weight: 500;
+}
+
+/* === TESTIMONIALS === */
+.testimonial-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.testimonial-slide {
+  background: var(--white);
+  border: 2px solid var(--valley-green);
+  border-radius: var(--radius);
+  color: var(--valley-green);
+  padding: 1.5rem;
+  text-align: center;
+  width: 260px;
+  min-height: 160px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  transition: var(--transition);
+}
+
+.testimonial-slide:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.1);
+}
+
+.testimonial-slide p {
+  font-style: italic;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.testimonial-slide h4 {
+  font-weight: 700;
+  color: var(--valley-green);
+  font-size: 1rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .about-hero {
+    height: 85vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .about-section {
+    padding: 1rem;
+  }
+
+  .testimonial-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .testimonial-slide {
+    width: 90%;
+    max-width: 300px;
+  }
+}
