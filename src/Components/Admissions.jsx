@@ -1,136 +1,240 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
-  FaUserGraduate,
-  FaClipboardList,
-  FaFileAlt,
+  FaUser,
+  FaCalendarAlt,
   FaChalkboardTeacher,
+  FaClipboardList,
+  FaEnvelope,
   FaCheckCircle,
   FaSchool
 } from 'react-icons/fa';
-import '../css/Admissions.css';
-import { motion, useAnimation } from 'framer-motion';
-import coverImg from '../assets/cover.png'; // ✅ import image
+import '../css/AppointmentBooking.css';
+import coverImage from '../assets/cover.png'; // Hero image
 import Hero from '../components/Hero'; // Reusable Hero component
 
-function Admissions() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5, staggerChildren: 0.2 } }
+function AppointmentRequest() {
+  const [formData, setFormData] = useState({
+    parentName: '',
+    parentSurname: '',
+    parentEmail: '',
+    studentName: '',
+    studentSurname: '',
+    grade: '',
+    reason: '',
+    date: '',
+    teacher: 'Select Teacher',
+  });
+
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const teacherNumbers = {
+    'Select Teacher': '',
+    'Mr Pienaar': '2795721964',
+    'Mr Fernades': '27829876543',
+    'Ms Titus': '27823456789',
+    'Ms Ngwenya': '27823456789',
+    'Ms Richards': '27823456789',
+    'Ms Wright': '27823456789',
+    'Ms Symallon': '27823456789',
+    'Ms Sitole': '27823456789',
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    hover: { scale: 1.02, transition: { duration: 0.3 } }
-  };
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
 
-  const stepControls = useAnimation();
+  function handleSubmit(e) {
+    e.preventDefault();
+    const message = `Appointment Request:
+Parent: ${formData.parentName} ${formData.parentSurname}
+Email: ${formData.parentEmail}
+Student: ${formData.studentName} ${formData.studentSurname}
+Grade: ${formData.grade}
+Date: ${formData.date}
+Reason: ${formData.reason}`;
 
-  useEffect(() => {
-    stepControls.start('visible');
-  }, [stepControls]);
+    const encoded = encodeURIComponent(message);
+    const teacherNumber = teacherNumbers[formData.teacher];
 
-  const stepVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: (i) => ({
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, delay: i * 0.3 }
-    })
-  };
+    if (!teacherNumber) {
+      alert('Please select a teacher before sending your request.');
+      return;
+    }
+
+    window.open(`https://wa.me/${teacherNumber}?text=${encoded}`, '_blank');
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 3000);
+
+    setFormData({
+      parentName: '',
+      parentSurname: '',
+      parentEmail: '',
+      studentName: '',
+      studentSurname: '',
+      grade: '',
+      reason: '',
+      date: '',
+      teacher: 'Select Teacher',
+    });
+  }
 
   return (
     <>
-      {/* === HERO SECTION (REUSABLE) === */}
-      <Hero image={coverImg} title="Admissions Page" type="admissions" />
+      {/* HERO IMAGE — full viewport height */}
+      <Hero image={coverImage} title="Book a Teacher Appointment" type="appointments" />
 
-      {/* === TEXT SECTION BELOW IMAGE === */}
-      <section className="admission-intro">
-        <h1><FaSchool className="icon" /> Admission Enquiry</h1>
-        <p>Start your journey with Eldomaine Secondary School</p>
-      </section>
-
-      {/* === MAIN CONTENT === */}
+      {/* FORM SECTION */}
       <motion.section
-        className="admission-form-section"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        className="appointment-request"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
       >
-        {/* Eligibility */}
-        <motion.div className="admission-card" variants={itemVariants} whileHover="hover">
-          <FaUserGraduate className="admission-icon" />
-          <h2>Admission Eligibility</h2>
-          <ul>
-            <li>Completed Grade 7 at a recognized primary school.</li>
-            <li>Priority for Eldorado Park and nearby communities.</li>
-            <li>Submit proof of residence, birth certificate, and latest report.</li>
-          </ul>
-        </motion.div>
+        {/* PAGE TITLE */}
+        <motion.h2 initial={{ scale: 0.9 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}>
+          Request a Meeting with a Teacher
+        </motion.h2>
 
-        {/* Application Process */}
-        <motion.div className="admission-card" variants={itemVariants} whileHover="hover">
-          <FaClipboardList className="admission-icon" />
-          <h2>Application Process</h2>
+        {/* NOTE */}
+        <div className="appointment-note">
+          <strong>NB:</strong> Meetings are available Monday to Thursday.
+          Weekends and public holidays are unavailable. Each meeting lasts one hour and must be booked in advance.
+        </div>
 
-          {[0, 1, 2, 3].map((i) => (
-            <motion.div
-              key={i}
-              className="admission-step"
-              custom={i}
-              initial="hidden"
-              animate={stepControls}
-              variants={stepVariants}
-            >
-              {i === 0 && (
-                <>
-                  <h3><FaFileAlt /> 1. Collect Application Forms</h3>
-                  <p>Available at the school office (Mon–Fri, 08:00–15:00).</p>
-                </>
-              )}
-              {i === 1 && (
-                <>
-                  <h3><FaFileAlt /> 2. Submit Required Documents</h3>
-                  <ul>
-                    <li>Completed form</li>
-                    <li>Certified birth certificate</li>
-                    <li>Latest school report</li>
-                    <li>Proof of residence</li>
-                    <li>Parent/guardian ID copy</li>
-                  </ul>
-                </>
-              )}
-              {i === 2 && (
-                <>
-                  <h3><FaChalkboardTeacher /> 3. Interview & Placement Review</h3>
-                  <p>Selected applicants may be invited for an interview.</p>
-                </>
-              )}
-              {i === 3 && (
-                <>
-                  <h3><FaCheckCircle /> 4. Acceptance Notification</h3>
-                  <p>Final decisions via SMS or phone call.</p>
-                </>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* FORM */}
+        <motion.form
+          onSubmit={handleSubmit}
+          className="appointment-form"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          <div className="form-grid">
+            <div className="form-group">
+              <label><FaUser /> Parent Name</label>
+              <input
+                name="parentName"
+                placeholder="Parent First Name"
+                value={formData.parentName}
+                onChange={handleChange}
+                required
+              />
+            </div>
 
-        {/* What We Offer */}
-        <motion.div className="admission-card" variants={itemVariants} whileHover="hover">
-          <FaSchool className="admission-icon" />
-          <h2>What We Offer</h2>
-          <ul>
-            <li>CAPS-aligned curriculum (Grade 8–12)</li>
-            <li>Focus on Maths, Sciences, Technology, Languages</li>
-            <li>Life Orientation & Creative Arts</li>
-            <li>Support programs & dedicated educators</li>
-            <li>Safe, inclusive learning environment</li>
-          </ul>
-        </motion.div>
+            <div className="form-group">
+              <label><FaUser /> Parent Surname</label>
+              <input
+                name="parentSurname"
+                placeholder="Parent Surname"
+                value={formData.parentSurname}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label><FaEnvelope /> Parent Email</label>
+              <input
+                name="parentEmail"
+                type="email"
+                placeholder="example@email.com"
+                value={formData.parentEmail}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label><FaUser /> Student Name</label>
+              <input
+                name="studentName"
+                placeholder="Student First Name"
+                value={formData.studentName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label><FaUser /> Student Surname</label>
+              <input
+                name="studentSurname"
+                placeholder="Student Surname"
+                value={formData.studentSurname}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="form-group">
+              <label><FaClipboardList /> Student Grade</label>
+              <select name="grade" value={formData.grade} onChange={handleChange} required>
+                <option value="">Select Grade</option>
+                {[8, 9, 10, 11, 12].map((grade) => (
+                  <option key={grade} value={grade}>Grade {grade}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label><FaChalkboardTeacher /> Teacher</label>
+              <select name="teacher" value={formData.teacher} onChange={handleChange} required>
+                {Object.keys(teacherNumbers).map((teacher) => (
+                  <option key={teacher} value={teacher}>{teacher}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label><FaCalendarAlt /> Preferred Date</label>
+              <input
+                type="date"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+                min={new Date().toISOString().split('T')[0]}
+              />
+            </div>
+
+            <div className="form-group form-textarea">
+              <label><FaEnvelope /> Reason for Appointment</label>
+              <textarea
+                name="reason"
+                placeholder="Brief description of the meeting"
+                value={formData.reason}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          <motion.button
+            type="submit"
+            className="submit-btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaEnvelope style={{ marginRight: '6px' }} /> Send Request
+          </motion.button>
+        </motion.form>
+
+        {/* SUCCESS POPUP */}
+        {showSuccess && (
+          <motion.div
+            className="success-popup"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            <FaCheckCircle size={40} color="#007c5e" />
+            <p>Your appointment request has been sent!</p>
+          </motion.div>
+        )}
       </motion.section>
     </>
   );
 }
 
-export default Admissions;
+export default AppointmentRequest;
