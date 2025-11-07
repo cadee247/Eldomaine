@@ -9,7 +9,7 @@ import {
   FaRobot
 } from 'react-icons/fa';
 import '../css/Curriculum.css';
-import coverImg from '../assets/cover.png'; // ✅ Hero image
+import coverImg from '../assets/cover.png'; // Hero image
 import Hero from '../components/Hero'; // Reusable Hero component
 
 const FlipCard = ({ icon, name, description }) => {
@@ -101,7 +101,11 @@ function Curriculum() {
       {/* Main Section */}
       <section className="curriculum-section">
         <h2>Choose Grade</h2>
-        <select value={selectedGrade} onChange={(e) => setSelectedGrade(e.target.value)} className="grade-selector">
+        <select
+          value={selectedGrade}
+          onChange={(e) => setSelectedGrade(e.target.value)}
+          className="grade-selector"
+        >
           <option value="8-9">Grades 8–9</option>
           <option value="10-12">Grades 10–12</option>
         </select>
