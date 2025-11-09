@@ -12,7 +12,7 @@ import { Calendar as BigCalendar, dateFnsLocalizer } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import enUS from 'date-fns/locale/en-US';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import '../css/Homepage.css';
+import '../css/Homepage.css';  
 import { Link } from 'react-router-dom';
 import coverImg from '../assets/cover.png';
 
