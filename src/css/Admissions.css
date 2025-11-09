@@ -8,7 +8,6 @@
   --transition: all 0.3s ease;
 }
 
-<<<<<<< HEAD
 /* === HERO SECTION === */
 .admission-hero {
   position: relative;
@@ -36,7 +35,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  color: #fff;
+  color: var(--white);
   z-index: 2;
   font-family: var(--font-family);
   animation: fadeIn 1s ease-out forwards;
@@ -50,117 +49,24 @@
   animation: bounceIn 1.5s ease both;
 }
 
-/* Navbar spacer */
-.admission-hero::before {
-  content: "";
-  display: block;
-  height: 80px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: transparent;
-  z-index: 3;
-}
-
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 /* === ANIMATIONS === */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-<<<<<<< HEAD
 @keyframes bounceIn {
   0% { transform: scale(0.8) translate(-50%, -50%); opacity: 0; }
   60% { transform: scale(1.05) translate(-50%, -50%); opacity: 1; }
   100% { transform: scale(1) translate(-50%, -50%); }
 }
 
-=======
-@keyframes subtlePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-/* === HERO SECTION (FIXED) === */
-.admission-hero {
-  height: calc(100vh - 80px); /* assumes navbar is fixed */
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background-color: #000;
-}
-
-
-/* Spacer to prevent navbar overlap */
-.admission-hero::before {
-  content: "";
-  display: block;
-  height: 80px; /* same as navbar height */
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: transparent;
-  z-index: 2;
-}
-
-/* Hero background image */
-.admission-hero-img,
-.admission-hero img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;    /* cover without stretching */
-  object-position: center top; /* shift slightly to show faces */
-  display: block;
-  z-index: 1;
-}
-
-/* Optional text overlay */
-.admission-intro {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  padding: 2rem;
-  color: var(--white);
-}
-
-/* Responsive tweaks */
-@media (max-width: 1024px) {
-  .admission-hero {
-    height: calc(85vh - 80px);
-  }
-}
-
-@media (max-width: 768px) {
-  .admission-hero {
-    height: auto;
-  }
-  .admission-hero-img {
-    height: auto;
-    object-fit: contain;
-  }
-  .admission-intro h1 {
-    font-size: 1.8rem;
-  }
-  .admission-intro p {
-    font-size: 1rem;
-  }
-}
-
-
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
-/* === TEXT BELOW IMAGE === */
+/* === TEXT BELOW HERO IMAGE === */
 .admission-intro {
   text-align: center;
   padding: 2rem 1rem;
   background-color: #f9f9f9;
+  color: var(--dark-text);
 }
 
 .admission-intro h1 {
@@ -175,11 +81,10 @@
 
 .admission-intro p {
   font-size: 1.1rem;
-  color: var(--dark-text);
   margin: 0;
 }
 
-/* === MAIN CONTENT === */
+/* === MAIN CONTENT / FORM CARDS === */
 .admission-form-section {
   max-width: 1000px;
   margin: 3rem auto;
@@ -306,27 +211,31 @@ ul li::before {
   transform: translateY(-2px);
 }
 
-/* === RESPONSIVE === */
+/* === RESPONSIVE STYLES === */
 @media (max-width: 1024px) {
-<<<<<<< HEAD
   .admission-hero-text h1 {
     font-size: 2.5rem;
   }
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
+
   .admission-intro h1 {
     font-size: 2.2rem;
   }
 }
 
 @media (max-width: 768px) {
-<<<<<<< HEAD
+  .admission-hero {
+    height: auto;
+  }
+
+  .admission-hero-img {
+    height: auto;
+    object-fit: contain;
+  }
+
   .admission-hero-text h1 {
     font-size: 2rem;
   }
 
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
   .admission-intro {
     padding: 1.5rem 1rem;
   }
@@ -349,12 +258,4 @@ ul li::before {
   .admission-card {
     padding: 1.5rem;
   }
-
-  .admission-hero-img {
-    object-fit: contain;
-  }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2

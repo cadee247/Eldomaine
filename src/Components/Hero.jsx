@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/hero.css";
+import "../css/Hero.css";
 
 const Hero = ({ image, title, type }) => {
   return (

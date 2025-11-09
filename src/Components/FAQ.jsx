@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineSearch } from 'react-icons/ai';
 import '../css/FAQ.css';
 import coverImg from '../assets/cover.png'; // ✅ hero image
-import Hero from '../components/Hero'; // reusable Hero component
+import Hero from '../Components/Hero'; // reusable Hero component
 
 function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);

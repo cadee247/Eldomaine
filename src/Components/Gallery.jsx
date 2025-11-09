@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../css/Gallery.css";
 import { FaTimesCircle, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import coverImg from "../assets/cover.png"; // ✅ hero image
+
 import Hero from "../components/Hero"; // reusable Hero component
 
 // Automatically import all .png, .jpg, and .jpeg images

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/Contact.css';
-import coverImage from '../assets/cover.png'; // ✅ Use the same hero image
+import coverImage from '../assets/cover.png';
+import Hero from '../Components/Hero';
 import {
   FaUser,
   FaEnvelope,
@@ -11,7 +12,6 @@ import {
   FaPhoneAlt,
   FaSchool,
 } from 'react-icons/fa';
-import Hero from '../components/Hero'; // Reusable Hero component
 
 function Contact() {
   return (
@@ -19,7 +19,9 @@ function Contact() {
       {/* HERO SECTION */}
       <Hero image={coverImage} title="Get In Touch" type="contact" />
 
-      {/* Text Below Image */}
+
+      {/* Intro Text */}
+
       <section className="contact-intro">
         <h1>Get In Touch</h1>
         <p>We’d love to hear from you — connect, visit, or send us a message</p>
@@ -48,19 +50,19 @@ function Contact() {
         </div>
       </section>
 
-      {/* Map */}
-      <div className="map-section">
+      {/* Map Section */}
+      <section className="map-section">
         <iframe
           title="Eldomaine Secondary School Location"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.6921445692887!2d28.031218115062033!3d-26.307883983421624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9560cf0f362557%3A0x6e4f5ec585de3f!2s86%20Mirage%20Rd%2C%20Eldorado%20Park%2C%20Johannesburg!5e0!3m2!1sen!2sza!4v1697697988256!5m2!1sen!2sza"
           width="100%"
           height="400"
-          allowFullScreen=""
+          style={{ border: 0 }}
+          allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          style={{ border: 0 }}
         ></iframe>
-      </div>
+      </section>
 
       {/* Contact Form */}
       <section className="contact-form-section">

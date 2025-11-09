@@ -49,7 +49,7 @@ function Navbar() {
           <Link onClick={toggleMenu} to="/about">About</Link>
           <Link onClick={toggleMenu} to="/donations">Donations</Link>
           <Link onClick={toggleMenu} to="/admissions">Admissions</Link>
-          <Link onClick={toggleMenu} to="/curriculum">Curriculum</Link>
+          <Link onClick={toggleMenu} to="/curriculum">Curriculum</Link> 
           <Link onClick={toggleMenu} to="/events">Events</Link>
           <Link onClick={toggleMenu} to="/faq">FAQ</Link>
           <Link onClick={toggleMenu} to="/news">News</Link>
