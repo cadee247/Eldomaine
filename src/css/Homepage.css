@@ -250,7 +250,6 @@
 }
 
 
-<<<<<<< HEAD
 .scroll-down {
   position: absolute;
   bottom: 20px;
@@ -277,8 +276,7 @@
     bottom: 15px;
   }
 }
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
+
 
 
 
@@ -476,8 +474,112 @@
   gap: 0.5rem;
   font-size: 0.95rem;
   color: #333;
-<<<<<<< HEAD
 }
-=======
+/* === Principal's Message Section === */
+.principal-section {
+  background: var(--white);
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
 }
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
+
+.principal-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  max-width: 1000px;
+  width: 100%;
+  background: var(--white);
+  border: 2px solid var(--valley-green);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem 2.5rem;
+  transition: var(--transition);
+}
+
+.principal-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* === Principal Image === */
+.principal-photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid var(--valley-green);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+/* === Principal Text Card === */
+.principal-text {
+  flex: 1;
+  font-family: var(--font-family);
+  color: var(--dark-text);
+}
+
+.principal-text h2 {
+  color: var(--valley-green);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--valley-green);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.principal-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* === Signature Line === */
+.principal-text strong {
+  display: block;
+  margin-top: 1rem;
+  color: var(--valley-green);
+  font-weight: 600;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .principal-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .principal-photo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .principal-text h2 {
+    margin-top: 1rem;
+  }
+}
+.principal-section {
+  background: var(--white);
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* Center heading */
+}
+
+.principal-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--valley-green);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--valley-green);
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
