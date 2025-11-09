@@ -22,7 +22,7 @@ function News() {
     },
     {
       title: 'Matric Dance Success',
-      date: '2025-09-20',
+      date: '2025-12-08',
       summary: 'An elegant evening celebrating the achievements of Grade 12 learners before graduation.',
     },
   ];
