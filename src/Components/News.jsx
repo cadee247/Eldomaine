@@ -56,32 +56,32 @@ function News() {
   return (
     <div className="news-page">
       {/* HERO SECTION */}
-   {/* HERO SECTION */}
-<Hero image={coverImg} title="School News" type="news" />
+      <Hero image={coverImg} title="School News" type="news" />
 
-<section
-  className="news-hero"
-  style={{
-    position: 'relative',
-    width: '100%',
-    height: '100vh',
-    overflow: 'hidden',
-  }}
->
-  <img
-    src={coverImg}
-    alt="News Banner"
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      objectPosition: 'center',
-    }}
-  />
-</section>
+      {/* Optional background image section */}
+      <section
+        className="news-hero"
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '100vh',
+          overflow: 'hidden',
+        }}
+      >
+        <img
+          src={coverImg}
+          alt="News Banner"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        />
+      </section>
 
       {/* Intro Text */}
       <section className="news-intro">
