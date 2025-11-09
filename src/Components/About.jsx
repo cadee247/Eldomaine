@@ -145,7 +145,7 @@ function About() {
 
         <p>
           Eldomaine offers a robust curriculum from Grade 8 to 12, emphasizing STEM, Arts, and Life Skills.
-          With a consistent matric pass rate over 90%, we foster leadership, sports, and service.
+          With a consistent matric pass rate over 80%, we foster leadership, sports, and service.
         </p>
 
         <div className="stats-grid">
