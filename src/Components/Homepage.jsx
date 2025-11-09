@@ -207,7 +207,7 @@ function Homepage() {
               marginBottom: '1.5rem'
             }}
           />
-          <h3>Mr. Ashley Pienaar</h3>
+          <h3>Mr.Pienaar</h3>
           <p>
             The heart of our school, Mr. Pienaar leads with kindness, wisdom, and unwavering dedication.
             He believes in every student’s potential and inspires us to dream bigger, work harder, and care deeply.
