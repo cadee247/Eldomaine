@@ -52,7 +52,7 @@ function Events() {
     },
     {
       title: "Matric Dance",
-      date: new Date("2025-09-20T18:00:00"),
+      date: new Date("2025-12-08T18:00:00"),
       description: "An elegant evening celebrating the journey and achievements of our Grade 12 learners before they graduate.",
       moreInfo: "Theme: 'Enchanted Evening'. Dress code: Formal. Includes dinner, dancing, and photo booths. Tickets available from the school office.",
     },
