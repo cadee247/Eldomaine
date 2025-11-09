@@ -15,6 +15,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../css/Homepage.css';
 import { Link } from 'react-router-dom';
 import coverImg from '../assets/cover.png';
+import principalImg from '../assets/Homepage/principal.png'; // ✅ Principal image
 
 const locales = { 'en-US': enUS };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
@@ -148,7 +149,6 @@ function Homepage() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll Down Icon */}
         <div
           className="scroll-down"
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
@@ -187,6 +187,30 @@ function Homepage() {
             <h3>Your Future</h3>
             <p>Join us to unlock your potential and achieve academic excellence.</p>
           </motion.div>
+        </div>
+      </motion.section>
+
+      {/* PRINCIPAL SECTION */}
+      <motion.section className="principal-section" initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} viewport={{ once: true }}>
+        <h2><FaChalkboardTeacher className="icon" /> Meet Our Principal</h2>
+        <div className="principal-container" style={{ textAlign: 'center', marginTop: '2rem' }}>
+          <img
+            src={principalImg}
+            alt="Mr. Ashley Pienaar"
+            style={{
+              width: '70%', // 🔹 Smaller size
+              maxWidth: '350px',
+              borderRadius: '12px',
+              boxShadow: '0 6px 20px rgba(0,0,0,0.2)',
+              marginBottom: '1.5rem'
+            }}
+          />
+          <h3>Mr. Ashley Pienaar</h3>
+          <p>
+            The heart of our school, Mr. Pienaar leads with kindness, wisdom, and unwavering dedication.
+            He believes in every student’s potential and inspires us to dream bigger, work harder, and care deeply.
+            His door is always open, his words always encouraging, and his impact — immeasurable.
+          </p>
         </div>
       </motion.section>
 
