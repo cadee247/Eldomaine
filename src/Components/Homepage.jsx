@@ -15,7 +15,10 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../css/Homepage.css';
 import { Link } from 'react-router-dom';
 import coverImg from '../assets/cover.png';
+
 import principalImage from '../assets/Homepage/principal-new.png';
+// your updated JSX layout
+
 
 const locales = { 'en-US': enUS };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
