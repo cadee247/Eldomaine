@@ -44,7 +44,7 @@ function Contact() {
         <div className="contact-card">
           <FaSchool className="card-icon" />
           <h3>Principal</h3>
-          <p>Mr. Ashley Pienaar</p>
+          <p>Mr.Pienaar</p>
         </div>
       </section>
 
