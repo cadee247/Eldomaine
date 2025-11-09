@@ -89,6 +89,7 @@ function Donation() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <h2>Make a Donation</h2>
+          <p><strong>DEMO PURPOSES ONLY</strong></p>
           <form className="donation-form" onSubmit={handleSubmit}>
             <label>
               Your Name
