@@ -4,7 +4,7 @@ import { FaTint, FaPencilRuler, FaBookOpen } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Confetti from 'react-confetti';
 import bannerImg from '../assets/cover.png';
-import Hero from '../components/Hero'; // Reusable Hero component
+import Hero from '../Components/Hero'; // Reusable Hero component
 
 function Donation() {
   const [name, setName] = useState('');
