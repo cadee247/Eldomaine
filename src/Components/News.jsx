@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { FaNewspaper, FaCalendarAlt, FaThumbsUp, FaHeart, FaSmile } from 'react-icons/fa';
 import '../css/News.css';
 import coverImg from '../assets/cover.png';
+import Hero from '../Components/Hero'; // Reusable hero component
 
 function News() {
   const [searchTerm, setSearchTerm] = useState('');
