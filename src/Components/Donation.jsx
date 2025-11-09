@@ -3,11 +3,8 @@ import '../css/Donations.css';
 import { FaTint, FaPencilRuler, FaBookOpen } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Confetti from 'react-confetti';
-import bannerImg from '../assets/cover.png'; 
-<<<<<<< HEAD
+import bannerImg from '../assets/cover.png';
 import Hero from '../components/Hero'; // Reusable Hero component
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
 function Donation() {
   const [name, setName] = useState('');
@@ -58,19 +55,10 @@ function Donation() {
 
   return (
     <>
-<<<<<<< HEAD
-      {/* === HERO SECTION (REUSABLE) === */}
+      {/* HERO SECTION */}
       <Hero image={bannerImg} title="Donation Page" type="donation" />
 
-      {/* === MAIN CONTENT === */}
-=======
-      {/* Hero banner outside the page wrapper */}
-      <div className="donation-hero">
-        <img src={bannerImg} alt="Donation Banner" className="donation-hero-img" />
-      </div>
-
-      {/* Main donation content */}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
+      {/* MAIN CONTENT */}
       <section className="donation-page">
         {showConfetti && <Confetti />}
 
@@ -103,11 +91,7 @@ function Donation() {
           <h2>Make a Donation</h2>
           <form className="donation-form" onSubmit={handleSubmit}>
             <label>
-<<<<<<< HEAD
-              This is for demo purposes only. No actual transactions will be processed.
-=======
               Your Name
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
               <input
                 type="text"
                 placeholder="Full Name"
@@ -148,11 +132,7 @@ function Donation() {
         >
           <h2>Contact & Queries</h2>
           <p>
-<<<<<<< HEAD
-            📧 Email: info@eldomainehighschool@telkomsa.net<br />
-=======
             📧 Email: info@eldomaine.school.za<br />
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
             ☎️ Phone: +27 11 568 2280<br />
             📍 Address: 86 Mirage Road, Eldorado Park, Johannesburg
           </p>

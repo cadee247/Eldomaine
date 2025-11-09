@@ -1,30 +1,20 @@
 import React, { useState } from 'react';
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineSearch } from 'react-icons/ai';
 import '../css/FAQ.css';
-<<<<<<< HEAD
 import coverImg from '../assets/cover.png'; // ✅ hero image
 import Hero from '../components/Hero'; // reusable Hero component
 
 function FAQ() {
-=======
-import coverImg from '../assets/cover.png'; // ✅ import the hero image
-
-function FAQ() { 
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
   const [openIndex, setOpenIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
   const faqs = [
     { question: "When do admissions open?", answer: "Admissions for the new academic year open every September. Application forms are available at the school’s main office and online on our Admissions page." },
-    { question: "What time does the school dismiss?", answer: "Mon-thurs(14:45pm) fridays(12:45pm)." },
-    { question: "How much is school fees?", answer: "Eldomaine Secondary is non-fee paying school." },
-<<<<<<< HEAD
-    { question: "Where can i buy uniform?", answer: "We offer education from Grade 8 to Grade 12, preparing learners for the National Senior Certificate (NSC)." },
-=======
-    { question: "Where can i buy uniform?", answer: "Seedats Schoolwear Kliptown 22 union road shop no.8, Kliptown 1812" },
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
-    { question: "Is there a feeding scheme?", answer: "Yes we have a feeding scheme available." },
-    { question: "What is the EMIS number?", answer: "EMIS:700120030." },
+    { question: "What time does the school dismiss?", answer: "Mon-Thurs: 14:45, Fridays: 12:45." },
+    { question: "How much is school fees?", answer: "Eldomaine Secondary is a non-fee paying school." },
+    { question: "Where can I buy uniform?", answer: "Seedats Schoolwear, Kliptown, 22 Union Road, Shop No.8, Kliptown 1812." },
+    { question: "Is there a feeding scheme?", answer: "Yes, we have a feeding scheme available." },
+    { question: "What is the EMIS number?", answer: "EMIS: 700120030." },
     { question: "Who is the current principal?", answer: "Ashley Pienaar." },
     { question: "Is Eldomaine Secondary School a public school?", answer: "Yes, Eldomaine Secondary School is a public no-fee school located in Eldorado Park, Johannesburg. We proudly serve our local community." },
     { question: "What grades does the school cater for?", answer: "We offer education from Grade 8 to Grade 12, preparing learners for the National Senior Certificate (NSC)." },
@@ -43,35 +33,8 @@ function FAQ() {
 
   return (
     <div className="faq-page">
-<<<<<<< HEAD
       {/* HERO SECTION */}
       <Hero image={coverImg} title="Frequently Asked Questions" type="faq" />
-=======
-      {/* HERO IMAGE */}
-      <section
-        className="faq-hero"
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '100vh',
-          overflow: 'hidden',
-        }}
-      >
-        <img
-          src={coverImg} // ✅ use imported image
-          alt="FAQ Banner"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-      </section>
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
       {/* Intro Text */}
       <section className="faq-intro">

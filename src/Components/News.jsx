@@ -1,32 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-<<<<<<< HEAD
 import { FaNewspaper, FaCalendarAlt, FaThumbsUp, FaHeart, FaSmile } from 'react-icons/fa';
 import '../css/News.css';
-import coverImg from '../assets/cover.png'; // ✅ hero image
-import Hero from '../components/Hero'; // reusable Hero component
-=======
-import {
-  FaNewspaper,
-  FaCalendarAlt,
-  FaThumbsUp,
-  FaHeart,
-  FaSmile,
-} from 'react-icons/fa';
-import '../css/News.css';
-import coverImg from '../assets/cover.png'; // ✅ import hero image
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
+import coverImg from '../assets/cover.png';
 
 function News() {
   const [searchTerm, setSearchTerm] = useState('');
   const [reactions, setReactions] = useState({});
 
   const newsArticles = [
-<<<<<<< HEAD
-    { title: 'Annual Science Fair Winners Announced', date: '2025-03-12', summary: 'Our bright learners showcased amazing science projects. Congratulations to all winners!' },
-    { title: 'Sports Day Highlights', date: '2025-05-05', summary: 'A fun-filled day of teamwork and competition across all grades. Check out the highlights!' },
-    { title: 'Matric Dance Success', date: '2025-09-20', summary: 'An elegant evening celebrating the achievements of Grade 12 learners before graduation.' },
-=======
     {
       title: 'Annual Science Fair Winners Announced',
       date: '2025-03-12',
@@ -42,7 +24,6 @@ function News() {
       date: '2025-09-20',
       summary: 'An elegant evening celebrating the achievements of Grade 12 learners before graduation.',
     },
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
   ];
 
   const upcomingEvents = [
@@ -73,15 +54,7 @@ function News() {
 
   return (
     <div className="news-page">
-<<<<<<< HEAD
       {/* HERO SECTION */}
-      <Hero image={coverImg} title="Eldomaine Secondary School News" type="news" />
-
-      {/* Intro Text */}
-      <section className="news-intro">
-        <h1>Stay updated with school events and announcements</h1>
-=======
-      {/* Hero Image */}
       <section
         className="news-hero"
         style={{
@@ -92,7 +65,7 @@ function News() {
         }}
       >
         <img
-          src={coverImg} // ✅ use imported image
+          src={coverImg}
           alt="News Banner"
           style={{
             position: 'absolute',
@@ -106,11 +79,10 @@ function News() {
         />
       </section>
 
-      {/* Text Section */}
+      {/* Intro Text */}
       <section className="news-intro">
         <h1>Eldomaine Secondary School News</h1>
         <p>Stay updated with school events and announcements</p>
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       </section>
 
       {/* Search */}

@@ -9,19 +9,13 @@ import {
 import '../css/Events.css';
 import { motion } from 'framer-motion';
 import MatricPDF from '../assets/Events/Matric Timetable 2025 – Full NSC Exam Dates & Times (South Africa).pdf';
-import coverImg from '../assets/cover.png'; // ✅ import hero image
-<<<<<<< HEAD
+import coverImg from '../assets/cover.png';
 import Hero from '../components/Hero'; // Reusable hero component
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
 
 function Events() {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const eventsData = [
-<<<<<<< HEAD
-    // ... same events data as your original file
-=======
     {
       title: "Entrepreneur's Day",
       date: new Date("2025-10-24T08:00:00"),
@@ -86,7 +80,6 @@ function Events() {
       description: "Final day of NSC examinations with CAT/IT rewrites.",
       moreInfo: "Celebrate the end with a school assembly. Results expected in January 2026.",
     },
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
   ];
 
   const [timers, setTimers] = useState(eventsData.map(() => 'Loading...'));
@@ -132,48 +125,16 @@ function Events() {
 
   return (
     <div className="events-page">
-<<<<<<< HEAD
       {/* HERO SECTION */}
       <Hero image={coverImg} title="School Events" type="events" />
 
       {/* Text Section */}
-=======
-      {/* Hero Image Section */}
-      <section
-        className="events-hero"
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '100vh',
-          overflow: 'hidden',
-        }}
-      >
-        <img
-          src={coverImg} // ✅ use imported image
-          alt="Events Banner"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-      </section>
-
-      {/* Text Section Below Image */}
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <section className="events-intro">
         <h1>School Events</h1>
         <p>Celebrating milestones and building memories together</p>
       </section>
 
-<<<<<<< HEAD
       {/* Events List Section */}
-=======
->>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
       <section className="events-list-section">
         <h2>Upcoming & Recent Events</h2>
 
