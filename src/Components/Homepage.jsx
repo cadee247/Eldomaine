@@ -15,7 +15,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../css/Homepage.css';
 import { Link } from 'react-router-dom';
 import coverImg from '../assets/cover.png';
-import principalImg from '../assets/Homepage/principal.png'; // ✅ Principal image
+import principalImage from '../assets/Homepage/principal-new.png';
 
 const locales = { 'en-US': enUS };
 const localizer = dateFnsLocalizer({ format, parse, startOfWeek, getDay, locales });
