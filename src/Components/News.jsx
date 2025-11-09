@@ -56,6 +56,7 @@ function News() {
     <div className="news-page">
       {/* HERO SECTION */}
       <section
+          <Hero image={coverImg} title="School News" type="news" />
         className="news-hero"
         style={{
           position: 'relative',
