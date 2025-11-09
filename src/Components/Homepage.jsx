@@ -198,7 +198,7 @@ function Homepage() {
         <div className="principal-container" style={{ textAlign: 'center', marginTop: '2rem' }}>
           <img
             src={principalImg}
-            alt="Mr. Ashley Pienaar"
+            alt="Mr.Pienaar"
             style={{
               width: '70%', // 🔹 Smaller size
               maxWidth: '350px',
