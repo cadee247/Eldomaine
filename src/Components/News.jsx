@@ -58,31 +58,6 @@ function News() {
       {/* HERO SECTION */}
       <Hero image={coverImg} title="School News" type="news" />
 
-      {/* Optional background image section */}
-      <section
-        className="news-hero"
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '100vh',
-          overflow: 'hidden',
-        }}
-      >
-        <img
-          src={coverImg}
-          alt="News Banner"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
-      </section>
-
       {/* Intro Text */}
       <section className="news-intro">
         <h1>Eldomaine Secondary School News</h1>
