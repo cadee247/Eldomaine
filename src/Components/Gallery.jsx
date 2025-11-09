@@ -46,7 +46,7 @@ const Gallery = () => {
   return (
     <div className="gallery-page">
       {/* Hero Section */}
-      <Hero image={coverImg} title="📸 Gallery Highlights" type="gallery" />
+      <Hero image={coverImg} title="Gallery Highlights" type="gallery" />
 
       {/* Gallery Grid */}
       <section className="gallery-grid-section">
