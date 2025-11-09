@@ -8,7 +8,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../css/About.css';
 import coverImg from '../assets/cover.png'; // Hero image
-import Hero from '../Components/Hero'; // Reusable Hero component
 
 // Error boundary for timeline
 class TimelineErrorBoundary extends React.Component {
@@ -69,8 +68,64 @@ function About() {
 
   return (
     <>
-      {/* === HERO SECTION (REUSABLE) === */}
-      <Hero image={coverImg} title="About Page" type="about" />
+      {/* === HERO SECTION (MATCHING HOMEPAGE) === */}
+      <main className="about-hero" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+        <img
+          src={coverImg}
+          alt="Eldomaine High School"
+          className="hero-image"
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+        />
+
+        <motion.div
+          className="hero-content"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+          style={{
+            position: 'relative',
+            zIndex: 2,
+            textAlign: 'center',
+            padding: '2rem 1rem',
+            backgroundColor: 'rgba(0,0,0,0.3)',
+            color: '#fff'
+          }}
+        >
+          <motion.h1 initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>
+            About Eldomaine Secondary High School
+          </motion.h1>
+          <motion.p initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1, delay: 0.5 }}>
+            Excellence, community, and a legacy of growth.
+          </motion.p>
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, delay: 1 }}>
+            <a href="/contact">
+              <button>Contact Us</button>
+            </a>
+            <a href="/admissions" style={{ marginLeft: '10px' }}>
+              <button>Admissions</button>
+            </a>
+          </motion.div>
+        </motion.div>
+
+        <div
+          className="scroll-down"
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          style={{
+            zIndex: 5,
+            position: 'absolute',
+            bottom: '20px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            fontSize: '3rem',
+            color: '#00a87e',
+            textShadow: '0 0 15px rgba(0,0,0,0.7)',
+            cursor: 'pointer'
+          }}
+        >
+          &#x2193;
+        </div>
+      </main>
 
       {/* === TIMELINE SECTION === */}
       <section className="about-section history-section">
