@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/Contact.css';
 import coverImage from '../assets/cover.png';
 import Hero from '../Components/Hero';
@@ -8,24 +8,38 @@ import {
   FaTag,
   FaRegCommentDots,
   FaPaperPlane,
+  FaCheckCircle,
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaSchool,
 } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 function Contact() {
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // Here you could send the data via API or email service
+    // For demo purposes, we just show the popup
+
+    setShowSuccess(true);
+
+    setTimeout(() => setShowSuccess(false), 3000); // auto-hide after 3 seconds
+
+    // Reset form fields
+    e.target.reset();
+  }
+
   return (
     <>
-      {/* HERO SECTION */}
       <Hero image={coverImage} title="Get In Touch" type="contact" />
 
-      {/* Intro Text */}
       <section className="contact-intro">
         <h1>Get In Touch</h1>
         <p>We’d love to hear from you — connect, visit, or send us a message</p>
       </section>
 
-      {/* Info Cards */}
       <section className="contact-cards-section">
         <div className="contact-card">
           <FaMapMarkerAlt className="card-icon" />
@@ -44,11 +58,10 @@ function Contact() {
         <div className="contact-card">
           <FaSchool className="card-icon" />
           <h3>Principal</h3>
-          <p>Mr.Pienaar</p>
+          <p>Mr. Pienaar</p>
         </div>
       </section>
 
-      {/* Map Section */}
       <section className="map-section">
         <iframe
           title="Eldomaine Secondary School Location"
@@ -62,10 +75,9 @@ function Contact() {
         ></iframe>
       </section>
 
-      {/* Contact Form */}
       <section className="contact-form-section">
         <h2>Send Us a Message</h2>
-        <form className="contact-form">
+        <form className="contact-form" onSubmit={handleSubmit}>
           <label className="input-icon">
             <FaUser className="icon" />
             <input type="text" name="name" placeholder="Your full name" required />
@@ -90,6 +102,18 @@ function Contact() {
             <FaPaperPlane className="icon" /> Send Message
           </button>
         </form>
+
+        {showSuccess && (
+          <motion.div
+            className="success-popup"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            <FaCheckCircle size={40} color="#007c5e" />
+            <p>Your message has been sent successfully!</p>
+          </motion.div>
+        )}
       </section>
     </>
   );
