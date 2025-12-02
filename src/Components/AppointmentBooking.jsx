@@ -6,8 +6,7 @@ import {
   FaChalkboardTeacher,
   FaClipboardList,
   FaEnvelope,
-  FaCheckCircle,
-  FaSchool
+  FaCheckCircle
 } from 'react-icons/fa';
 import '../css/AppointmentBooking.css';
 import coverImage from '../assets/cover.png'; // Hero image
@@ -28,17 +27,17 @@ function AppointmentRequest() {
 
   const [showSuccess, setShowSuccess] = useState(false);
 
-  const teacherNumbers = {
-    'Select Teacher': '',
-    'Mr Pienaar': '2795721964',
-    'Mr Fernades': '27829876543',
-    'Ms Titus': '27823456789',
-    'Ms Ngwenya': '27823456789',
-    'Ms Richards': '27823456789',
-    'Ms Wright': '27823456789',
-    'Ms Symallon': '27823456789',
-    'Ms Sitole': '27823456789',
-  };
+  const teachers = [
+    'Select Teacher',
+    'Mr Pienaar',
+    'Mr Fernades',
+    'Ms Titus',
+    'Ms Ngwenya',
+    'Ms Richards',
+    'Ms Wright',
+    'Ms Symallon',
+    'Ms Sitole',
+  ];
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,26 +45,32 @@ function AppointmentRequest() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const message = `Appointment Request:
-Parent: ${formData.parentName} ${formData.parentSurname}
-Email: ${formData.parentEmail}
-Student: ${formData.studentName} ${formData.studentSurname}
-Grade: ${formData.grade}
-Date: ${formData.date}
-Reason: ${formData.reason}`;
 
-    const encoded = encodeURIComponent(message);
-    const teacherNumber = teacherNumbers[formData.teacher];
+    const { parentName, parentSurname, parentEmail, studentName, studentSurname, grade, teacher, date, reason } = formData;
 
-    if (!teacherNumber) {
+    if (teacher === 'Select Teacher') {
       alert('Please select a teacher before sending your request.');
       return;
     }
 
-    window.open(`https://wa.me/${teacherNumber}?text=${encoded}`, '_blank');
+    const subject = encodeURIComponent(`Appointment Request for ${studentName} ${studentSurname}`);
+    const body = encodeURIComponent(
+      `Parent: ${parentName} ${parentSurname}\n` +
+      `Parent Email: ${parentEmail}\n` +
+      `Student: ${studentName} ${studentSurname}\n` +
+      `Grade: ${grade}\n` +
+      `Teacher: ${teacher}\n` +
+      `Preferred Date: ${date}\n` +
+      `Reason: ${reason}`
+    );
+
+    // Open default email client with prefilled email
+    window.location.href = `mailto:eldomainehighschool@telkomsa.net?subject=${subject}&body=${body}`;
+
     setShowSuccess(true);
     setTimeout(() => setShowSuccess(false), 3000);
 
+    // Reset form
     setFormData({
       parentName: '',
       parentSurname: '',
@@ -81,28 +86,23 @@ Reason: ${formData.reason}`;
 
   return (
     <>
-      {/* HERO IMAGE — full viewport height */}
       <Hero image={coverImage} title="Book a Teacher Appointment" type="appointments" />
 
-      {/* FORM SECTION */}
       <motion.section
         className="appointment-request"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        {/* PAGE TITLE */}
         <motion.h2 initial={{ scale: 0.9 }} animate={{ scale: 1 }} transition={{ delay: 0.2 }}>
           Request a Meeting with a Teacher
         </motion.h2>
 
-        {/* NOTE */}
         <div className="appointment-note">
           <strong>NB:</strong> Meetings are available Monday to Thursday.
           Weekends and public holidays are unavailable. Each meeting lasts one hour and must be booked in advance.
         </div>
 
-        {/* FORM */}
         <motion.form
           onSubmit={handleSubmit}
           className="appointment-form"
@@ -180,8 +180,8 @@ Reason: ${formData.reason}`;
             <div className="form-group">
               <label><FaChalkboardTeacher /> Teacher</label>
               <select name="teacher" value={formData.teacher} onChange={handleChange} required>
-                {Object.keys(teacherNumbers).map((teacher) => (
-                  <option key={teacher} value={teacher}>{teacher}</option>
+                {teachers.map((t) => (
+                  <option key={t} value={t}>{t}</option>
                 ))}
               </select>
             </div>
@@ -220,7 +220,6 @@ Reason: ${formData.reason}`;
           </motion.button>
         </motion.form>
 
-        {/* SUCCESS POPUP */}
         {showSuccess && (
           <motion.div
             className="success-popup"
@@ -229,7 +228,7 @@ Reason: ${formData.reason}`;
             exit={{ opacity: 0 }}
           >
             <FaCheckCircle size={40} color="#007c5e" />
-            <p>Your appointment request has been sent!</p>
+            <p>Your appointment request has been prepared in your email client!</p>
           </motion.div>
         )}
       </motion.section>
