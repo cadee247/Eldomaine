@@ -27,17 +27,18 @@ function Homepage() {
   const [schoolCloseCountdown, setSchoolCloseCountdown] = useState('');
 
   const schoolCalendar = {
-    termStart: new Date('2025-01-15'),
-    termEnd: new Date('2025-12-12'),
-    holidays: [
-      { name: 'Human Rights Day', date: new Date('2025-03-21') },
-      { name: 'Freedom Day', date: new Date('2025-04-27') },
-      { name: 'Workers Day', date: new Date('2025-05-01') },
-      { name: 'Youth Day', date: new Date('2025-06-16') },
-      { name: "National Women's Day", date: new Date('2025-08-09') },
-      { name: 'Heritage Day', date: new Date('2025-09-24') },
-      { name: 'Day of Reconciliation', date: new Date('2025-12-16') },
-    ],
+    termStart: new Date('202-01-14'),
+    termEnd: new Date('2025-03-27'),
+holidays: [
+  { name: 'Human Rights Day', date: new Date('2026-03-21') },
+  { name: 'Freedom Day', date: new Date('2026-04-27') },
+  { name: 'Workers Day', date: new Date('2026-05-01') },
+  { name: 'Youth Day', date: new Date('2026-06-16') },
+  { name: "National Women's Day", date: new Date('2026-08-09') },
+  { name: 'Heritage Day', date: new Date('2026-09-24') },
+  { name: 'Day of Reconciliation', date: new Date('2026-12-16') },
+],
+    
   };
 
   const events = [
@@ -288,7 +289,7 @@ function Homepage() {
           </motion.div>
           <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
             <FaTrophy className="stat-icon" />
-            <span className="stat-number" data-target="86">0</span>
+            <span className="stat-number" data-target="79">0</span>
             <p>Matric Pass Rate (%)</p>
           </motion.div>
         </div>
