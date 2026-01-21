@@ -236,14 +236,14 @@ holidays: [
 
         <div className="calendar-grid">
           <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
-            <h3><FaSchool className="icon" /> School Terms</h3>
-            <div className="term-grid">
-              <div><strong>Term 1:</strong> 15 Jan – 28 Mar</div>
-              <div><strong>Term 2:</strong> 8 Apr – 27 Jun</div>
-              <div><strong>Term 3:</strong> 22 Jul – 3 Oct</div>
-              <div><strong>Term 4:</strong> 13 Oct – 12 Dec</div>
-            </div>
-          </motion.div>
+  <h3><FaSchool className="icon" /> School Terms</h3>
+  <div className="term-grid">
+    <div><strong>Term 1:</strong> 14 Jan – 27 Mar</div>
+    <div><strong>Term 2:</strong> 8 Apr – 26 Jun</div>
+    <div><strong>Term 3:</strong> 21 Jul – 23 Sep</div>
+    <div><strong>Term 4:</strong> 6 Oct – 9/11 Dec</div>
+  </div>
+</motion.div>
 
           <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
             <h3><MdHolidayVillage className="icon" /> Public Holidays</h3>
