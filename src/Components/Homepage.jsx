@@ -27,7 +27,7 @@ function Homepage() {
   const [schoolCloseCountdown, setSchoolCloseCountdown] = useState('');
 
   const schoolCalendar = {
-    termStart: new Date('202-01-14'),
+    termStart: new Date('2026-01-14'),
     termEnd: new Date('2025-03-27'),
 holidays: [
   { name: 'Human Rights Day', date: new Date('2026-03-21') },
@@ -262,6 +262,7 @@ holidays: [
             <motion.p animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 2 }}>
               {nextHolidayCountdown}
             </motion.p>
+            
           </motion.div>
 
           <motion.div className="calendar-card" whileHover={{ scale: 1.02 }}>
