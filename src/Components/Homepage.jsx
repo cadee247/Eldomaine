@@ -28,7 +28,7 @@ function Homepage() {
 
   const schoolCalendar = {
     termStart: new Date('2026-01-14'),
-    termEnd: new Date('2025-03-27'),
+    termEnd: new Date('2026-03-27'),
 holidays: [
   { name: 'Human Rights Day', date: new Date('2026-03-21') },
   { name: 'Freedom Day', date: new Date('2026-04-27') },
