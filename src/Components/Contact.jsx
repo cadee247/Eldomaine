@@ -33,7 +33,7 @@ function Contact() {
 
   return (
     <>
- HEAD
+ 
       <Hero image={coverImage} title="Get in touch with Eldomaine Secondary School." type="contact" />
 
 
