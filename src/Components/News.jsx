@@ -25,9 +25,9 @@ function News() {
   ];
 
   const upcomingEvents = [
-    { title: 'Parent-Teacher Meeting', date: '2025-11-10' },
-    { title: 'School Holiday', date: '2025-12-15' },
-    { title: 'First Day of New Term', date: '2026-01-12' },
+    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: '2025-11-10' },
+    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: '2025-12-15' },
+    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: '2026-01-12' },
   ];
 
   const filteredArticles = newsArticles.filter(
