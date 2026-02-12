@@ -1,0 +1,261 @@
+:root {
+  --valley-green: #1c3d2a;
+  --white: #ffffff;
+  --dark-text: #1a1a1a;
+  --font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* === HERO SECTION === */
+.admission-hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 80px); /* account for fixed navbar */
+  overflow: hidden;
+  background: #000;
+}
+
+.admission-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 1;
+}
+
+/* Centered text overlay */
+.admission-hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--white);
+  z-index: 2;
+  font-family: var(--font-family);
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.admission-hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--white);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 1.5s ease both;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.8) translate(-50%, -50%); opacity: 0; }
+  60% { transform: scale(1.05) translate(-50%, -50%); opacity: 1; }
+  100% { transform: scale(1) translate(-50%, -50%); }
+}
+
+/* === TEXT BELOW HERO IMAGE === */
+.admission-intro {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+  color: var(--dark-text);
+}
+
+.admission-intro h1 {
+  font-size: 2.5rem;
+  color: var(--valley-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.admission-intro p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* === MAIN CONTENT / FORM CARDS === */
+.admission-form-section {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fadeIn 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.admission-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  text-align: left;
+  transition: var(--transition);
+  border: 2px solid var(--valley-green);
+}
+
+.admission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.admission-icon {
+  font-size: 2.5rem;
+  color: var(--valley-green);
+  margin-bottom: 0.8rem;
+  transition: var(--transition);
+}
+
+.admission-card:hover .admission-icon {
+  transform: scale(1.1);
+}
+
+.admission-card h2 {
+  color: var(--valley-green);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--valley-green);
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.admission-step h3 {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--dark-text);
+  font-size: 1.1rem;
+}
+
+.admission-step p,
+.admission-step ul {
+  margin-left: 1.8rem;
+  line-height: 1.6;
+  color: var(--dark-text);
+}
+
+/* === LIST STYLING === */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: var(--dark-text);
+}
+
+ul li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: var(--valley-green);
+  font-size: 0.9rem;
+}
+
+/* === FORM ELEMENTS === */
+.admission-form input,
+.admission-form select,
+.admission-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--valley-green);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-family: var(--font-family);
+  transition: var(--transition);
+}
+
+.admission-form input:focus,
+.admission-form select:focus,
+.admission-form textarea:focus {
+  outline: none;
+  border-color: var(--valley-green);
+  box-shadow: 0 0 10px rgba(28, 61, 42, 0.2);
+}
+
+.admission-form button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  background: var(--valley-green);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.admission-form button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* === RESPONSIVE STYLES === */
+@media (max-width: 1024px) {
+  .admission-hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .admission-intro h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .admission-hero {
+    height: auto;
+  }
+
+  .admission-hero-img {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .admission-hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .admission-intro {
+    padding: 1.5rem 1rem;
+  }
+
+  .admission-intro h1 {
+    font-size: 1.8rem;
+    gap: 6px;
+  }
+
+  .admission-intro p {
+    font-size: 1rem;
+  }
+
+  .admission-form-section {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+    gap: 1.8rem;
+  }
+
+  .admission-card {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,327 @@
+:root {
+  --valley-green: #1c3d2a;        /* Primary: Headers, buttons */
+  --white: #ffffff;               /* Clean accents */
+  --dark-text: #1a1a1a;           /* Text: Body, labels */
+  --font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  --radius: 12px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* === Donation Page General === */
+.donation-page {
+  font-family: var(--font-family);
+  padding: 3rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--dark-text);
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fadeIn 1s ease-out forwards;
+}
+<<<<<<< HEAD
+.donation-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.donation-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.donation-hero-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  top: 45%;
+  transform: translateY(-50%);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.donation-hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+=======
+>>>>>>> a0a6b8119913e655208a33b4acd34ac19f2fb1d2
+
+.donation-page h1 {
+  color: var(--valley-green);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.donation-page p {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+/* === Donation Blocks === */
+.donation-blocks {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-bottom: 3rem;
+}
+
+.donation-block {
+  padding: 2rem;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 2px solid var(--valley-green);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.donation-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.donation-block h2 {
+  color: var(--valley-green);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.donation-block p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: var(--dark-text);
+}
+
+.donation-icon {
+  font-size: 3rem;
+  color: var(--valley-green);
+  margin-bottom: 1rem;
+  transition: var(--transition);
+  animation: subtlePulse 2s infinite ease-in-out;
+}
+
+.donation-block:hover .donation-icon {
+  transform: scale(1.1);
+}
+
+/* === Donation Form Block === */
+.donation-form-block {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 450px;
+  margin: 0 auto 3rem auto;
+  animation: fadeIn 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.donation-form-block h2 {
+  font-size: 1.8rem;
+  color: var(--valley-green);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.donation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.donation-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--dark-text);
+}
+
+.donation-form input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--valley-green);
+  margin-top: 0.3rem;
+  transition: var(--transition);
+}
+
+.donation-form input:focus {
+  outline: none;
+  border-color: var(--valley-green);
+  box-shadow: 0 0 10px rgba(28, 61, 42, 0.2);
+}
+
+.donation-form button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background: var(--valley-green);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+}
+
+.donation-form button:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+}
+
+/* === Donation Contact Info === */
+.donation-contact {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.donation-contact h2 {
+  font-size: 1.8rem;
+  color: var(--valley-green);
+  margin-bottom: 1rem;
+}
+
+.donation-contact p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--dark-text);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .donation-blocks {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .donation-page {
+    padding: 2rem 1rem;
+  }
+
+  .donation-blocks {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .donation-block {
+    padding: 1.5rem;
+  }
+
+  .donation-form-block {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .donation-form input {
+    font-size: 0.95rem;
+  }
+
+  .donation-form button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .donation-contact {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .donation-page h1 {
+    font-size: 2rem;
+  }
+
+  .donation-page p,
+  .donation-block p,
+  .donation-contact p {
+    font-size: 0.9rem;
+  }
+
+  .donation-block h2,
+  .donation-contact h2 {
+    font-size: 1.5rem;
+  }
+}
+.donation-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+
+
+.donation-hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+
+/* HERO TEXT (if you add later) */
+.donation-hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,0.35); /* optional overlay */
+  border-radius: 12px;
+}
+/* === FIX unwanted top padding or margin === */
+.donation-hero {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+main, section {
+  margin: 0;
+  padding: 0;
+}
