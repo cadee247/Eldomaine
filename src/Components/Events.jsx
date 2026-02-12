@@ -9,7 +9,7 @@ import {
 import '../css/Events.css';
 import { motion } from 'framer-motion';
 
-import ssipdocx from '../assets/Events/ssip timetable.docx';
+const ssipdocx = new URL('../assets/Events/ssip timetable.docx', import.meta.url).href;
 import coverImg from '../assets/cover.png';
 import Hero from '../Components/Hero';
 
