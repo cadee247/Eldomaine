@@ -167,10 +167,11 @@ function Events() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <a href={ssipPDF} target="_blank" rel="noopener noreferrer">
-            <FaFilePdf style={{ marginRight: "0.5rem", color: "red" }} />
-            Download 2026 Grade 12 SSIP Timetable (Dates & Times)
-          </a>
+          <a href={ssipdocx} target="_blank" rel="noopener noreferrer">
+  <FaFileAlt style={{ marginRight: "0.5rem", color: "blue" }} />
+  Download 2026 Grade 12 SSIP Timetable (DOCX)
+</a>
+
         </motion.div>
 
         <motion.div
