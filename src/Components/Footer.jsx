@@ -9,7 +9,9 @@ import {
   FaFilePdf,
 } from 'react-icons/fa';
 import '../css/Footer.css';
-import ssipPDF from '../assets/Events/ssip timetable.pdf';
+
+// Correct DOCX import for Vite
+const ssipdocx = new URL('../assets/Events/ssip timetable.docx', import.meta.url).href;
 
 function Footer() {
   return (
@@ -71,12 +73,12 @@ function Footer() {
         <div className="footer-timetable">
           <h4>SSIP Timetable</h4>
           <a
-            href={ssipPDF}
+            href={ssipdocx}  // updated here
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaFilePdf style={{ marginRight: '0.5rem' }} />
-            Download PDF
+            <FaFilePdf style={{ marginRight: '0.5rem', color: 'blue' }} /> {/* optional: indicate DOCX */}
+            Download 2026 Grade 12 SSIP Timetable (DOCX)
           </a>
         </div>
       </div>
