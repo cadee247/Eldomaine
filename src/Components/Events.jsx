@@ -9,7 +9,7 @@ import {
 import '../css/Events.css';
 import { motion } from 'framer-motion';
 
-import ssipPDF from '../assets/Events/ssip timetable.pdf';
+import ssipdocx from '../assets/Events/ssip timetable.docx';
 import coverImg from '../assets/cover.png';
 import Hero from '../Components/Hero';
 
