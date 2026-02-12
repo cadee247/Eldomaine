@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../css/About.css';
-import coverImg from '../assets/cover.png'; // Hero image
+import coverImg from '../assets/cover.png';
 
 // Error boundary for timeline
 class TimelineErrorBoundary extends React.Component {
@@ -15,12 +15,15 @@ class TimelineErrorBoundary extends React.Component {
     super(props);
     this.state = { hasError: false };
   }
+
   static getDerivedStateFromError() {
     return { hasError: true };
   }
+
   componentDidCatch(error, info) {
     console.error('Timeline error:', error, info);
   }
+
   render() {
     if (this.state.hasError) return <p>Timeline failed to load.</p>;
     return this.props.children;
@@ -50,11 +53,13 @@ function About() {
   useEffect(() => {
     const counters = document.querySelectorAll(".stat-number");
     const speed = 200;
+
     counters.forEach(counter => {
       const updateCount = () => {
         const target = +counter.getAttribute("data-target");
         const count = +counter.innerText;
         const inc = target / speed;
+
         if (count < target) {
           counter.innerText = Math.ceil(count + inc);
           setTimeout(updateCount, 20);
@@ -62,20 +67,31 @@ function About() {
           counter.innerText = target;
         }
       };
+
       updateCount();
     });
   }, []);
 
   return (
     <>
-      {/* === HERO SECTION (MATCHING HOMEPAGE) === */}
-      <main className="about-hero" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+      {/* HERO SECTION */}
+      <main
+        className="about-hero"
+        style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}
+      >
         <img
           src={coverImg}
           alt="Eldomaine High School"
           className="hero-image"
           loading="lazy"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
         />
 
         <motion.div
@@ -89,19 +105,23 @@ function About() {
             textAlign: 'center',
             padding: '2rem 1rem',
             backgroundColor: 'rgba(0,0,0,0.3)',
-            color: '#fff'
+            color: '#fff',
           }}
         >
-          <motion.h1 initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1 }}>
+          <motion.h1
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             About Eldomaine Secondary High School
           </motion.h1>
-         
-          </motion.div>
-        
+        </motion.div>
 
         <div
           className="scroll-down"
-          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+          onClick={() =>
+            window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+          }
           style={{
             zIndex: 5,
             position: 'absolute',
@@ -111,14 +131,14 @@ function About() {
             fontSize: '3rem',
             color: '#00a87e',
             textShadow: '0 0 15px rgba(0,0,0,0.7)',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
         >
           &#x2193;
         </div>
       </main>
 
-      {/* === TIMELINE SECTION === */}
+      {/* TIMELINE SECTION */}
       <section className="about-section history-section">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
@@ -138,7 +158,8 @@ function About() {
             >
               <h3>Founded in Eldorado Park</h3>
               <p>
-                Eldomaine High School emerged as a beacon of hope for a community long underserved by the education system.
+                Eldomaine High School emerged as a beacon of hope for a community
+                long underserved by the education system.
               </p>
               <ul>
                 <li>Academic Commitment: Teachers and learners built a culture of discipline and achievement.</li>
@@ -178,7 +199,7 @@ function About() {
         </TimelineErrorBoundary>
       </section>
 
-      {/* === ACHIEVEMENTS SECTION === */}
+      {/* ACHIEVEMENTS SECTION */}
       <section className="about-section achievements-section">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
@@ -190,8 +211,9 @@ function About() {
         </motion.h2>
 
         <p>
-          Eldomaine offers a robust curriculum from Grade 8 to 12, emphasizing STEM, Arts, and Life Skills.
-          With a consistent matric pass rate over 80%, we foster leadership, sports, and service.
+          Eldomaine offers a robust curriculum from Grade 8 to 12, emphasizing
+          STEM, Arts, and Life Skills. With a consistent matric pass rate over
+          80%, we foster leadership, sports, and service.
         </p>
 
         <div className="stats-grid">
@@ -221,7 +243,7 @@ function About() {
         </Slider>
       </section>
 
-      {/* === VALUES SECTION === */}
+      {/* VALUES SECTION */}
       <section className="about-section values-section">
         <motion.h2
           initial={{ opacity: 0, y: 50 }}
@@ -236,24 +258,31 @@ function About() {
           <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
             <FaBullseye className="about-icon" />
             <h3>Our Mission</h3>
-            <p>Our mission is to be an outstanding and peaceful institution, which provides learning for life and addresses the changes in the educational system effectively. We pledge to equip teachers, create a positive learning environment, respect individual needs, and uphold our Constitution-based values.</p>
+            <p>
+              Our mission is to be an outstanding and peaceful institution,
+              which provides learning for life and addresses the changes in the
+              educational system effectively.
+            </p>
           </motion.div>
 
           <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
             <FaEye className="about-icon" />
             <h3>Our Vision</h3>
-            <p>Our vision is to have an educational institution built on discipline, educational excellence, and character building, giving our best in service to the school and community.</p>
+            <p>
+              Our vision is to have an educational institution built on
+              discipline, educational excellence, and character building.
+            </p>
           </motion.div>
 
           <motion.div className="about-card" whileHover={{ scale: 1.05 }}>
             <FaHandsHelping className="about-icon" />
             <h3>Core Values</h3>
             <ul className="values-list">
-              <li><span className="icon"><FaStar /></span><span>Respect</span></li>
-              <li><span className="icon"><FaStar /></span><span>Integrity</span></li>
-              <li><span className="icon"><FaStar /></span><span>Excellence</span></li>
-              <li><span className="icon"><FaStar /></span><span>Inclusivity</span></li>
-              <li><span className="icon"><FaStar /></span><span>Community Service</span></li>
+              <li><FaStar /> Respect</li>
+              <li><FaStar /> Integrity</li>
+              <li><FaStar /> Excellence</li>
+              <li><FaStar /> Inclusivity</li>
+              <li><FaStar /> Community Service</li>
             </ul>
           </motion.div>
         </div>

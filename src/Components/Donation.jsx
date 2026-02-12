@@ -56,7 +56,9 @@ function Donation() {
   return (
     <>
       {/* HERO SECTION */}
+
       <Hero image={bannerImg} title="Support Eldomaine Secondary School — Every contribution counts." type="donation" />
+
 
       {/* MAIN CONTENT */}
       <section className="donation-page">
@@ -82,7 +84,7 @@ function Donation() {
           ))}
         </motion.div>
 
-      
+
         <motion.div
           className="donation-contact"
           initial={{ opacity: 0, y: 20 }}

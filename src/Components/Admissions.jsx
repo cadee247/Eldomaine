@@ -9,8 +9,8 @@ import {
 } from 'react-icons/fa';
 import '../css/Admissions.css';
 import { motion, useAnimation } from 'framer-motion';
-import coverImg from '../assets/cover.png'; // ✅ import image
-import Hero from '../Components/Hero'; // Reusable Hero component
+import coverImg from '../assets/cover.png';
+import Hero from '../Components/Hero';
 
 function Admissions() {
   const containerVariants = {
@@ -41,23 +41,23 @@ function Admissions() {
 
   return (
     <>
-      {/* === HERO SECTION (REUSABLE) === */}
-      <Hero image={coverImg} title="Begin your journey at Eldomaine Secondary School." type="admissions" />
+      <Hero
+        image={coverImg}
+        title="Begin your journey at Eldomaine Secondary School."
+        type="admissions"
+      />
 
-      {/* === TEXT SECTION BELOW IMAGE === */}
       <section className="admission-intro">
         <h1><FaSchool className="icon" /> Admission Enquiry</h1>
         <p>Start your journey with Eldomaine Secondary School</p>
       </section>
 
-      {/* === MAIN CONTENT === */}
       <motion.section
         className="admission-form-section"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Eligibility */}
         <motion.div className="admission-card" variants={itemVariants} whileHover="hover">
           <FaUserGraduate className="admission-icon" />
           <h2>Admission Eligibility</h2>
@@ -68,7 +68,6 @@ function Admissions() {
           </ul>
         </motion.div>
 
-        {/* Application Process */}
         <motion.div className="admission-card" variants={itemVariants} whileHover="hover">
           <FaClipboardList className="admission-icon" />
           <h2>Application Process</h2>
@@ -88,6 +87,7 @@ function Admissions() {
                   <p>Available at the school office (Mon–Fri, 08:00–15:00).</p>
                 </>
               )}
+
               {i === 1 && (
                 <>
                   <h3><FaFileAlt /> 2. Submit Required Documents</h3>
@@ -100,12 +100,14 @@ function Admissions() {
                   </ul>
                 </>
               )}
+
               {i === 2 && (
                 <>
                   <h3><FaChalkboardTeacher /> 3. Interview & Placement Review</h3>
                   <p>Selected applicants may be invited for an interview.</p>
                 </>
               )}
+
               {i === 3 && (
                 <>
                   <h3><FaCheckCircle /> 4. Acceptance Notification</h3>
@@ -116,7 +118,6 @@ function Admissions() {
           ))}
         </motion.div>
 
-        {/* What We Offer */}
         <motion.div className="admission-card" variants={itemVariants} whileHover="hover">
           <FaSchool className="admission-icon" />
           <h2>What We Offer</h2>

@@ -86,7 +86,9 @@ function AppointmentRequest() {
 
   return (
     <>
+
       <Hero image={coverImage} title="Book your appointment with Eldomaine Secondary School today." type="appointments" />
+
 
       <motion.section
         className="appointment-request"

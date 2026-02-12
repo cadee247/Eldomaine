@@ -1,5 +1,13 @@
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaInstagram, FaInfoCircle, FaUserGraduate, FaBook, FaEnvelope, FaFilePdf } from 'react-icons/fa';
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaInfoCircle,
+  FaUserGraduate,
+  FaBook,
+  FaEnvelope,
+  FaFilePdf,
+} from 'react-icons/fa';
 import '../css/Footer.css';
 import ssipPDF from '../assets/Events/ssip timetable.pdf';
 
@@ -19,10 +27,22 @@ function Footer() {
         <div className="footer-links">
           <h4>Quick Links</h4>
           <ul>
-            <li><FaInfoCircle className="footer-icon" /><Link to="/about">About Us</Link></li>
-            <li><FaUserGraduate className="footer-icon" /><Link to="/admissions">Admissions</Link></li>
-            <li><FaBook className="footer-icon" /><Link to="/curriculum">Curriculum</Link></li>
-            <li><FaEnvelope className="footer-icon" /><Link to="/contact">Contact</Link></li>
+            <li>
+              <FaInfoCircle className="footer-icon" />
+              <Link to="/about">About Us</Link>
+            </li>
+            <li>
+              <FaUserGraduate className="footer-icon" />
+              <Link to="/admissions">Admissions</Link>
+            </li>
+            <li>
+              <FaBook className="footer-icon" />
+              <Link to="/curriculum">Curriculum</Link>
+            </li>
+            <li>
+              <FaEnvelope className="footer-icon" />
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
 
@@ -30,21 +50,29 @@ function Footer() {
         <div className="footer-social">
           <h4>Follow Us</h4>
           <div className="social-icons">
-            <a href="https://www.facebook.com/share/1EL2BVXx3L/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.facebook.com/share/1EL2BVXx3L/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaFacebookF />
             </a>
-            <a href="https://www.instagram.com/eldomaine_high?igsh=YnZlM2J3c3I5MTUx" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.instagram.com/eldomaine_high?igsh=YnZlM2J3c3I5MTUx"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaInstagram />
             </a>
           </div>
         </div>
 
-        {/* Matric Timetable */}
+        {/* SSIP Timetable */}
         <div className="footer-timetable">
           <h4>SSIP Timetable</h4>
-          <a 
+          <a
             href={ssipPDF}
-            target="_blank" 
+            target="_blank"
             rel="noopener noreferrer"
           >
             <FaFilePdf style={{ marginRight: '0.5rem' }} />
@@ -55,7 +83,10 @@ function Footer() {
 
       {/* Footer Bottom */}
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Eldomaine Secondary High School. All rights reserved.</p>
+        <p>
+          &copy; {new Date().getFullYear()} Eldomaine Secondary High School.
+          All rights reserved.
+        </p>
       </div>
     </footer>
   );

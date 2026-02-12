@@ -16,7 +16,9 @@ import '../css/Homepage.css';
 import { Link } from 'react-router-dom';
 import coverImg from '../assets/cover.png';
 
+
 import principalImg from '../assets/Homepage/Principal.jpeg';
+
 
 
 const locales = { 'en-US': enUS };
@@ -241,7 +243,9 @@ holidays: [
     <div><strong>Term 1:</strong> 14 Jan – 27 Mar</div>
     <div><strong>Term 2:</strong> 8 Apr – 26 Jun</div>
     <div><strong>Term 3:</strong> 21 Jul – 23 Sep</div>
+
     <div><strong>Term 4:</strong> 6 Oct – 11 Dec</div>
+
   </div>
 </motion.div>
 
@@ -285,13 +289,15 @@ holidays: [
           </motion.div>
           <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
             <FaChalkboardTeacher className="stat-icon" />
+
             <span className="stat-number" data-target="42">0</span>
-            <p>Dedicated Educators</p>
+
           </motion.div>
           <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
             <FaTrophy className="stat-icon" />
+
             <span className="stat-number" data-target="89">0</span>
-            <p>Matric Pass Rate (%)</p>
+
           </motion.div>
         </div>
       </motion.section>

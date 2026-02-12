@@ -90,7 +90,9 @@ function Curriculum() {
   return (
     <>
       {/* HERO SECTION */}
+
       <Hero image={coverImg} title="Discover opportunities to shine through Eldomaine’s curriculum and vibrant school life." type="curriculum" />
+
 
       {/* Text Section */}
       <section className="curriculum-intro">

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaNewspaper, FaCalendarAlt, FaThumbsUp, FaHeart, FaSmile } from 'react-icons/fa';
 import '../css/News.css';
 import coverImg from '../assets/cover.png';
-import Hero from '../Components/Hero'; // Reusable hero component
+import Hero from '../Components/Hero';
 
 function News() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,24 +13,21 @@ function News() {
     {
       title: 'Matric Results 2025 Released',
       date: '2026-01-13',
-      summary: 'We are proud to announce the release of the 2025 matric results. Congratulations to our learners for their hard work and dedication. Eldomaine achieved an overall pass rate of 89%.',
+      summary:
+        'We are proud to announce the release of the 2025 matric results. Congratulations to our learners for their hard work and dedication. Eldomaine achieved an overall pass rate of 89%.',
     },
     {
-      title: 'This section is quiet for now, but exciting updates are on the way. Keep an eye out!👀😄 ',
-      date: '2026-00-00',
-      summary: '',
-    },
-    {
-      title: 'This section is quiet for now, but exciting updates are on the way. Keep an eye out!👀😄',
-      date: '2026-00-00',
+      title:
+        'This section is quiet for now, but exciting updates are on the way. Keep an eye out!',
+      date: null,
       summary: '',
     },
   ];
 
   const upcomingEvents = [
-    { title: 'No upcoming events scheduled at the moment. Please check back soon for updates.', date: 'N/A' },
-    { title: 'No upcoming events scheduled at the moment. Please check back soon for updates.', date: 'N/A' },
-    { title: 'No upcoming events scheduled at the moment. Please check back soon for updates.', date: 'N/A' },
+    { title: 'Parent-Teacher Meeting', date: '2025-11-10' },
+    { title: 'School Holiday', date: '2025-12-15' },
+    { title: 'First Day of New Term', date: '2026-01-12' },
   ];
 
   const filteredArticles = newsArticles.filter(
@@ -53,10 +50,19 @@ function News() {
     }));
   };
 
+  const formatDate = (date) => {
+    if (!date) return '';
+    return new Date(date).toDateString();
+  };
+
   return (
     <div className="news-page">
       {/* HERO SECTION */}
-      <Hero image={coverImg} title="Latest News from Eldomaine Secondary School." type="news" />
+      <Hero
+        image={coverImg}
+        title="Latest News from Eldomaine Secondary School"
+        type="news"
+      />
 
       {/* Intro Text */}
       <section className="news-intro">
@@ -92,18 +98,35 @@ function News() {
                   <FaNewspaper style={{ marginRight: '8px', color: '#007c5e' }} />
                   {article.title}
                 </h3>
-                <p className="news-date">{new Date(article.date).toDateString()}</p>
-                <p>{article.summary}</p>
+
+                {article.date && (
+                  <p className="news-date">{formatDate(article.date)}</p>
+                )}
+
+                {article.summary && <p>{article.summary}</p>}
 
                 <div className="news-reactions">
-                  <button onClick={() => handleReaction(index, 'like')} className="reaction-btn">
+                  <button
+                    onClick={() => handleReaction(index, 'like')}
+                    className="reaction-btn"
+                  >
                     <FaThumbsUp /> {reactions[index]?.like || 0}
                   </button>
-                  <button onClick={() => handleReaction(index, 'love')} className="reaction-btn">
-                    <FaHeart style={{ color: 'crimson' }} /> {reactions[index]?.love || 0}
+
+                  <button
+                    onClick={() => handleReaction(index, 'love')}
+                    className="reaction-btn"
+                  >
+                    <FaHeart style={{ color: 'crimson' }} />{' '}
+                    {reactions[index]?.love || 0}
                   </button>
-                  <button onClick={() => handleReaction(index, 'wow')} className="reaction-btn">
-                    <FaSmile style={{ color: 'gold' }} /> {reactions[index]?.wow || 0}
+
+                  <button
+                    onClick={() => handleReaction(index, 'wow')}
+                    className="reaction-btn"
+                  >
+                    <FaSmile style={{ color: 'gold' }} />{' '}
+                    {reactions[index]?.wow || 0}
                   </button>
                 </div>
               </motion.div>
@@ -127,7 +150,7 @@ function News() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <FaCalendarAlt style={{ marginRight: '6px', color: '#007c5e' }} />
-              <strong>{event.title}</strong> – {new Date(event.date).toDateString()}
+              <strong>{event.title}</strong> – {formatDate(event.date)}
             </motion.li>
           ))}
         </ul>

@@ -33,7 +33,10 @@ function Contact() {
 
   return (
     <>
+ HEAD
       <Hero image={coverImage} title="Get in touch with Eldomaine Secondary School." type="contact" />
+
+
 
       <section className="contact-intro">
         <h1>Get In Touch</h1>

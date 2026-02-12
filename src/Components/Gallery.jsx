@@ -46,7 +46,9 @@ const Gallery = () => {
   return (
     <div className="gallery-page">
       {/* Hero Section */}
+
       <Hero image={coverImg} title="Discover Eldomaine through our gallery of memories, events, and creativity." type="gallery" />
+
 
       {/* Gallery Grid */}
       <section className="gallery-grid-section">
