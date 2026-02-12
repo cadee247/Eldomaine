@@ -26,6 +26,12 @@ DEVELOPMENT NOTES
 
 HOW THE WEBSITE LOOKS:
 <img width="1514" height="885" alt="image" src="https://github.com/user-attachments/assets/b9683b6f-e7e3-47e3-bb71-87b523f1417d" />
+<img width="1785" height="842" alt="image" src="https://github.com/user-attachments/assets/004e22d1-79d1-478e-88be-471239c14562" />
+<img width="1835" height="873" alt="image" src="https://github.com/user-attachments/assets/3c5ab20e-cd46-451e-bb6e-d4b708e3955a" />
+<img width="1885" height="900" alt="image" src="https://github.com/user-attachments/assets/96f2fc12-2292-48cd-8794-8754acc81744" />
+
+
+
 
 
 
