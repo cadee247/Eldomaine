@@ -5,7 +5,9 @@ import {
   FaGraduationCap,
   FaFilePdf,
   FaInfoCircle,
+  FaFileAlt,  // ✅ Add this
 } from 'react-icons/fa';
+
 import '../css/Events.css';
 import { motion } from 'framer-motion';
 
