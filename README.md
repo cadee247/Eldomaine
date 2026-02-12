@@ -1,16 +1,42 @@
-# React + Vite
+ELDOMAINE SCHOOL WEBSITE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern user-friendly website built to make school information and accesible to anyone the website showcases upcoming events, admission eligibility and resources in a clear student-friendly format. The site is built with React and Vite for fast development and optimized builds.
 
-Currently, two official plugins are available:
+FEATURES:
+- Responsive design for desktop and mobile as well as larger screens
+- Announcements and News feed
+- Interactive gallery
+- Appointment booking system
+- Contact and feedback forms
+- Accessible UI
+- Scalable ARchitecture
+- Student-Friendly term dates
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+TECH STACK:
+Frontend: React
+Styling: CSS
+Deployment: Netlify
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+DEVELOPMENT NOTES
+- ESLint is configured for code quality
+- Hot Module Replacement(HMR) enabled via Vite
+- Expand ESLint rules or add TypeScript if scaling further
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+HOW THE WEBSITE LOOKS:
+<img width="1514" height="885" alt="image" src="https://github.com/user-attachments/assets/b9683b6f-e7e3-47e3-bb71-87b523f1417d" />
+
+
+
+License:
+This project is the intellectual property of Cadee Rousseau and Samual Davids.
+All rights reserved.
+- The source code and design are jointly owned by the authors.
+- Viewing and educational use are permitted.
+- Modification, redistribution, or commercial use of this project is not allowed without prior written consent from both authors.
+- To request permission for changes or contributions, please contact the authors directly.
+
+
+
+  
