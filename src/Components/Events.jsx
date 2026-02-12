@@ -47,7 +47,7 @@ function Events() {
       ),
     },
     {
-      title: "Eldorado Park Interhigh Sports Event",
+      title: "🏆Eldorado Park Interhigh Sports Event",
       date: new Date("2026-02-13T08:00:00"),
       description:
         "Eldorado Park Stadium will bring schools together for a thrilling multi-sport competition celebrating talent, teamwork, and community spirit.",
