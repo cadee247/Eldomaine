@@ -291,12 +291,14 @@ holidays: [
             <FaChalkboardTeacher className="stat-icon" />
 
             <span className="stat-number" data-target="42">0</span>
+            <p>Dedicated Educators</p>
 
           </motion.div>
           <motion.div className="stat-box" whileHover={{ scale: 1.1 }}>
             <FaTrophy className="stat-icon" />
 
-            <span className="stat-number" data-target="89">0</span>
+            <span className="stat-number" data-target="89%">0</span>
+            <p>Matric Pass Rate</p>
 
           </motion.div>
         </div>
