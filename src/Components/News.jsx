@@ -18,7 +18,7 @@ function News() {
     },
     {
       title: 'Eldomain Secondary School Launches Its First Official Website',
-      date: 2026-02-16,
+      date: '2026-02-16',
       summary: "We are proud to announce the launch of Eldomain Secondary School’s very first official website. This marks a new chapter in our school’s journey, providing learners, parents, and the community with a digital hub for news, events, achievements, and resources. The website reflects our commitment to excellence in academics, sport, and community spirit. Scan the QR code below to explore the site and stay connected with everything happening at Eldomain Secondary School.",
 
     },
