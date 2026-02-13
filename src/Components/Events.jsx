@@ -54,10 +54,29 @@ function Events() {
       moreInfo: (
         <>
           <p>
-            Join us for the Eldorado Park Interhigh, a multi-sport competition
-            featuring schools from across the region. Expect exciting matches in
-            soccer, basketball, tennis, athletics, and more — all celebrating
-            teamwork, talent, and community spirit.
+           It is with great enthusiasm that we inform you that Eldomaine High School will be participating in the Annual Inter-High Athletics Meet to be held on Friday, 13 February 2026 at the Eldorado Park Stadium.
+
+This is an important event on our school calendar and forms part of our official academic and extracurricular programme. Please note that this is an official school day. There will be no formal classroom teaching on this day as all learners are expected to report directly to the Eldorado Park Stadium to support the athletes representing our school.
+
+Attendance and Dress Code
+
+Learners are expected to:
+• Arrive at the stadium on time.
+• Conduct themselves in a disciplined and respectful manner.
+• Support their peers positively and proudly.
+
+Entrance fees are as follows:
+<strong><li>• R10.00 – Learners wearing full school uniform</li></strong>
+<strong><li>• R20.00 – Learners wearing civvies (if parents grant permission)</li></strong>
+
+We strongly encourage learners to wear full school uniform to promote unity, discipline, and pride in our institution.
+
+Importance of Sport
+
+Sport plays a vital role in holistic education. It builds discipline, teamwork, leadership, resilience, and school spirit. Eldomaine High School has established a strong reputation not only for academic excellence but also for excellence in sport and extracurricular activities. Our consistent performance and the manner in which our learners conduct themselves contribute greatly to the positive image of our school in the Eldorado Park community.
+
+Your child’s presence and positive support strengthen our athletes’ morale and uphold the proud reputation of Eldomaine High School.
+
           </p>
           <p>
             <strong>Location: Eldorado Park Stadium</strong>
