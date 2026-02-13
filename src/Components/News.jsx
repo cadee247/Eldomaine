@@ -17,10 +17,10 @@ function News() {
         'We are proud to announce the release of the 2025 matric results. Congratulations to our learners for their hard work and dedication. Eldomaine achieved an overall pass rate of 89%.',
     },
     {
-      title:
-        'This section is quiet for now, but exciting updates are on the way. Keep an eye out!',
-      date: null,
-      summary: '',
+      title: 'Eldomain Secondary School Launches Its First Official Website',
+      date: 2026-02-16,
+      summary: "We are proud to announce the launch of Eldomain Secondary School’s very first official website. This marks a new chapter in our school’s journey, providing learners, parents, and the community with a digital hub for news, events, achievements, and resources. The website reflects our commitment to excellence in academics, sport, and community spirit. Scan the QR code below to explore the site and stay connected with everything happening at Eldomain Secondary School.",
+
     },
   ];
 
