@@ -32,8 +32,8 @@ function News() {
 
   const upcomingAnnouncements = [
     { title: 'Matric Jackets Coming Soon.', date: 'Coming Soon' },
-    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: '2025-12-15' },
-    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: '2026-01-12' },
+    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊',},
+    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊',},
   ];
 
   const filteredArticles = newsArticles.filter(
