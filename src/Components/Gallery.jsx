@@ -23,14 +23,26 @@ const Gallery = () => {
     setImages(imgs);
   }, []);
 
+  // New: Effect for managing body overflow with cleanup
+  useEffect(() => {
+    if (selectedIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup on unmount or when selectedIndex changes
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [selectedIndex]);
+
   const openLightbox = (index) => {
     setSelectedIndex(index);
-    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setSelectedIndex(null);
-    document.body.style.overflow = "auto";
   };
 
   const goToPrev = (e) => {
@@ -46,10 +58,7 @@ const Gallery = () => {
   return (
     <div className="gallery-page">
       {/* Hero Section */}
-
       <Hero image={coverImg} title="Discover Eldomaine through our gallery of memories, events, and creativity." type="gallery" />
-
-
       {/* Gallery Grid */}
       <section className="gallery-grid-section">
         <h2>Explore Our Highlights</h2>
@@ -82,7 +91,6 @@ const Gallery = () => {
           </div>
         )}
       </section>
-
       {/* Lightbox */}
       {selectedIndex !== null && (
         <div className="lightbox" onClick={closeLightbox}>
