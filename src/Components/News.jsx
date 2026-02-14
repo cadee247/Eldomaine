@@ -31,7 +31,7 @@ function News() {
   ];
 
   const upcomingAnnouncements = [
-    { title: 'Matric Jackets Coming Soon.', date: 'Coming Soon'},
+    { title: 'Matric Jackets Coming Soon.',},
     { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊',},
     { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊',},
   ];
