@@ -22,10 +22,16 @@ function News() {
       summary: "We are proud to announce the launch of Eldomain Secondary School’s very first official website. This marks a new chapter in our school’s journey, providing learners, parents, and the community with a digital hub for news, events, achievements, and resources. The website reflects our commitment to excellence in academics, sport, and community spirit. Scan the QR code below to explore the site and stay connected with everything happening at Eldomain Secondary School.",
 
     },
+     {
+      title: 'Class of 2026 Theme ',
+      date: '2026-02-16',
+      summary: " Eldomaine Secondary High School proudly announces the Class of 2026 theme: Dragon. Representing strength, wisdom, and ambition, the Dragon will guide this year’s spirit and celebrations. Congratulations to the Class of 2026 on embracing a theme that truly ignites the future.",
+
+    },
   ];
 
-  const upcomingEvents = [
-    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: '2025-11-10' },
+  const upcomingAnnouncements = [
+    { title: 'Matric Jackets Coming Soon.', date: 'Coming Soon' },
     { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: '2025-12-15' },
     { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: '2026-01-12' },
   ];
