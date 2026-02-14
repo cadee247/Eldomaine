@@ -2,26 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/src/assets/Navbar/nav.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eldomaine-highschool</title>
 
-    <!-- Preload hero image (loads first) -->
+    <!-- Preload your main hero image -->
     <link rel="preload" as="image" href="/src/assets/hero.webp" />
 
-    <!-- Inline critical CSS -->
+    <!-- Inline minimal critical CSS -->
     <style>
-      body { font-family: Arial, sans-serif; margin: 0; }
+      body { margin: 0; font-family: Arial, sans-serif; }
       img { width: 100%; height: auto; display: block; }
     </style>
   </head>
   <body>
     <div id="root"></div>
 
-   
-    <!-- Hero image loads eagerly -->
+    <!-- Example image setup -->
+    <!-- Hero image loads immediately -->
     <img src="/src/assets/hero.webp" alt="School Campus" loading="eager" />
 
-    <!-- Other images load lazily -->
+    <!-- Other images load only when scrolled into view -->
     <img src="/src/assets/gallery1.webp" alt="Gallery" loading="lazy" />
     <img src="/src/assets/gallery2.webp" alt="Gallery" loading="lazy" />
 
