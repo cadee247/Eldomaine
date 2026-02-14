@@ -35,7 +35,7 @@ function News() {
       title: 'Class of 2026 Theme ',
       date: '2026-02-16',
       summary:
-        " Eldomaine Secondary High School proudly announces the Class of 2026 theme: Dragon. Representing strength, wisdom, and ambition, the Dragon will guide this year’s spirit and celebrations. Congratulations to the Class of 2026 on embracing a theme that truly ignites the future.",
+        " Eldomaine Secondary High School proudly announces the Class of 2026 theme: <strong>Dragon</strong>. Representing strength, wisdom, and ambition, the Dragon will guide this year’s spirit and celebrations. Congratulations to the Class of 2026 on embracing a theme that truly ignites the future.",
     },
   ];
 
