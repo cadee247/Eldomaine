@@ -23,7 +23,7 @@ const Gallery = () => {
     setImages(imgs);
   }, []);
 
-  // New: Effect for managing body overflow with cleanup
+  // Effect for managing body overflow with cleanup
   useEffect(() => {
     if (selectedIndex !== null) {
       document.body.style.overflow = "hidden";
@@ -37,12 +37,38 @@ const Gallery = () => {
     };
   }, [selectedIndex]);
 
+  // New: Handle back button to close lightbox using history
+  useEffect(() => {
+    if (selectedIndex !== null) {
+      // Push a dummy history state when lightbox opens
+      window.history.pushState({ lightboxOpen: true }, "");
+    }
+
+    const handlePopState = (event) => {
+      if (selectedIndex !== null) {
+        setSelectedIndex(null); // Close lightbox on back navigation
+        event.preventDefault(); // Prevent actual navigation
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [selectedIndex]);
+
   const openLightbox = (index) => {
     setSelectedIndex(index);
   };
 
   const closeLightbox = () => {
     setSelectedIndex(null);
+    // If we pushed a state, go back to clean it up (without triggering popstate handler again)
+    if (window.history.state && window.history.state.lightboxOpen) {
+      window.history.back();
+    }
   };
 
   const goToPrev = (e) => {
