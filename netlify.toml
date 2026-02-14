@@ -3,10 +3,17 @@
   publish = "dist" # or "build" depending on your framework
 
 [[plugins]]
-  package = "netlify-plugin-image-optim"
-
-[[plugins]]
   package = "netlify-plugin-minify-html"
+
+# Optional: Add this for Image CDN config if using remote/external images
+[images]
+  remote_images = ["https://your-external-domain.com/.*\\.(jpg|png|webp)"] # Example; customize as needed
+
+# Optional redirects for seamless CDN usage (e.g., use /opt-img/path/to/image.jpg?w=800 in your code)
+[[redirects]]
+  from = "/opt-img/*"
+  to = "/.netlify/images?url=/:splat"
+  status = 200
 
 [[headers]]
   for = "/*.js"
