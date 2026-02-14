@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaNewspaper, FaCalendarAlt, FaThumbsUp, FaHeart, FaSmile } from 'react-icons/fa';
 import '../css/News.css';
@@ -7,7 +7,16 @@ import Hero from '../Components/Hero';
 
 function News() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [reactions, setReactions] = useState({});
+  const [reactions, setReactions] = useState(() => {
+    // Load saved reactions from localStorage when component mounts
+    const saved = localStorage.getItem('reactions');
+    return saved ? JSON.parse(saved) : {};
+  });
+
+  // Save reactions to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('reactions', JSON.stringify(reactions));
+  }, [reactions]);
 
   const newsArticles = [
     {
@@ -19,21 +28,21 @@ function News() {
     {
       title: 'Eldomain Secondary School Launches Its First Official Website',
       date: '2026-02-16',
-      summary: "We are proud to announce the launch of Eldomain Secondary School’s very first official website. This marks a new chapter in our school’s journey, providing learners, parents, and the community with a digital hub for news, events, achievements, and resources. The website reflects our commitment to excellence in academics, sport, and community spirit. Scan the QR code below to explore the site and stay connected with everything happening at Eldomain Secondary School.",
-
+      summary:
+        "We are proud to announce the launch of Eldomain Secondary School’s very first official website. This marks a new chapter in our school’s journey, providing learners, parents, and the community with a digital hub for news, events, achievements, and resources. The website reflects our commitment to excellence in academics, sport, and community spirit. Scan the QR code below to explore the site and stay connected with everything happening at Eldomain Secondary School.",
     },
-     {
+    {
       title: 'Class of 2026 Theme ',
       date: '2026-02-16',
-      summary: " Eldomaine Secondary High School proudly announces the Class of 2026 theme: Dragon. Representing strength, wisdom, and ambition, the Dragon will guide this year’s spirit and celebrations. Congratulations to the Class of 2026 on embracing a theme that truly ignites the future.",
-
+      summary:
+        " Eldomaine Secondary High School proudly announces the Class of 2026 theme: Dragon. Representing strength, wisdom, and ambition, the Dragon will guide this year’s spirit and celebrations. Congratulations to the Class of 2026 on embracing a theme that truly ignites the future.",
     },
   ];
 
   const upcomingAnnouncements = [
-    { title: 'Matric Jackets Coming Soon.',},
-    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊',},
-    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊',},
+    { title: 'Matric Jackets Coming Soon.', date: 'Coming Soon' },
+    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: 'Date TBA' },
+    { title: 'Our calendar is taking a short break. Upcoming events will be posted here as soon as they’re confirmed.😊', date: 'Date TBA' },
   ];
 
   const filteredArticles = newsArticles.filter(
@@ -43,22 +52,24 @@ function News() {
   );
 
   const handleReaction = (index, type) => {
-    const prev = reactions[index];
-    if (prev && prev[type] === 1) return;
-
-    setReactions((prevState) => ({
-      ...prevState,
-      [index]: {
-        like: type === 'like' ? 1 : 0,
-        love: type === 'love' ? 1 : 0,
-        wow: type === 'wow' ? 1 : 0,
-      },
-    }));
+    setReactions((prevState) => {
+      const prev = prevState[index] || { like: 0, love: 0, wow: 0 };
+      const updated = {
+        ...prevState,
+        [index]: {
+          like: type === 'like' ? prev.like + 1 : prev.like,
+          love: type === 'love' ? prev.love + 1 : prev.love,
+          wow: type === 'wow' ? prev.wow + 1 : prev.wow,
+        },
+      };
+      return updated;
+    });
   };
 
   const formatDate = (date) => {
     if (!date) return '';
-    return new Date(date).toDateString();
+    const parsed = Date.parse(date);
+    return isNaN(parsed) ? date : new Date(date).toDateString();
   };
 
   return (
@@ -143,9 +154,9 @@ function News() {
         </div>
       </section>
 
-      {/* Upcoming Events */}
+      {/* Upcoming Announcements */}
       <section className="school-calendar-section">
-        <h2>upcoming Announcements</h2>
+        <h2>Upcoming Announcements</h2>
         <ul className="calendar-list">
           {upcomingAnnouncements.map((event, index) => (
             <motion.li
