@@ -52,14 +52,16 @@ function News() {
   );
 
   const handleReaction = (index, type) => {
+    // If already reacted, block further clicks
+    if (reactions[index]) return;
+
     setReactions((prevState) => {
-      const prev = prevState[index] || { like: 0, love: 0, wow: 0 };
       const updated = {
         ...prevState,
         [index]: {
-          like: type === 'like' ? prev.like + 1 : prev.like,
-          love: type === 'love' ? prev.love + 1 : prev.love,
-          wow: type === 'wow' ? prev.wow + 1 : prev.wow,
+          like: type === 'like' ? 1 : 0,
+          love: type === 'love' ? 1 : 0,
+          wow: type === 'wow' ? 1 : 0,
         },
       };
       return updated;
@@ -126,6 +128,7 @@ function News() {
                   <button
                     onClick={() => handleReaction(index, 'like')}
                     className="reaction-btn"
+                    disabled={!!reactions[index]} // disable after first click
                   >
                     <FaThumbsUp /> {reactions[index]?.like || 0}
                   </button>
@@ -133,6 +136,7 @@ function News() {
                   <button
                     onClick={() => handleReaction(index, 'love')}
                     className="reaction-btn"
+                    disabled={!!reactions[index]}
                   >
                     <FaHeart style={{ color: 'crimson' }} />{' '}
                     {reactions[index]?.love || 0}
@@ -141,6 +145,7 @@ function News() {
                   <button
                     onClick={() => handleReaction(index, 'wow')}
                     className="reaction-btn"
+                    disabled={!!reactions[index]}
                   >
                     <FaSmile style={{ color: 'gold' }} />{' '}
                     {reactions[index]?.wow || 0}
