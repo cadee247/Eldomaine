@@ -145,9 +145,9 @@ function News() {
 
       {/* Upcoming Events */}
       <section className="school-calendar-section">
-        <h2>Upcoming Events</h2>
+        <h2>upcoming Announcements</h2>
         <ul className="calendar-list">
-          {upcomingEvents.map((event, index) => (
+          {upcomingAnnouncements.map((event, index) => (
             <motion.li
               key={index}
               className="calendar-item"
