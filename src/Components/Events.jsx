@@ -5,7 +5,7 @@ import {
   FaGraduationCap,
   FaFilePdf,
   FaInfoCircle,
-  FaFileAlt,  // ✅ Add this
+  FaFileAlt,   
 } from 'react-icons/fa';
 
 import '../css/Events.css';
